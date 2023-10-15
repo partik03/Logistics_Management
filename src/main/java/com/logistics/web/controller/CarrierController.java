@@ -13,9 +13,9 @@ public class CarrierController {
 //    public CarrierController(CarrierService carrierService){
 //        this.carrierService =  carrierService;
 //    }
-    @GetMapping
+   @GetMapping
    public String home(Model model){
-       return "HOme";
+       return "index";
    }
 
    @GetMapping("/sign-up")
