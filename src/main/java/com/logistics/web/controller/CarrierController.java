@@ -27,9 +27,9 @@ public class CarrierController {
        return "logIn";
    }
 
-   @GetMapping("/order")
+   @GetMapping("/place-order")
    public String bookOrder(Model model){
-       return "bookOrder";
+       return "placeOrder";
    }
     
 //     @GetMapping("/")
