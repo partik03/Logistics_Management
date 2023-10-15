@@ -16,7 +16,7 @@
         <article class="card-body mx-auto" style="max-width: 400px">
           <h2 class="card-title mt-3 text-center">Log In To Account</h2>
           <p class="divider-text"></p>
-          <form>
+          <form method="post" th:action="@{/customer/new}" th:object="${customer}" >
             <!-- form-group// -->
             <div class="form-group input-group">
               <div class="input-group-prepend">
