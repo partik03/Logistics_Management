@@ -13,9 +13,25 @@ public class CarrierController {
 //    public CarrierController(CarrierService carrierService){
 //        this.carrierService =  carrierService;
 //    }
+    @GetMapping
+   public String home(Model model){
+       return "HOme";
+   }
 
-//    @GetMapping("/carriers")
-//    public String listCarriers(Model model){
-//        return "yo";
-//    }
+   @GetMapping("/sign-up")
+   public String signUp(Model model){
+       return "signUp";
+   }
+   @GetMapping("/log-in")
+   public String logIn(Model model){
+       return "logIn";
+   }
+
+   @GetMapping("/order")
+   public String bookOrder(Model model){
+       return "bookOrder";
+   }
+    
+//     @GetMapping("/")
+//     public String
 }
