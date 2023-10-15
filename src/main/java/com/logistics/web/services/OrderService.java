@@ -1,16 +1,16 @@
-package com.logistics.web.services;
+// package com.logistics.web.services;
 
-import com.logistics.web.models.Order;
+// import com.logistics.web.models.Order;
 
-import java.util.List;
+// import java.util.List;
 
-public interface OrderService {
+// public interface OrderService {
 
-    List<Order> listAllOrders();
-    List<Order> listOrdersByCustomers(int customerId);
+//     List<Order> listAllOrders();
+//     List<Order> listOrdersByCustomers(int customerId);
 
-    Order createNewOrder(Order order);
+//     Order createNewOrder(Order order);
 
-    Order getOrderByOrderId(int orderId);
+//     Order getOrderByOrderId(int orderId);
 
-}
+// }
