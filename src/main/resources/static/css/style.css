@@ -3,3 +3,13 @@
   font-size: 100px;
   background-color: blue;
 } */
+
+.bg-image-logistic{
+  background-image: url('../images/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-orange{
+  background-color: #f4623a ;
+}
