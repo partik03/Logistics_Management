@@ -31,6 +31,11 @@ public class CarrierController {
    public String bookOrder(Model model){
        return "placeOrder";
    }
+
+//     @GetMapping("/dashboard")
+//    public String dashboard(Model model){
+//        return "dashboard";
+//    }
     
 //     @GetMapping("/")
 //     public String
