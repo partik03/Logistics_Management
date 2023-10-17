@@ -7,9 +7,6 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import jakarta.annotation.Nullable;
-import jakarta.validation.constraints.*;
 import lombok.NoArgsConstructor;
 
 @Data
