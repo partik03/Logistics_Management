@@ -41,7 +41,9 @@ public class OrderController {
 
 
     @PatchMapping("/order/update")
-    public String editOrder(@RequestParam("oid") String OrderId)
+    public String editOrder(@RequestParam("oid") String OrderId){
+        return "yo";
+    }
 
 
 
