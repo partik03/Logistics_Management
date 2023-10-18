@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Objects;
 
 @Repository
@@ -43,9 +44,9 @@ public class CustomerDao {
         return jdbcTemplate.queryForObject(sql, new Object[] {id}, new BeanPropertyRowMapper<>(Customer.class));
     }
 
-    public Customer getAllCustomers(){
+    public List<Customer> getAllCustomers(){
         String sql = "SELECT * FROM Customer";
-        return jdbcTemplate.queryForObject(sql, new Object[] {}, new BeanPropertyRowMapper<>(Customer.class));
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Customer.class));
     }
 
     public int deleteCustomerById(int id){
