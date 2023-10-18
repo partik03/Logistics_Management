@@ -11,7 +11,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Customer {
     @NotNull
     @Getter
-    private long customerID;
+    private int customerID;
+
+    @NotNull
+    @Getter
+    @Size(min = 8,max=100)
+    private String password;
 
     @NotNull
     @Getter

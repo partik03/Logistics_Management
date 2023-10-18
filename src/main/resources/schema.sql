@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS Warehouse(
 
 CREATE TABLE IF NOT EXISTS Customer(
     customerId INT AUTO_INCREMENT PRIMARY KEY,
+    password VARCHAR(100) NOT NULL,
     firstName VARCHAR(50) NOT NULL,
     lastName VARCHAR(50),
     age INT NOT NULL,
