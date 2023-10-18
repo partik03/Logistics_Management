@@ -5,7 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.Getter;
-import org.springframework.format.annotation.DateTimeFormat;
+
+import java.sql.Date;
 
 @Data
 public class Customer {
@@ -36,7 +37,7 @@ public class Customer {
     private String address;
 
     @Getter
-    private DateTimeFormat dateOfBirth;
+    private Date dateOfBirth;
 
     @NotNull
     @Getter

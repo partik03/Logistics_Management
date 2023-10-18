@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS Order(
     orderDate DATE NOT NULL,
     customerId INT NOT NULL,
     productId INT NOT NULL,
-    quantity INT,
+    quantity INT
 );
 
 CREATE TABLE IF NOT EXISTS Invoice(
