@@ -1,17 +1,10 @@
 package com.logistics.web.models;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Data
 // @NoArgsConstructor
@@ -31,7 +24,7 @@ public class Shipment {
     // @DateTimeFormat
     @NotNull
     @Getter
-    private DateTimeFormat shipmentDate;
+    private Date shipmentDate;
 
     @NotNull
     @Getter
@@ -40,7 +33,7 @@ public class Shipment {
     // @DateTimeFormat
     @NotNull
     @Getter
-    private DateTimeFormat estimatedDeliveryDate;
+    private Date estimatedDeliveryDate;
 
     @NotNull
     @Getter

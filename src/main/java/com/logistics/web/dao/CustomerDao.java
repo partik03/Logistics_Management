@@ -4,7 +4,13 @@ import com.logistics.web.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.util.Objects;
 
 @Repository
 public class CustomerDao {
@@ -14,10 +20,22 @@ public class CustomerDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public Customer addCustomer(Customer customer){
-        String sql = "INSERT INTO Customer(firstName,lastName,age,address,dateOfBirth,phone) VALUES(?,?,?,?,?,?)";
-        jdbcTemplate.update(sql,customer.getFirstName(),customer.getLastName(),customer.getAge(),customer.getAddress(),customer.getDateOfBirth(),customer.getPhone());
-        return customer;
+    public int addCustomer(Customer customer){
+        String sql = "INSERT INTO Customer(password,firstName,lastName,age,address,dateOfBirth,phone) VALUES(?,?,?,?,?,?,?)";
+        KeyHolder keyholder = new GeneratedKeyHolder();
+        jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, customer.getPassword());
+            ps.setString(2, customer.getFirstName());
+            ps.setString(3, customer.getLastName());
+            ps.setInt(4,customer.getAge());
+            ps.setString(5,customer.getAddress());
+            ps.setDate(6,customer.getDateOfBirth());
+            ps.setString(7,customer.getPhone());
+            return ps;
+        }, keyholder);
+
+        return Objects.requireNonNull(keyholder.getKey()).intValue();
     }
 
     public Customer getCustomerById(int id){
