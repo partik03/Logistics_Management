@@ -41,7 +41,7 @@ public class ProductDao {
 
 
     public Product getProductById(int id){
-         String sql = "SELECT * FROM Product WHERE productId ="+id;
+         String sql = "SELECT * FROM Product WHERE productId = ?";
          Product product = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Product.class), id);
          return product;
     }

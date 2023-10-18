@@ -39,7 +39,7 @@ public class CarrierDao {
     }
 
     public Carrier getCarrierById(int id){
-        String sql = "SELECT * FROM Carrier WHERE carrierId="+id;
+        String sql = "SELECT * FROM Carrier WHERE carrierId = ?";
         Carrier carrier = jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<>(Carrier.class),id);
         return carrier;
     }

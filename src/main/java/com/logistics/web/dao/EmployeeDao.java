@@ -38,8 +38,8 @@ public class EmployeeDao {
     }
 
     public Employee getEmployeeById(int id){
-        String sql = "SELECT * FROM Employee WHERE empId ="+id;
-        Employee employee= jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Employee.class),id);
+        String sql = "SELECT * FROM Employee WHERE empId = ?";
+        Employee employee= jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Employee.class), id);
         return employee;
     }
 

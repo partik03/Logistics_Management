@@ -39,7 +39,7 @@ public class ShipmentDao {
     }
 
     public Shipment getShipmentById(int id){
-        String sql = "SELECT * FROM Shipment WHERE shipmentId ="+id;
+        String sql = "SELECT * FROM Shipment WHERE shipmentId = ?";
         Shipment shipment= jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Shipment.class), id);
         return shipment;
     }

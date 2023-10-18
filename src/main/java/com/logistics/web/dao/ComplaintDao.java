@@ -41,11 +41,10 @@ public class ComplaintDao {
 
 
     public Complaint getComplaintById(int id){
-         String sql = "SELECT * FROM Complaint WHERE complaintId ="+id;
+         String sql = "SELECT * FROM Complaint WHERE complaintId = ?";
         Complaint complaint = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Complaint.class),id);
         return complaint;
     }
-
 
     public List<Complaint> getAllComplaints(){
         String sql = "SELECT * FROM Complaint";

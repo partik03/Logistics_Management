@@ -41,7 +41,7 @@ public class OrderDao {
 
 
     public Order getOrderById(int id){
-         String sql = "SELECT * FROM Order WHERE orderId ="+id;
+         String sql = "SELECT * FROM Order WHERE orderId = ?";
         Order order= jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Order.class),id);
         return order;
     }

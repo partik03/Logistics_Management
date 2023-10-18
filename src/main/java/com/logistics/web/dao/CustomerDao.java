@@ -40,7 +40,7 @@ public class CustomerDao {
     }
 
     public Customer getCustomerById(int id){
-        String sql = "SELECT * FROM Customer WHERE customerId ="+id;
+        String sql = "SELECT * FROM Customer WHERE customerId = ?";
         Customer customer = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Customer.class),id);
         return customer;
     }

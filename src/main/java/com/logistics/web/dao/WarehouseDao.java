@@ -39,8 +39,8 @@ public class WarehouseDao {
     }
 
     public Warehouse getWarehouseById(int id){
-        String sql = "SELECT * FROM Warehouse WHERE warehouseId ="+id;
-        Warehouse warehouse= jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Warehouse.class),id);
+        String sql = "SELECT * FROM Warehouse WHERE warehouseId = ?";
+        Warehouse warehouse= jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Warehouse.class), id);
         return warehouse;
     }
 
