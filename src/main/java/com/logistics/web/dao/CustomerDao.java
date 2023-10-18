@@ -40,8 +40,12 @@ public class CustomerDao {
     }
 
     public Customer getCustomerById(int id){
-        String sql = "SELECT * FROM Customer WHERE customerId = ?";
-        return jdbcTemplate.queryForObject(sql, new Object[] {id}, new BeanPropertyRowMapper<>(Customer.class));
+        String sql = "SELECT * FROM Customer WHERE customerId ="+id;
+        List<Customer> customers= jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Customer.class));
+        if(customers.isEmpty()){
+            return null;
+        }
+        return customers.get(0);
     }
 
     public List<Customer> getAllCustomers(){
