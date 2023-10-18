@@ -42,11 +42,8 @@ public class ProductDao {
 
     public Product getProductById(int id){
          String sql = "SELECT * FROM Product WHERE productId ="+id;
-        List<Product> products= jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class));
-        if(products.isEmpty()){
-            return null;
-        }
-        return products.get(0);
+         Product product = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Product.class), id);
+         return product;
     }
 
 

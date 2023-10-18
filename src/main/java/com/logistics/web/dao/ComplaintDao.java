@@ -42,11 +42,8 @@ public class ComplaintDao {
 
     public Complaint getComplaintById(int id){
          String sql = "SELECT * FROM Complaint WHERE complaintId ="+id;
-        List<Complaint> complaints= jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Complaint.class));
-        if(complaints.isEmpty()){
-            return null;
-        }
-        return complaints.get(0);
+        Complaint complaint = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Complaint.class),id);
+        return complaint;
     }
 
 

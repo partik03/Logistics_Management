@@ -39,11 +39,8 @@ public class EmployeeDao {
 
     public Employee getEmployeeById(int id){
         String sql = "SELECT * FROM Employee WHERE empId ="+id;
-        List<Employee> employees= jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Employee.class));
-        if(employees.isEmpty()){
-            return null;
-        }
-        return employees.get(0);
+        Employee employee= jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Employee.class),id);
+        return employee;
     }
 
     public List<Employee> getAllEmployees(){

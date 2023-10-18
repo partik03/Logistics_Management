@@ -40,11 +40,8 @@ public class ShipmentDao {
 
     public Shipment getShipmentById(int id){
         String sql = "SELECT * FROM Shipment WHERE shipmentId ="+id;
-        List<Shipment> shipments= jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Shipment.class));
-        if(shipments.isEmpty()){
-            return null;
-        }
-        return shipments.get(0);
+        Shipment shipment= jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Shipment.class), id);
+        return shipment;
     }
 
     public List<Shipment> getAllShipments(){

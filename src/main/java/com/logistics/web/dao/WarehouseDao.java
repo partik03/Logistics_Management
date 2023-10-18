@@ -40,11 +40,8 @@ public class WarehouseDao {
 
     public Warehouse getWarehouseById(int id){
         String sql = "SELECT * FROM Warehouse WHERE warehouseId ="+id;
-        List<Warehouse> warehouses= jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Warehouse.class));
-        if(warehouses.isEmpty()){
-            return null;
-        }
-        return warehouses.get(0);
+        Warehouse warehouse= jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Warehouse.class),id);
+        return warehouse;
     }
 
     public List<Warehouse> getAllWarehouses(){
