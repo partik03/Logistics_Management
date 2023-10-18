@@ -53,12 +53,12 @@ public class InvoiceDao {
     }
 
     public int deleteInvoiceById(int id){
-        String sql = "DELETE FROM Invoice WHERE InvoiceId = ?";
+        String sql = "DELETE FROM Invoice WHERE invoiceId = ?";
         return jdbcTemplate.update(sql,id);
     }
 
     public Invoice updateInvoiceById(Invoice invoice, int id){
-        String sql = "UPDATE Invoice SET amount=?, paymentStatus=?, dateOfPublish=?, address=?, orderId=? WHERE InvoiceId = ?";
+        String sql = "UPDATE Invoice SET amount=?, paymentStatus=?, dateOfPublish=?, address=?, orderId=? WHERE invoiceId = ?";
         jdbcTemplate.update(sql,invoice.getAmount(),invoice.getPaymentStatus(),invoice.getDateOfPublish(),invoice.getAddress(),invoice.getOrderId(),id);
         return invoice;
     }

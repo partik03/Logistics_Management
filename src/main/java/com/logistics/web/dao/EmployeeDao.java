@@ -30,7 +30,7 @@ public class EmployeeDao {
             ps.setString(1, employee.getFirstName());
             ps.setString(2, employee.getLastName());
             ps.setString(3, employee.getContact());
-            ps.setString(4,employee.getRole());
+            ps.setString(4,employee.getRole()); // role is an enum
 
         }, keyholder);
 
