@@ -11,4 +11,9 @@ public class loginController {
     public String showDashboard(){
         return "dashboard"; 
     }
+    @GetMapping("/user_dashboard")
+    public String showUserDashboard(){
+        return "user_dashboard"; 
+    }
+
 }
