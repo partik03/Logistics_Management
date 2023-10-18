@@ -47,3 +47,4 @@ public class Shipment {
     @Getter
     private int carrierId;
 }
+

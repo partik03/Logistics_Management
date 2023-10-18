@@ -1,0 +1,65 @@
+package com.logistics.web.dao;
+
+import com.logistics.web.models.Warehouse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
+
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.util.List;
+import java.util.Objects;
+
+@Repository
+public class WarehouseDao {
+    private final JdbcTemplate jdbcTemplate;
+    @Autowired
+    public WarehouseDao(JdbcTemplate jdbcTemplate){
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    public int addWarehouse(Warehouse warehouse){
+        String sql = "INSERT INTO Warehouse(capacity,pinCode,street,city,state) VALUES(?,?,?,?,?)";
+        KeyHolder keyholder = new GeneratedKeyHolder();
+        jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, warehouse.getCapacity());
+            ps.setString(2, warehouse.getPinCode());
+            ps.setString(3, warehouse.getStreet());
+            ps.setString(4,warehouse.getCity());
+            ps.setString(5,warehouse.getState());
+            
+            return ps;
+        }, keyholder);
+
+        return Objects.requireNonNull(keyholder.getKey()).intValue();
+    }
+
+    public Warehouse getWarehouseById(int id){
+        String sql = "SELECT * FROM Warehouse WHERE warehouseId ="+id;
+        List<Warehouse> warehouses= jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Warehouse.class));
+        if(warehouses.isEmpty()){
+            return null;
+        }
+        return warehouses.get(0);
+    }
+
+    public List<Warehouse> getAllWarehouses(){
+        String sql = "SELECT * FROM Warehouse";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Warehouse.class));
+    }
+
+    public int deleteWarehouseById(int id){
+        String sql = "DELETE FROM Warehouse WHERE warehouseId = ?";
+        return jdbcTemplate.update(sql,id);
+    }
+
+    public Warehouse updateWarehouseById(Warehouse warehouse, int id){
+        String sql = "UPDATE Warehouse SET capacity=?, pinCode=?, street=?, city=?, state=? WHERE warehouseId = ?";
+        jdbcTemplate.update(sql,warehouse.getCapacity(),warehouse.getPinCode(),warehouse.getStreet(),warehouse.getCity(),warehouse.getState(),id);
+        return warehouse;
+    }
+}
