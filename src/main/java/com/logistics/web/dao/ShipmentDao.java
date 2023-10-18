@@ -27,7 +27,7 @@ public class ShipmentDao {
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setDate(1, shipment.getShipmentDate());
-            ps.setString(2, shipment.getStatus());  // status is a enum
+            ps.setString(2, shipment.getStatus().name());  // status is a enum
             ps.setDate(3, shipment.getEstimatedDeliveryDate());
             ps.setInt(4,shipment.getOrderId());
             ps.setInt(5,shipment.getCustomerId());
