@@ -1,3 +1,7 @@
+
+
+
+
 CREATE TABLE IF NOT EXISTS Employee(
     empId INT AUTO_INCREMENT PRIMARY KEY,
     firstName VARCHAR(50) NOT NULL,
@@ -35,7 +39,7 @@ CREATE TABLE IF NOT EXISTS Product(
     CONSTRAINT FK_WAREHOUSE FOREIGN KEY(warehouseId) REFERENCES WAREHOUSE(warehouseId)
 );
 
-CREATE TABLE IF NOT EXISTS Order(
+CREATE TABLE IF NOT EXISTS Orders(
     orderId INT AUTO_INCREMENT PRIMARY KEY,
     orderDate DATE NOT NULL,
     customerId INT NOT NULL,
@@ -50,7 +54,7 @@ CREATE TABLE IF NOT EXISTS Invoice(
     dateOfPublish DATE NOT NULL,
     paymentStatus ENUM("Pending","Success","Failed") NOT NULL,
     orderId INT NOT NULL,
-    CONSTRAINT FK_ORDER FOREIGN KEY(orderId) REFERENCES ORDER(orderId)
+    CONSTRAINT FK_ORDER FOREIGN KEY(orderId) REFERENCES ORDERS(orderId)
 );
 
  CREATE TABLE IF NOT EXISTS Carrier(
@@ -70,7 +74,7 @@ CREATE TABLE IF NOT EXISTS Shipment(
     orderId INT NOT NULL,
     customerId INT NOT NULL,
     carrierId INT NOT NULL,
-    CONSTRAINT FK_ORDER FOREIGN KEY(orderId) REFERENCES ORDER(orderId),
+    CONSTRAINT FK_ORDER2 FOREIGN KEY(orderId) REFERENCES ORDERS(orderId),
     CONSTRAINT FK_CUSTOMER FOREIGN KEY(customerId) REFERENCES CUSTOMER(customerId),
     CONSTRAINT FK_CARRIER FOREIGN KEY(carrierId) REFERENCES CARRIER(carrierId)
 );
@@ -82,3 +86,8 @@ CREATE TABLE IF NOT EXISTS Complaint(
     description VARCHAR(1000) NOT NULL,
     email VARCHAR(100) NOT NULL
 );
+show tables;
+
+desc customer;
+insert into customer(password,firstName,lastName,age,address,dateOfBirth,phone) values(123,hit,pra,18,"dayalbagh","2003-07-06","9758021043");
+
