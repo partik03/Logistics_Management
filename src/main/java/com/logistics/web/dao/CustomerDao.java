@@ -1,4 +1,4 @@
-package com.logistics.web.repository;
+package com.logistics.web.dao;
 
 import com.logistics.web.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,15 +7,16 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CustomerRepository{
+public class CustomerDao {
     private final JdbcTemplate jdbcTemplate;
     @Autowired
-    public CustomerRepository(JdbcTemplate jdbcTemplate){
+    public CustomerDao(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
     }
 
     public Customer addCustomer(Customer customer){
-        jdbcTemplate.update("INSERT INTO Customer(firstName,lastName,age,address,dateOfBirth,phone) VALUES(?,?,?,?,?,?)",customer.getFirstName(),customer.getLastName(),customer.getAge(),customer.getAddress(),customer.getDateOfBirth(),customer.getPhone());
+        String sql = "INSERT INTO Customer(firstName,lastName,age,address,dateOfBirth,phone) VALUES(?,?,?,?,?,?)";
+        jdbcTemplate.update(sql,customer.getFirstName(),customer.getLastName(),customer.getAge(),customer.getAddress(),customer.getDateOfBirth(),customer.getPhone());
         return customer;
     }
 
