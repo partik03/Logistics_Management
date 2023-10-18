@@ -1,6 +1,8 @@
 package com.logistics.web.dao;
 
 import com.logistics.web.models.Customer;
+import com.logistics.web.rowMappers.CustomerRowMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -40,13 +42,19 @@ public class CustomerDao {
 
     public Customer getCustomerById(int id){
         String sql = "SELECT * FROM Customer WHERE customerId = ?";
-        return jdbcTemplate.queryForObject(sql, new Object[] {id}, new BeanPropertyRowMapper<>(Customer.class));
-    }
+        Customer customer = jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<Customer>(Customer.class),id);
+        
+      
 
-    public Customer getAllCustomers(){
-        String sql = "SELECT * FROM Customer";
-        return jdbcTemplate.queryForObject(sql, new Object[] {}, new BeanPropertyRowMapper<>(Customer.class));
+        return customer;
+        
     }
+    
+
+    // public Customer getAllCustomers(){
+    //     String sql = "SELECT * FROM Customer";
+    //     return jdbcTemplate.queryForObject(sql, new Object[] {}, new BeanPropertyRowMapper<>(Customer.class));
+    // }
 
     public int deleteCustomerById(int id){
         String sql = "DELETE FROM Customer WHERE customerId = ?";
