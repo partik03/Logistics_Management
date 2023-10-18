@@ -16,8 +16,8 @@ public class Complaint {
     @NotNull
     private int customerId;
 
-    @NotNull
     @Getter
+    @NotNull
     private int orderId;
 
     @NotNull
