@@ -1,17 +1,24 @@
-// package com.logistics.web.repository;
+package com.logistics.web.repository;
 
-// import com.logistics.web.models.Customer;
-// import org.springframework.data.jpa.repository.JpaRepository;
+import com.logistics.web.models.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
-// import java.util.List;
+@Repository
+public class CustomerRepository{
+    private final JdbcTemplate jdbcTemplate;
+    @Autowired
+    public CustomerRepository(JdbcTemplate jdbcTemplate){
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
-// public interface CustomerRepository  {
+    public Customer addCustomer(Customer customer){
+        jdbcTemplate.update("INSERT INTO Customer(firstName,lastName,age,address,dateOfBirth,phone) VALUES(?,?,?,?,?,?)",customer.getFirstName(),customer.getLastName(),customer.getAge(),customer.getAddress(),customer.getDateOfBirth(),customer.getPhone());
+        return customer;
+    }
 
-//     public List<Customer> findAll(){
-
-//     }
-
-//    List<Customer> findAll();
-//    Customer save();
-
-// }
+    public Customer getCustomerById(int id){
+        return jdbcTemplate.queryForObject("SELECT * FROM Customer WHERE customerId=?",id)
+    }
+}
