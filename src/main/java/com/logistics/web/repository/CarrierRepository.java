@@ -1,16 +1,17 @@
-// package com.logistics.web.repository;
-//
-// import org.springframework.data.jpa.repository.JpaRepository;
-// import com.logistics.web.models.Carrier;
-//
-//import java.util.List;
-//
-//public interface CarrierRepository extends JpaRepository<Carrier,Long > {
-//
-//    List<Carrier> findCarriersByID(int Id);
-//
-//    Carrier findCarrierByID(int Id);
-//
-//
-//
-//}
+package com.logistics.web.repository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class CarrierRepository {
+    private final JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public CarrierRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    
+}
