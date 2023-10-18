@@ -1,15 +1,15 @@
-package com.logistics.web.repository;
+package com.logistics.web.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CarrierRepository {
+public class CarrierDao {
     private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public CarrierRepository(JdbcTemplate jdbcTemplate) {
+    public CarrierDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
