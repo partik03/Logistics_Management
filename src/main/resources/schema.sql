@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS Product(
                                       weight INT,
                                       description VARCHAR(100),
                                       warehouseId INT NOT NULL,
-                                      CONSTRAINT FK_WAREHOUSE FOREIGN KEY(warehouseId) REFERENCES WAREHOUSE(warehouseId)
+                                      CONSTRAINT FK_WAREHOUSE FOREIGN KEY(warehouseId) REFERENCES Warehouse(warehouseId)
 );
 
 CREATE TABLE IF NOT EXISTS Orders(
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS Invoice(
                                       dateOfPublish DATE NOT NULL,
                                       paymentStatus ENUM("Pending","Success","Failed") NOT NULL,
                                       orderId INT NOT NULL,
-                                      CONSTRAINT FK_ORDER FOREIGN KEY(orderId) REFERENCES ORDERS(orderId)
+                                      CONSTRAINT FK_ORDER FOREIGN KEY(orderId) REFERENCES Orders(orderId)
 );
 
 CREATE TABLE IF NOT EXISTS Carrier(
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS Carrier(
                                       contact CHAR(10),
                                       capacity INT,
                                       empId INT NOT NULL,
-                                      CONSTRAINT FK_EMP FOREIGN KEY(empId) REFERENCES EMPLOYEE(empId)
+                                      CONSTRAINT FK_EMP FOREIGN KEY(empId) REFERENCES Employee(empId)
 );
 
 CREATE TABLE IF NOT EXISTS Shipment(
@@ -75,9 +75,9 @@ CREATE TABLE IF NOT EXISTS Shipment(
                                        orderId INT NOT NULL,
                                        customerId INT NOT NULL,
                                        carrierId INT NOT NULL,
-                                       CONSTRAINT FK_ORDER2 FOREIGN KEY(orderId) REFERENCES ORDERS(orderId),
-                                       CONSTRAINT FK_CUSTOMER FOREIGN KEY(customerId) REFERENCES CUSTOMER(customerId),
-                                       CONSTRAINT FK_CARRIER FOREIGN KEY(carrierId) REFERENCES CARRIER(carrierId)
+                                       CONSTRAINT FK_ORDER2 FOREIGN KEY(orderId) REFERENCES Orders(orderId),
+                                       CONSTRAINT FK_CUSTOMER FOREIGN KEY(customerId) REFERENCES Customer(customerId),
+                                       CONSTRAINT FK_CARRIER FOREIGN KEY(carrierId) REFERENCES Carrier(carrierId)
 );
 
 CREATE TABLE IF NOT EXISTS Complaint(
@@ -91,6 +91,7 @@ CREATE TABLE IF NOT EXISTS Complaint(
 );
 show tables;
 
-desc customer;
-insert into customer(password,firstName,lastName,age,address,dateOfBirth,phone) values(123,hit,pra,18,"dayalbagh","2003-07-06","9758021043");
+
+desc Customer;
+insert into Customer(password,firstName,lastName,age,address,dateOfBirth,phone) values(123,hit,pra,18,"dayalbagh","2003-07-06","9758021043");
 
