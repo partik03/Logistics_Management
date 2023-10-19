@@ -1,7 +1,6 @@
 package com.logistics.web.dao;
 
 import com.logistics.web.models.Customer;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -44,9 +43,7 @@ public class CustomerDao {
         String sql = "SELECT * FROM Customer WHERE customerId = ?";
         Customer customer = jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<Customer>(Customer.class),id);
         return customer;
-        
     }
-    
 
     public List<Customer> getAllCustomers(){
         String sql = "SELECT * FROM Customer";
@@ -58,9 +55,8 @@ public class CustomerDao {
         return jdbcTemplate.update(sql,id);
     }
 
-    public Customer updateCustomerById(Customer customer, int id){
+    public int updateCustomerById(Customer customer, int id){
         String sql = "UPDATE Customer SET password=?, firstName=?, lastName=?, age=?, address=?, dateOfBirth=?, phone=? WHERE customerId = ?";
-        jdbcTemplate.update(sql,customer.getPassword(),customer.getFirstName(),customer.getLastName(),customer.getAge(),customer.getAddress(),customer.getDateOfBirth(),customer.getPhone(),id);
-        return customer;
+        return jdbcTemplate.update(sql,customer.getPassword(),customer.getFirstName(),customer.getLastName(),customer.getAge(),customer.getAddress(),customer.getDateOfBirth(),customer.getPhone(),id);
     }
 }

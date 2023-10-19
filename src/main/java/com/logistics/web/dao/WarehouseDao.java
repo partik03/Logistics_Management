@@ -39,12 +39,9 @@ public class WarehouseDao {
     }
 
     public Warehouse getWarehouseById(int id){
-        String sql = "SELECT * FROM Warehouse WHERE warehouseId ="+id;
-        List<Warehouse> warehouses= jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Warehouse.class));
-        if(warehouses.isEmpty()){
-            return null;
-        }
-        return warehouses.get(0);
+        String sql = "SELECT * FROM Warehouse WHERE warehouseId = ?";
+        Warehouse warehouse= jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Warehouse.class), id);
+        return warehouse;
     }
 
     public List<Warehouse> getAllWarehouses(){
@@ -57,9 +54,8 @@ public class WarehouseDao {
         return jdbcTemplate.update(sql,id);
     }
 
-    public Warehouse updateWarehouseById(Warehouse warehouse, int id){
+    public int updateWarehouseById(Warehouse warehouse, int id){
         String sql = "UPDATE Warehouse SET capacity=?, pinCode=?, street=?, city=?, state=? WHERE warehouseId = ?";
-        jdbcTemplate.update(sql,warehouse.getCapacity(),warehouse.getPinCode(),warehouse.getStreet(),warehouse.getCity(),warehouse.getState(),id);
-        return warehouse;
+        return jdbcTemplate.update(sql,warehouse.getCapacity(),warehouse.getPinCode(),warehouse.getStreet(),warehouse.getCity(),warehouse.getState(),id);
     }
 }

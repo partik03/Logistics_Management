@@ -41,12 +41,9 @@ public class ProductDao {
 
 
     public Product getProductById(int id){
-         String sql = "SELECT * FROM Product WHERE productId ="+id;
-        List<Product> products= jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class));
-        if(products.isEmpty()){
-            return null;
-        }
-        return products.get(0);
+         String sql = "SELECT * FROM Product WHERE productId = ?";
+         Product product = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Product.class), id);
+         return product;
     }
 
 
@@ -60,10 +57,9 @@ public class ProductDao {
         return jdbcTemplate.update(sql,id);
     }
 
-    public Product updateProductById(Product product, int id){
+    public int updateProductById(Product product, int id){
         String sql = "UPDATE Product SET weight=?, productName=?, description=?, warehouseId=? WHERE productId = ?";
-        jdbcTemplate.update(sql,product.getWeight(),product.getProductName(),product.getDescription(),product.getWarehouseId(),id);
-        return product;
+        return jdbcTemplate.update(sql,product.getWeight(),product.getProductName(),product.getDescription(),product.getWarehouseId(),id);
     }
 
 }

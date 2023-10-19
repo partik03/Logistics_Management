@@ -1,42 +1,49 @@
 package com.logistics.web.controller;
 
-import com.logistics.web.services.CarrierService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.logistics.web.dao.CarrierDao;
+import com.logistics.web.models.Carrier;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class CarrierController {
-    private CarrierService carrierService;
-//    @Autowired
-//    public CarrierController(CarrierService carrierService){
-//        this.carrierService =  carrierService;
-//    }
-   @GetMapping
-   public String home(Model model){
-       return "index";
-   }
+    private final CarrierDao carrierDao;
 
-   @GetMapping("/sign-up")
-   public String signUp(Model model){
-       return "signUp";
-   }
-   @GetMapping("/log-in")
-   public String logIn(Model model){
-       return "logIn";
-   }
+    public CarrierController(CarrierDao carrierDao) {
+        this.carrierDao = carrierDao;
+    }
 
-   @GetMapping("/place-order")
-   public String bookOrder(Model model){
-       return "placeOrder";
-   }
+    @PostMapping("/carrier")
+    @ResponseBody
+    public int addCarrier(@Valid @NotNull @RequestBody Carrier carrier){
+        return carrierDao.addCarrier(carrier);
+    }
 
-//     @GetMapping("/dashboard")
-//    public String dashboard(Model model){
-//        return "dashboard";
-//    }
-    
-//     @GetMapping("/")
-//     public String
+    @GetMapping("/carrier")
+    @ResponseBody
+    public List<Carrier> getAllCarriers(){
+        return carrierDao.getAllCarriers();
+    }
+
+    @GetMapping("/carrier/{id}")
+    @ResponseBody
+    public Carrier getCarrierById(@Valid @NotNull @PathVariable("id") int id){
+        return carrierDao.getCarrierById(id);
+    }
+
+    @DeleteMapping("/carrier/{id}")
+    @ResponseBody
+    public int deleteCarrierById(@Valid @NotNull @PathVariable("id") int id){
+        return carrierDao.deleteCarrierById(id);
+    }
+
+    @PutMapping("/carrier/{id}")
+    @ResponseBody
+    public int updateCarrierById(@Valid @NotNull @PathVariable("id") int id, @Valid @NotNull @RequestBody Carrier carrier){
+        return carrierDao.updateCarrierById(carrier,id);
+    }
 }

@@ -38,12 +38,9 @@ public class EmployeeDao {
     }
 
     public Employee getEmployeeById(int id){
-        String sql = "SELECT * FROM Employee WHERE empId ="+id;
-        List<Employee> employees= jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Employee.class));
-        if(employees.isEmpty()){
-            return null;
-        }
-        return employees.get(0);
+        String sql = "SELECT * FROM Employee WHERE empId = ?";
+        Employee employee= jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Employee.class), id);
+        return employee;
     }
 
     public List<Employee> getAllEmployees(){
@@ -56,9 +53,8 @@ public class EmployeeDao {
         return jdbcTemplate.update(sql,id);
     }
 
-    public Employee updateEmployeeById(Employee employee, int id){
+    public int updateEmployeeById(Employee employee, int id){
         String sql = "UPDATE Employee SET firstName=?, lastName=?, contact=?, role=? WHERE empId = ?";
-        jdbcTemplate.update(sql,employee.getFirstName(),employee.getLastName(),employee.getContact(),employee.getRole(),id);
-        return employee;
+        return jdbcTemplate.update(sql,employee.getFirstName(),employee.getLastName(),employee.getContact(),employee.getRole(),id);
     }
 }
