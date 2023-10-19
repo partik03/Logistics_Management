@@ -61,4 +61,15 @@ public class OrderDao {
         return jdbcTemplate.update(sql,order.getOrderDate(),order.getQuantity(),order.getProductId(),order.getCustomerId(),id);
     }
 
+//    public Order modifyOrderStatus(int orderId,String status);
+//
+//
+//
+//     public List<Order> filterOrdersByData(Date date);
+//
+//
+//     public List<Order> filterByStatus(String status);
+//     public List<Order> handleListOrdersByCustomerId(int customerId);
+
+
 }
