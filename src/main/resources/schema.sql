@@ -3,6 +3,7 @@ create database project;
 use project;
 CREATE TABLE IF NOT EXISTS Employee(
                                        empId INT AUTO_INCREMENT PRIMARY KEY,
+                                       password VARCHAR(50) NOT NULL,
                                        firstName VARCHAR(50) NOT NULL,
                                        lastName VARCHAR(50),
                                        contact CHAR(10) NOT NULL,
