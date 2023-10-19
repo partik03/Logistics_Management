@@ -1,7 +1,6 @@
 package com.logistics.web.dao;
 
 import com.logistics.web.models.Customer;
-import com.logistics.web.rowMappers.CustomerRowMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -44,9 +43,6 @@ public class CustomerDao {
     public Customer getCustomerById(int id){
         String sql = "SELECT * FROM Customer WHERE customerId = ?";
         Customer customer = jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<Customer>(Customer.class),id);
-        
-      
-
         return customer;
         
     }
