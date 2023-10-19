@@ -41,7 +41,7 @@ public class CarrierController {
         return carrierDao.deleteCarrierById(id);
     }
 
-    @PutMapping("/customer/{id}")
+    @PutMapping("/carrier/{id}")
     @ResponseBody
     public int updateCarrierById(@Valid @NotNull @PathVariable("id") int id, @Valid @NotNull @RequestBody Carrier carrier){
         return carrierDao.updateCarrierById(carrier,id);
