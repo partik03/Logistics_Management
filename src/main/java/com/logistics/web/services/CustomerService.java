@@ -1,13 +1,19 @@
-package com.logistics.web.services;
+ package com.logistics.web.services;
 
-import com.logistics.web.models.Customer;
+ import com.logistics.web.models.Customer;
 
-import java.util.List;
+ import java.util.List;
 
-public interface CustomerService {
+ import org.springframework.stereotype.Service;
 
-    List<Customer> findAllCustomers();
+ public interface CustomerService {
 
-    Customer createCustomer(Customer customer);
+     List<Customer> findAllCustomers();
 
-}
+     Customer createCustomer(Customer customer);
+
+     Customer updateCustomer(Object data,int customerId);
+
+     Boolean deleteCustomer(int customerId);
+
+ }

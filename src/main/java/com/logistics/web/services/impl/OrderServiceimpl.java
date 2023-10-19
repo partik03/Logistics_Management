@@ -13,11 +13,11 @@ import java.util.List;
 public class OrderServiceimpl implements OrderService {
 
 
-    public OrderRespository orderRepository;
-    @Autowired
-    public OrderServiceimpl(OrderRespository orderRepository){
-        this.orderRepository = orderRepository;
-    }
+//     public OrderRespository orderRepository;
+//     @Autowired
+//     public OrderServiceimpl(OrderRespository orderRepository){
+//         this.orderRepository = orderRepository;
+//     }
 
     @Override
     public List<Order> listAllOrders(){

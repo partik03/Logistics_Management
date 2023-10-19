@@ -2,16 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
-    <title>Sign Up</title>
+    <title>Log In</title>
   <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
   <link th:href="@{/css/style.css}" rel="stylesheet" />
   </head>
   <body>
-    <div class="container mt-5">
+    <div class="bg-image bg-image-logistic d-flex justify-content-center align-items-center">
+
+    
+    <div class="container w-50 mt-5">
         
       <div class="card bg-light">
         <article class="card-body mx-auto" style="max-width: 400px">
-          <h4 class="card-title mt-3 text-center">Log In To Account</h4>
+          <h2 class="card-title mt-3 text-center">Log In To Account</h2>
           <p class="divider-text"></p>
           <form method="post" th:action="@{/customer/new}" th:object="${customer}" >
             <!-- form-group// -->
@@ -46,7 +49,7 @@
     
             <!-- form-group// -->
             <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block">
+              <button type="submit" class="btn btn-block bg-orange text-white">
                 Log In
               </button>
             </div>
@@ -56,6 +59,7 @@
         </article>
       </div>
       <!-- card.// -->
+    </div>
     </div>
   </body>
    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
