@@ -57,10 +57,9 @@ public class ProductDao {
         return jdbcTemplate.update(sql,id);
     }
 
-    public Product updateProductById(Product product, int id){
+    public int updateProductById(Product product, int id){
         String sql = "UPDATE Product SET weight=?, productName=?, description=?, warehouseId=? WHERE productId = ?";
-        jdbcTemplate.update(sql,product.getWeight(),product.getProductName(),product.getDescription(),product.getWarehouseId(),id);
-        return product;
+        return jdbcTemplate.update(sql,product.getWeight(),product.getProductName(),product.getDescription(),product.getWarehouseId(),id);
     }
 
 }

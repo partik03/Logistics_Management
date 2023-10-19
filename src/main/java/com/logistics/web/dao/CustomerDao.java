@@ -55,9 +55,8 @@ public class CustomerDao {
         return jdbcTemplate.update(sql,id);
     }
 
-    public Customer updateCustomerById(Customer customer, int id){
+    public int updateCustomerById(Customer customer, int id){
         String sql = "UPDATE Customer SET password=?, firstName=?, lastName=?, age=?, address=?, dateOfBirth=?, phone=? WHERE customerId = ?";
-        jdbcTemplate.update(sql,customer.getPassword(),customer.getFirstName(),customer.getLastName(),customer.getAge(),customer.getAddress(),customer.getDateOfBirth(),customer.getPhone(),id);
-        return customer;
+        return jdbcTemplate.update(sql,customer.getPassword(),customer.getFirstName(),customer.getLastName(),customer.getAge(),customer.getAddress(),customer.getDateOfBirth(),customer.getPhone(),id);
     }
 }

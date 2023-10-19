@@ -56,10 +56,9 @@ public class OrderDao {
         return jdbcTemplate.update(sql,id);
     }
 
-    public Order updateOrderById(Order order, int id){
+    public int updateOrderById(Order order, int id){
         String sql = "UPDATE Order SET orderDate=?, quantity=?, productId=?, customerId=? WHERE orderId = ?";
-        jdbcTemplate.update(sql,order.getOrderDate(),order.getQuantity(),order.getProductId(),order.getCustomerId(),id);
-        return order;
+        return jdbcTemplate.update(sql,order.getOrderDate(),order.getQuantity(),order.getProductId(),order.getCustomerId(),id);
     }
 
 }

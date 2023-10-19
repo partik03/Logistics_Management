@@ -54,9 +54,8 @@ public class WarehouseDao {
         return jdbcTemplate.update(sql,id);
     }
 
-    public Warehouse updateWarehouseById(Warehouse warehouse, int id){
+    public int updateWarehouseById(Warehouse warehouse, int id){
         String sql = "UPDATE Warehouse SET capacity=?, pinCode=?, street=?, city=?, state=? WHERE warehouseId = ?";
-        jdbcTemplate.update(sql,warehouse.getCapacity(),warehouse.getPinCode(),warehouse.getStreet(),warehouse.getCity(),warehouse.getState(),id);
-        return warehouse;
+        return jdbcTemplate.update(sql,warehouse.getCapacity(),warehouse.getPinCode(),warehouse.getStreet(),warehouse.getCity(),warehouse.getState(),id);
     }
 }

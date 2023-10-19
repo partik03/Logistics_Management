@@ -56,10 +56,9 @@ public class ComplaintDao {
         return jdbcTemplate.update(sql,id);
     }
 
-    public Complaint updateComplaintById(Complaint complaint, int id){
+    public int updateComplaintById(Complaint complaint, int id){
         String sql = "UPDATE Complaint SET customerId=?, orderId=?, description=?, email=? WHERE complaintId = ?";
-        jdbcTemplate.update(sql,complaint.getCustomerId(),complaint.getOrderId(),complaint.getDescription(),complaint.getEmail(),id);
-        return complaint;
+        return jdbcTemplate.update(sql,complaint.getCustomerId(),complaint.getOrderId(),complaint.getDescription(),complaint.getEmail(),id);
     }
 
 }
