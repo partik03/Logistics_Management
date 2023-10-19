@@ -39,12 +39,9 @@ public class CarrierDao {
     }
 
     public Carrier getCarrierById(int id){
-        String sql = "SELECT * FROM Carrier WHERE carrierId="+id;
-        List<Carrier> carriers = jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(Carrier.class));
-        if(carriers.isEmpty()){
-            return null;
-        }
-        return carriers.get(0);
+        String sql = "SELECT * FROM Carrier WHERE carrierId = ?";
+        Carrier carrier = jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<>(Carrier.class),id);
+        return carrier;
     }
 
     public List<Carrier> getAllCarriers(){

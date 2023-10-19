@@ -39,12 +39,9 @@ public class InvoiceDao {
     }
 
     public Invoice getInvoiceById(int id){
-        String sql = "SELECT * FROM Invoice WHERE invoiceId ="+id;
-        List<Invoice> invoices= jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Invoice.class));
-        if(invoices.isEmpty()){
-            return null;
-        }
-        return invoices.get(0);
+        String sql = "SELECT * FROM Invoice WHERE invoiceId = ?";
+        Invoice invoice= jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Invoice.class),id);
+        return invoice;
     }
 
     public List<Invoice> getAllInvoices(){

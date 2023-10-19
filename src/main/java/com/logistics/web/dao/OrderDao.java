@@ -41,14 +41,10 @@ public class OrderDao {
 
 
     public Order getOrderById(int id){
-         String sql = "SELECT * FROM Order WHERE orderId ="+id;
-        List<Order> orders= jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Order.class));
-        if(orders.isEmpty()){
-            return null;
-        }
-        return orders.get(0);
+         String sql = "SELECT * FROM Order WHERE orderId = ?";
+        Order order= jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Order.class),id);
+        return order;
     }
-
 
     public List<Order> getAllOrders(){
         String sql = "SELECT * FROM Order";
