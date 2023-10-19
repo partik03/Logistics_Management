@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,12 +27,13 @@ public class CustomerController {
     }
 
     @GetMapping("/customer")
-    @ResponseBody
-    public List<Customer> getAllCustomers(){
-        List<Customer> customers = customerDao.getAllCustomers();
-        System.out.println(customers);
-        return customers;
-    }
+    // @ResponseBody
+    public String getAllCustomers(Model model) {
+    List<Customer> customers = customerDao.getAllCustomers();
+    model.addAttribute("customers", customers);
+    System.out.println(customers);
+    return "dashboard_customers";
+}
 
     @GetMapping("/customer/{id}")
     @ResponseBody
