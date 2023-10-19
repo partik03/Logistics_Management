@@ -28,7 +28,9 @@ public class CustomerController {
     @GetMapping("/customer")
     @ResponseBody
     public List<Customer> getAllCustomers(){
-        return customerDao.getAllCustomers();
+        List<Customer> customers = customerDao.getAllCustomers();
+        System.out.println(customers);
+        return customers;
     }
 
     @GetMapping("/customer/{id}")
