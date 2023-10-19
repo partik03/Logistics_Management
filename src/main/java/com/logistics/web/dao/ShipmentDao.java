@@ -54,9 +54,8 @@ public class ShipmentDao {
         return jdbcTemplate.update(sql,id);
     }
 
-    public Shipment updateShipmentById(Shipment shipment, int id){
+    public int updateShipmentById(Shipment shipment, int id){
         String sql = "UPDATE Shipment SET shipmentDate=?, status=?, estimatedDeliveryDate=?, orderId=?, customerId=?, carrierId=? WHERE shipmentId = ?";
-        jdbcTemplate.update(sql,shipment.getShipmentDate(),shipment.getStatus(),shipment.getEstimatedDeliveryDate(),shipment.getOrderId(),shipment.getCustomerId(),shipment.getCarrierId(),id);
-        return shipment;
+        return jdbcTemplate.update(sql,shipment.getShipmentDate(),shipment.getStatus(),shipment.getEstimatedDeliveryDate(),shipment.getOrderId(),shipment.getCustomerId(),shipment.getCarrierId(),id);
     }
 }

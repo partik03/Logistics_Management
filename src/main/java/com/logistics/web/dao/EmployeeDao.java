@@ -53,9 +53,8 @@ public class EmployeeDao {
         return jdbcTemplate.update(sql,id);
     }
 
-    public Employee updateEmployeeById(Employee employee, int id){
+    public int updateEmployeeById(Employee employee, int id){
         String sql = "UPDATE Employee SET firstName=?, lastName=?, contact=?, role=? WHERE empId = ?";
-        jdbcTemplate.update(sql,employee.getFirstName(),employee.getLastName(),employee.getContact(),employee.getRole(),id);
-        return employee;
+        return jdbcTemplate.update(sql,employee.getFirstName(),employee.getLastName(),employee.getContact(),employee.getRole(),id);
     }
 }

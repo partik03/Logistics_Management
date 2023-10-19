@@ -45,7 +45,7 @@ public class CustomerController {
 
     @PutMapping("/customer/{id}")
     @ResponseBody
-    public Customer updateCustomerById(@Valid @NotNull @PathVariable("id") int id, @Valid @NotNull @RequestBody Customer customer){
+    public int updateCustomerById(@Valid @NotNull @PathVariable("id") int id, @Valid @NotNull @RequestBody Customer customer){
         return customerDao.updateCustomerById(customer, id);
     }
 }

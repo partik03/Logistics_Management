@@ -54,9 +54,8 @@ public class InvoiceDao {
         return jdbcTemplate.update(sql,id);
     }
 
-    public Invoice updateInvoiceById(Invoice invoice, int id){
+    public int updateInvoiceById(Invoice invoice, int id){
         String sql = "UPDATE Invoice SET amount=?, paymentStatus=?, dateOfPublish=?, address=?, orderId=? WHERE invoiceId = ?";
-        jdbcTemplate.update(sql,invoice.getAmount(),invoice.getPaymentStatus(),invoice.getDateOfPublish(),invoice.getAddress(),invoice.getOrderId(),id);
-        return invoice;
+        return jdbcTemplate.update(sql,invoice.getAmount(),invoice.getPaymentStatus(),invoice.getDateOfPublish(),invoice.getAddress(),invoice.getOrderId(),id);
     }
 }
