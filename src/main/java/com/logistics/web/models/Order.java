@@ -1,24 +1,35 @@
 package com.logistics.web.models;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.Getter;
+
+import java.sql.Date;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name = "Customer")
 public class Order {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long OrderID;
-    private DateTimeFormat OrderDate;
-    private long InvoiceID;
-    private long ProductID;
-    private long CustomerID;
+
+    @NotNull
+    @Getter
+    private int orderId;
+
+    @NotNull
+    @Getter
+    private Date orderDate;
+
+    @NotNull
+    @Getter
+    @Min(value=1,message = "Min quantity is 1")
+    private int quantity;
+
+    @NotNull
+    @Getter
+    private int productId;
+
+    @NotNull
+    @Getter
+    private int customerId;
 }
+
+

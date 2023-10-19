@@ -1,104 +1,43 @@
-package com.logistics.web.services.impl;
+ package com.logistics.web.services.impl;
 
-import com.logistics.web.models.Employee;
-import com.logistics.web.services.EmployeeService;
-import org.springframework.dao.DataAccessException;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
-import org.springframework.jdbc.core.RowMapper;
+ import com.logistics.web.dao.EmployeeDao;
+ import com.logistics.web.models.Employee;
+ import com.logistics.web.services.EmployeeService;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.stereotype.Service;
+ import java.util.List;
 
-import javax.sql.DataSource;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
-
-public abstract class EmployeeServiceImpl implements EmployeeService {
+ @Service
+ public abstract class EmployeeServiceImpl implements EmployeeService {
 
 
-    private JdbcTemplate jbdcTemplate;
+     public EmployeeDao employeeDao;
 
-    public EmployeeServiceImpl(DataSource ds){
-        this.jbdcTemplate = new JdbcTemplate(ds);
-    }
-
-
-    @Override
-   public List<Employee> findAllEmployees(){
-        try{
-            String sql = "SELECT * FROM Employee";
-
-            RowMapper<Employee> rowMapper = new RowMapper<Employee>() {
-                @Override
-                public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {
-                    long EmployeeID = rs.getLong("EmployeeID");
-                    String Contact = rs.getString("Contact");
-                    String Role = rs.getString("Role");
-                    String Name = rs.getString("Name");
-                    return new Employee(EmployeeID, Contact, Role, Name);
-                }
-            };
-//            ResultSetExtractor<Employee> extractor = new ResultSetExtractor<Employee>() {
-//                @Override
-//                public Employee extractData(ResultSet rs) throws SQLException, DataAccessException {
-//                    if(rs.next()) {
-//                        long EmployeeID = rs.getLong("EmployeeID");
-//                        String Contact = rs.getString("Contact");
-//                        String Role = rs.getString("Role");
-//                        String Name = rs.getString("Name");
-//                        return new Employee(EmployeeID, Contact, Role, Name);
-//                    }
-//                    return null;
-//                }
-//            };
-            return jbdcTemplate.query(sql,rowMapper);
-
-        }
-        catch (SQLException err){
-//            return err;
-        }
-    }
-
-    @Override
-    public Employee findEmployeeById(int id){
-//        try{
-           String sql = "SELECT * FROM EMPLOYEE WHERE EmployeeID=" + id;
-           ResultSetExtractor<Employee> extractor = new ResultSetExtractor<Employee>() {
-                @Override
-                public Employee extractData(ResultSet rs) throws SQLException, DataAccessException {
-                    if(rs.next()) {
-                        long EmployeeID = rs.getLong("EmployeeID");
-                        String Contact = rs.getString("Contact");
-                        String Role = rs.getString("Role");
-                        String Name = rs.getString("Name");
-                        return new Employee(EmployeeID, Contact, Role, Name);
-                    }
-                    return null;
-                }
-            };
-
-           return jbdcTemplate.query(sql,extractor);
-
-//        }
-
-//        catch (SQLException err){
-//
-//        }
-    }
+     @Autowired
+     public EmployeeServiceImpl(EmployeeDao employeeDao){
+         this.employeeDao = employeeDao;
+     }
 
 
-    @Override
-    public int createEmployee(String Contact,String Role, String Name){
-        String sql = "INSERT INTO EMPLOYEE (Contact,Role,Name) VALUES (?,?,?)";
-        return jbdcTemplate.update(sql,Contact,Role,Name);
-    }
+     public List<Employee> handleGetAllEmployees(){
+         return employeeDao.getAllEmployees();
+     }
 
-    @Override
-    public int updateEmployee(String Contact,String Role, String Name,int id){
-        String sql = "UPDATE EMPLOYEE SET Contac=?,Role=?,Name=? WHERE EmployeeID="+id;
-        return jbdcTemplate.update(sql,Contact,Role,Name);
-    }
 
-    @Override
-    public int
-}
+     public Employee handleGetEmployeeById(int id){
+         return employeeDao.getEmployeeById(id);
+     }
+
+     public int handleAddEmployee( Employee employee ){
+         return employeeDao.addEmployee(employee);
+     }
+
+     public int handleUpdateEmployeeById(Employee employee,int id){
+         return employeeDao.updateEmployeeById(employee,id);
+     }
+
+     public int handleDeleteEmployeeById(int id){
+         return employeeDao.deleteEmployeeById(id);
+     }
+
+ }

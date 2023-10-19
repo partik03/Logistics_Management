@@ -1,36 +1,53 @@
-// package com.logistics.web.controller;
+package com.logistics.web.controller;
 
-// import com.logistics.web.models.Customer;
-// import com.logistics.web.services.CustomerService;
-// import org.springframework.stereotype.Controller;
-// import org.springframework.ui.Model;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.ModelAttribute;
-// import org.springframework.web.bind.annotation.PostMapping;
+import com.logistics.web.dao.CustomerDao;
+import com.logistics.web.models.Customer;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
-// @Controller
-// public class CustomerController  {
+import java.util.List;
 
-//     public CustomerService customerService;
+@Controller
+public class CustomerController {
+    @Autowired
+    private final CustomerDao customerDao;
 
-//     public CustomerController(CustomerService customerService) {
-//         this.customerService = customerService;
-//     }
-//     public CustomerController() {}
+    public CustomerController(CustomerDao customerDao) {
+        this.customerDao = customerDao;
+    }
 
+    @PostMapping("/customer")
+    @ResponseBody
+    public int addCustomer(@Valid @NotNull @RequestBody Customer customer){
+        return customerDao.addCustomer(customer);
+    }
 
-//     @GetMapping("/customer/new")
-//     public String createCustomerForm(Model model){
-//         Customer newcustomer = new Customer();
-//         model.addAttribute("customer",newcustomer);
-//         return "created customer";
-//     }
+    @GetMapping("/customer")
+    @ResponseBody
+    public List<Customer> getAllCustomers(){
+        List<Customer> customers = customerDao.getAllCustomers();
+        System.out.println(customers);
+        return customers;
+    }
 
-//     @PostMapping("/customer/new")
-//     public String createNewCustomer(@ModelAttribute("customer") Customer customer ){
-//         customerService.createCustomer(customer);
-//         return "redirect:/";
-//     }
+    @GetMapping("/customer/{id}")
+    @ResponseBody
+    public Customer getCustomerById(@Valid @NotNull @PathVariable("id") int id){
+        return customerDao.getCustomerById(id);
+    }
 
+    @DeleteMapping("/customer/{id}")
+    @ResponseBody
+    public int deleteCustomerById(@Valid @NotNull @PathVariable("id") int id){
+        return customerDao.deleteCustomerById(id);
+    }
 
-// }
+    @PutMapping("/customer/{id}")
+    @ResponseBody
+    public int updateCustomerById(@Valid @NotNull @PathVariable("id") int id, @Valid @NotNull @RequestBody Customer customer){
+        return customerDao.updateCustomerById(customer, id);
+    }
+}

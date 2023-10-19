@@ -8,12 +8,17 @@
 
  public interface CustomerService {
 
-     List<Customer> findAllCustomers();
 
-     Customer createCustomer(Customer customer);
+     public Customer handleGetCustomerById(int id);
 
-     Customer updateCustomer(Object data,int customerId);
+     public List<Customer> handleGetAllCustomers();
 
-     Boolean deleteCustomer(int customerId);
+     public int handleAddCustomer(Customer customer);
+
+     public int handleUpdateCustomerById(Customer customer,int customerId);
+
+     public int handleDeleteCustomerById(int customerId);
+
+
 
  }

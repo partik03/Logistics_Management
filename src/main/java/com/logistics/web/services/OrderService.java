@@ -7,19 +7,27 @@
 
  public interface OrderService {
 
-     List<Order> listAllOrders();
-     List<Order> listOrdersByCustomerId(int customerId);
+     public List<Order> handleListAllOrders();
+     public List<Order> handleListOrdersByCustomerId(int customerId);
 
-     Order createNewOrder(Order order);
+     public Order handleGetOrderById(int id);
 
-     Order modifyOrderStatus(int orderId,String status);
+     public int handleCreateNewOrder(Order order);
 
-     Order getOrderByOrderId(int orderId);
+     public int handleUpdateOrderById(Order order, int id);
 
-     List<Order> filterOrdersByData(Date date);
+     public  int handleDeleteOrderId(int id);
 
 
-     List<Order> filterByStatus(String status);
+     public Order modifyOrderStatus(int orderId,String status);
+
+
+     public Order getOrderByOrderId(int orderId);
+
+     public List<Order> filterOrdersByData(Date date);
+
+
+     public List<Order> filterByStatus(String status);
 
 //     List<Order>
 

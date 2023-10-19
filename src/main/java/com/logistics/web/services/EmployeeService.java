@@ -6,16 +6,16 @@ import java.util.List;
 
 public interface EmployeeService {
 
-    List<Employee> findAllEmployees();
+    public List<Employee> handleGetAllEmployees();
 
 
-    Employee findEmployeeById(int id);
+    public Employee handleGetEmployeeById(int id);
 
-    int createEmployee( String Contact,String Role, String Name );
+    public int handleAddEmployee( Employee employee );
 
-    int updateEmployee(String Contact,String Role, String Name,int id);
+    public int handleUpdateEmployeeById(Employee employee,int id);
 
-    int deleteEmployee(int id);
+    public int handleDeleteEmployeeById(int id);
 
 
 }
