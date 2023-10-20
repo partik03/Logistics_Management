@@ -4,12 +4,9 @@ import com.logistics.web.dao.CustomerDao;
 import com.logistics.web.models.Customer;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-
-import org.apache.tomcat.util.http.parser.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,22 +20,18 @@ public class CustomerController {
         this.customerDao = customerDao;
     }
 
-    @PostMapping(
-    path = "/customer/create",
-    consumes = {org.springframework.http.MediaType.APPLICATION_FORM_URLENCODED_VALUE})
-    public String addCustomer(@ModelAttribute Customer customer,Model model){
-        System.out.println(customer);
-        model.addAttribute("customer", customer);
-        return "logIn";
-        // return customerDao.addCustomer(customer);
+    @PostMapping("/customer")
+    @ResponseBody
+    public int addCustomer(@Valid @NotNull @RequestBody Customer customer){
+        return customerDao.addCustomer(customer);
     }
 
     @GetMapping("/customer")
     // @ResponseBody
     public String getAllCustomers(Model model) {
     List<Customer> customers = customerDao.getAllCustomers();
-    model.addAttribute("customers", new Customer());
-    // System.out.println(customers);
+    model.addAttribute("customers", customers);
+    System.out.println(customers);
     return "dashboard_customers";
 }
 
