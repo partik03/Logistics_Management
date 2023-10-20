@@ -15,7 +15,13 @@
       <div class="card bg-light">
         <article class="card-body mx-auto" style="max-width: 400px">
           <h2 class="card-title mt-3 text-center">Log In To Account</h2>
-          <p class="divider-text"></p>
+          <p class="divider-text">
+
+            <th:block th:if="${CustomerID != null}">
+              <p th:text="'Customer ID: ' + ${CustomerID}"> REMEMBER THIS AND USE FOR LOGIN</p>
+          </th:block>
+          </p>
+
           <form method="post" th:action="@{/customer/new}" th:object="${customer}" >
             <!-- form-group// -->
             <div class="form-group input-group">
@@ -27,8 +33,8 @@
               <input
                 name=""
                 class="form-control"
-                placeholder="Enter Your Email Address"
-                type="email"
+                placeholder="Enter Your Customer ID"
+                type="int"
               />
             </div>
 
@@ -54,7 +60,7 @@
               </button>
             </div>
             <!-- form-group// -->
-            <p class="text-center">Don't Have an account? <a href="">Sign Up</a></p>
+            <p class="text-center">Don't Have an account? <a th:href="@{/signUp}">Sign Up</a></p>
           </form>
         </article>
       </div>
