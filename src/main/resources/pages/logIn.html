@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Log In</title>
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+  <link th:href="@{/css/style.css}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="bg-image bg-image-logistic d-flex justify-content-center align-items-center">
+
+    
+    <div class="container w-50 mt-5">
+        
+      <div class="card bg-light">
+        <article class="card-body mx-auto" style="max-width: 400px">
+          <h2 class="card-title mt-3 text-center">Log In To Account</h2>
+          <p class="divider-text">
+
+            <th:block th:if="${CustomerID != null}">
+              <p th:text="'Customer ID: ' + ${CustomerID}"> REMEMBER THIS AND USE FOR LOGIN</p>
+          </th:block>
+          </p>
+
+          <form method="post" th:action="@{/customer/new}" th:object="${customer}" >
+            <!-- form-group// -->
+            <div class="form-group input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fa fa-envelope"></i>
+                </span>
+              </div>
+              <input
+                name=""
+                class="form-control"
+                placeholder="Enter Your Customer ID"
+                type="int"
+              />
+            </div>
+
+           
+            <!-- form-group end.// -->
+            <div class="form-group input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fa fa-lock"></i>
+                </span>
+              </div>
+              <input
+                class="form-control"
+                placeholder="Enter Your Password"
+                type="password"
+              />
+            </div>
+    
+            <!-- form-group// -->
+            <div class="form-group">
+              <button type="submit" class="btn btn-block bg-orange text-white">
+                Log In
+              </button>
+            </div>
+            <!-- form-group// -->
+            <p class="text-center">Don't Have an account? <a th:href="@{/signUp}">Sign Up</a></p>
+          </form>
+        </article>
+      </div>
+      <!-- card.// -->
+    </div>
+    </div>
+  </body>
+   <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+  <script type="text/javascript" th:src="@{/js/my.js}"></script>
+</html>
