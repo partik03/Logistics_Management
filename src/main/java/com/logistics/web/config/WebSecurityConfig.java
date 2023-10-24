@@ -36,12 +36,12 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(
                         (authz) -> authz
                                 .dispatcherTypeMatchers(FORWARD, ERROR).permitAll()
-                                .requestMatchers("/static/**", "/resources/**","/assests/**","/index.html", "/", "/logout", "/dashboard", "/signUp", "/carrier/**","/order/**","/product/**","/shipment/**").permitAll()
+                                .requestMatchers("/static/**","/css/**","/js/**","/images/**","/icons/**","/resources/**","/assests/**","/index.html", "/", "/logout", "/dashboard", "/signUp", "/carrier/**","/order/**","/product/**","/shipment/**").permitAll()
                                 .requestMatchers("/customer/**","/invoice/**","/complaint/**").hasAnyAuthority("SA","A")
                                 .requestMatchers("/employee/**").hasAuthority("SA")
                                 .requestMatchers("/warehouse/**").hasAnyAuthority("SA","WM","A")
 //                        .anyRequest().denyAll()
-                ).formLogin((formlogin) ->  formlogin.loginPage("/dashboard").permitAll())
+                ).formLogin((formlogin) ->  formlogin.loginPage("/signUp").loginPage("/logIn").permitAll())
                 .logout(logout -> logout.logoutSuccessUrl("/").permitAll());
 
         return http.build();
