@@ -25,8 +25,8 @@ public class WebSecurityConfig {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-                .usersByUsernameQuery("SELECT empId, password FROM Employee WHERE customerId=?")
-                .authoritiesByUsernameQuery("SELECT empId, role FROM Employee WHERE customerId=?");
+                .usersByUsernameQuery("SELECT userId, password FROM User WHERE userId=?")
+                .authoritiesByUsernameQuery("SELECT userId, role FROM User WHERE userId=?");
     }
 
     @Bean
@@ -36,12 +36,12 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(
                         (authz) -> authz
                                 .dispatcherTypeMatchers(FORWARD, ERROR).permitAll()
-                                .requestMatchers("/assets/**", "/index.html", "/", "/logout", "/login", "/register", "/carrier/**","/order/**","/product/**","/shipment/**").permitAll()
+                                .requestMatchers("/static/**", "/resources/**","/assests/**","/index.html", "/", "/logout", "/dashboard", "/signUp", "/carrier/**","/order/**","/product/**","/shipment/**").permitAll()
                                 .requestMatchers("/customer/**","/invoice/**","/complaint/**").hasAnyAuthority("SA","A")
                                 .requestMatchers("/employee/**").hasAuthority("SA")
                                 .requestMatchers("/warehouse/**").hasAnyAuthority("SA","WM","A")
 //                        .anyRequest().denyAll()
-                ).formLogin((formlogin) ->  formlogin.loginPage("/login").permitAll())
+                ).formLogin((formlogin) ->  formlogin.loginPage("/dashboard").permitAll())
                 .logout(logout -> logout.logoutSuccessUrl("/").permitAll());
 
         return http.build();

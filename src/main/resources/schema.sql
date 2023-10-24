@@ -1,13 +1,16 @@
 drop database if exists project;
 create database project;
 use project;
-CREATE TABLE IF NOT EXISTS Employee(
-                                       empId INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS User(
+                                       userId INT AUTO_INCREMENT PRIMARY KEY,
                                        password VARCHAR(50) NOT NULL,
                                        firstName VARCHAR(50) NOT NULL,
                                        lastName VARCHAR(50),
                                        contact CHAR(10) NOT NULL,
-                                       role ENUM("SA","A","D","WM") NOT NULL
+                                       age INT NOT NULL,
+                                       address VARCHAR(100) NOT NULL,
+                                       dateOfBirth DATE,
+                                       role ENUM("SA","A","D","WM","C") NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Warehouse(
@@ -17,17 +20,6 @@ CREATE TABLE IF NOT EXISTS Warehouse(
                                         state VARCHAR(50),
                                         pinCode CHAR(6) NOT NULL,
                                         capacity INT NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS Customer(
-                                       customerId INT AUTO_INCREMENT PRIMARY KEY,
-                                       password VARCHAR(100) NOT NULL,
-                                       firstName VARCHAR(50) NOT NULL,
-                                       lastName VARCHAR(50),
-                                       age INT NOT NULL,
-                                       address VARCHAR(100) NOT NULL,
-                                       dateOfBirth DATE,
-                                       phone CHAR(10) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Product(
@@ -42,10 +34,10 @@ CREATE TABLE IF NOT EXISTS Product(
 CREATE TABLE IF NOT EXISTS Orders(
                                      orderId INT AUTO_INCREMENT PRIMARY KEY,
                                      orderDate DATE NOT NULL,
-                                     customerId INT NOT NULL,
+                                     userId INT NOT NULL,
                                      productId INT NOT NULL,
                                      quantity INT,
-                                     CONSTRAINT FK_CUSTOMERINORDERS FOREIGN KEY(customerId) REFERENCES Customer(customerId),
+                                     CONSTRAINT FK_userINORDERS FOREIGN KEY(userId) REFERENCES User(userId),
                                      CONSTRAINT FK_PRODUCTINORDERS FOREIGN KEY(productId) REFERENCES Product(productId)
 );
 
@@ -64,8 +56,8 @@ CREATE TABLE IF NOT EXISTS Carrier(
                                       personName VARCHAR(50) NOT NULL,
                                       contact CHAR(10),
                                       capacity INT,
-                                      empId INT NOT NULL,
-                                      CONSTRAINT FK_EMP FOREIGN KEY(empId) REFERENCES Employee(empId)
+                                      userId INT NOT NULL,
+                                      CONSTRAINT FK_EMP FOREIGN KEY(userId) REFERENCES user(userId)
 );
 
 CREATE TABLE IF NOT EXISTS Shipment(
@@ -74,25 +66,25 @@ CREATE TABLE IF NOT EXISTS Shipment(
                                        status ENUM("Preparing","Dipatched","Delivered"),
                                        estimatedDeliveryDate DATE NOT NULL,
                                        orderId INT NOT NULL,
-                                       customerId INT NOT NULL,
+                                       userId INT NOT NULL,
                                        carrierId INT NOT NULL,
                                        CONSTRAINT FK_ORDER2 FOREIGN KEY(orderId) REFERENCES Orders(orderId),
-                                       CONSTRAINT FK_CUSTOMER FOREIGN KEY(customerId) REFERENCES Customer(customerId),
+                                       CONSTRAINT FK_user FOREIGN KEY(userId) REFERENCES user(userId),
                                        CONSTRAINT FK_CARRIER FOREIGN KEY(carrierId) REFERENCES Carrier(carrierId)
 );
 
 CREATE TABLE IF NOT EXISTS Complaint(
                                         complaintId INT AUTO_INCREMENT PRIMARY KEY,
-                                        customerId INT NOT NULL,
+                                        userId INT NOT NULL,
                                         orderId INT NOT NULL,
                                         description VARCHAR(1000) NOT NULL,
                                         email VARCHAR(100) NOT NULL,
-                                        CONSTRAINT FK_CUSTOMERINCOMPLAINT FOREIGN KEY(customerId) REFERENCES Customer(customerId),
+                                        CONSTRAINT FK_userINCOMPLAINT FOREIGN KEY(userId) REFERENCES user(userId),
                                         CONSTRAINT FK_ORDERINCOMPLAINT FOREIGN KEY(orderId) REFERENCES Orders(orderId)
 );
 show tables;
 
 
-desc Customer;
-insert into Customer(password,firstName,lastName,age,address,dateOfBirth,phone) values(123,hit,pra,18,"dayalbagh","2003-07-06","9758021043");
+desc user;
+insert into user(password,firstName,lastName,age,address,dateOfBirth,phone) values(123,hit,pra,18,"dayalbagh","2003-07-06","9758021043");
 
