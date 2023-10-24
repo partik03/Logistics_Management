@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav
+          id="sidebarMenu"
+          class=" bg-orange min-h-100 text-white"
+        >
+          
+            <ul class="nav d-flex flex-column gap-5 p-4">
+              <li class="nav-item p-2" th:onclick="|window.location.href='/dashboard'|">
+                Dashboard
+              </li>
+              <li class="nav-item p-2" th:onclick="|window.location.href='/dashboard/customers'|">
+                Customers
+              </li>
+              <li class="nav-item p-2" th:onclick="|window.location.href='/dashboard/employees'|">
+                Employees
+              </li>
+              <li class="nav-item p-2" th:onclick="|window.location.href='/dashboard/orders'|">
+                Orders
+              </li>
+              <li class="nav-item p-2" th:onclick="|window.location.href='/dashboard/products'|">
+                Products
+              </li>
+              <li class="nav-item p-2" th:onclick="|window.location.href='/dashboard/complaints'|">
+                Complaints
+              </li>
+              <li class="nav-item p-2" th:onclick="|window.location.href='/dashboard/invoices'|">
+                Invoices
+              </li>
+              <li class="nav-item p-2" th:onclick="|window.location.href='/dashboard/warehouses'|">
+                Warehouses
+              </li>
+              <li class="nav-item p-2" th:onclick="|window.location.href='/dashboard/shipments'|">
+                Shipments
+              </li>
+            </ul>
+          
+        </nav>
+</body>
+</html>
