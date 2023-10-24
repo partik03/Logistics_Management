@@ -26,6 +26,9 @@
         @Getter
         private String lastName;
 
+        @Getter
+        private String email;
+
         @NotNull
         @Getter
         @Min(value=12,message = "Min Customer Age is 12")

@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS Carrier(
                                       contact CHAR(10),
                                       capacity INT,
                                       userId INT NOT NULL,
-                                      CONSTRAINT FK_EMP FOREIGN KEY(userId) REFERENCES user(userId)
+                                      CONSTRAINT FK_EMP FOREIGN KEY(userId) REFERENCES User(userId)
 );
 
 CREATE TABLE IF NOT EXISTS Shipment(
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS Shipment(
                                        userId INT NOT NULL,
                                        carrierId INT NOT NULL,
                                        CONSTRAINT FK_ORDER2 FOREIGN KEY(orderId) REFERENCES Orders(orderId),
-                                       CONSTRAINT FK_user FOREIGN KEY(userId) REFERENCES user(userId),
+                                       CONSTRAINT FK_user FOREIGN KEY(userId) REFERENCES User(userId),
                                        CONSTRAINT FK_CARRIER FOREIGN KEY(carrierId) REFERENCES Carrier(carrierId)
 );
 
@@ -79,12 +79,12 @@ CREATE TABLE IF NOT EXISTS Complaint(
                                         orderId INT NOT NULL,
                                         description VARCHAR(1000) NOT NULL,
                                         email VARCHAR(100) NOT NULL,
-                                        CONSTRAINT FK_userINCOMPLAINT FOREIGN KEY(userId) REFERENCES user(userId),
+                                        CONSTRAINT FK_userINCOMPLAINT FOREIGN KEY(userId) REFERENCES User(userId),
                                         CONSTRAINT FK_ORDERINCOMPLAINT FOREIGN KEY(orderId) REFERENCES Orders(orderId)
 );
 show tables;
 
 
-desc user;
-insert into user(password,firstName,lastName,age,address,dateOfBirth,phone) values(123,hit,pra,18,"dayalbagh","2003-07-06","9758021043");
+desc User;
+insert into User(password,firstName,lastName,age,address,dateOfBirth,phone) values(123,"hit","pra",18,"dayalbagh","2003-07-06","9758021043");
 
