@@ -16,7 +16,7 @@
     <div th:replace="fragments/admin_dashboard_navbar :: header"></div>
     <div class="container mx-0">
       <div class="row">
-        <div th:replace="fragments/admin_dashboard_sideNav :: nav"></div>
+        <div   th:replace="fragments/admin_dashboard_sideNav :: nav"></div>
         <div class="w-full justify-center">
           <h1>Customer List</h1>
           <table>
@@ -30,7 +30,7 @@
             </thead>
             <tbody>
               <tr th:each="customer : ${customers}">
-                <td th:text="${customer.customerID}"></td>
+                <td th:text="${customer.userId}"></td>
                 <td th:text="${customer.firstName}"></td>
               </tr>
             </tbody>
