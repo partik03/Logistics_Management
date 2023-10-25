@@ -25,7 +25,7 @@ public class WebSecurityConfig {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-                .usersByUsernameQuery("SELECT userId, password FROM User WHERE userId=?")
+                .usersByUsernameQuery("SELECT userId, password FROM User where userId=?")
                 .authoritiesByUsernameQuery("SELECT userId, role FROM User WHERE userId=?");
     }
 
@@ -36,12 +36,12 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(
                         (authz) -> authz
                                 .dispatcherTypeMatchers(FORWARD, ERROR).permitAll()
-                                .requestMatchers("/static/**", "/resources/**","/assests/**","/index.html", "/", "/logout", "/dashboard", "/signUp", "/carrier/**","/order/**","/product/**","/shipment/**").permitAll()
+                                .requestMatchers("/resources/**","/static/**","/css/**", "/js/**","/img/**", "/webjars/**", "/assests/**","/index.html", "/", "/logout", "/dashboard", "/signUp", "/carrier","/order/**","/product/**","/shipment/**").permitAll()
                                 .requestMatchers("/customer/**","/invoice/**","/complaint/**").hasAnyAuthority("SA","A")
                                 .requestMatchers("/employee/**").hasAuthority("SA")
                                 .requestMatchers("/warehouse/**").hasAnyAuthority("SA","WM","A")
 //                        .anyRequest().denyAll()
-                ).formLogin((formlogin) ->  formlogin.loginPage("/dashboard").permitAll())
+                ).formLogin((formlogin) ->  formlogin.loginPage("/logIn").permitAll())
                 .logout(logout -> logout.logoutSuccessUrl("/").permitAll());
 
         return http.build();
