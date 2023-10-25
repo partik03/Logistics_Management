@@ -51,6 +51,12 @@ public class OrderDao {
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Order.class));
     }
 
+    public List<Order> getOrdersByUserId(int customerId ) {
+        String sql = "SELECT * FROM Order WHERE customerId = ?";
+        List<Order> orders = jdbcTemplate.query(sql, new BeanPropertyRowMapper(Order.class),customerId);
+        return orders;
+    }
+
     public int deleteOrderById(int id){
         String sql = "DELETE FROM Order WHERE orderId = ?";
         return jdbcTemplate.update(sql,id);

@@ -12,7 +12,7 @@ import com.logistics.web.models.Customer;
 @Controller
 public class CHECKER {
     @Autowired
-    private  CustomerDao customerDao;
+    private CustomerDao customerDao;
     @GetMapping("/check/{id}")
     public String testing(@PathVariable int id, Model model){
        
