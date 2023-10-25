@@ -10,9 +10,29 @@
   </head>
   <body>
     <div th:replace="fragments/admin_dashboard_navbar :: header"></div>
-    <div class="container mx-0">
-      <div class="row">
-        <div th:replace="fragments/admin_dashboard_sideNav :: nav"></div>
+    <div class="mx-0">
+      <div class="row w-full">
+        <div class="col-2">
+          <div th:replace="fragments/admin_dashboard_sideNav :: nav"></div>
+        </div>
+        <div class="col-10 pt-4 px-2">
+          <h2>Customer List</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="customer : ${customers}">
+                <td th:text="${customer.customerID}"></td>
+                <td th:text="${customer.firstName}"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </body>

@@ -35,7 +35,7 @@ public class adminContoller {
     }
     @GetMapping("/admin/dashboard/shipments")
     public String showDashboardShipments(){
-        return "dashboard_Shipments"; 
+        return "dashboard_shipments"; 
     }
     @GetMapping("/admin/dashboard/warehouses")
     public String showDashboardWarehouses(){
