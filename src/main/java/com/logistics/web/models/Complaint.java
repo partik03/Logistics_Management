@@ -6,6 +6,7 @@ import lombok.Getter;
 import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.*;
 
+
 @Data
 public class Complaint {
     @NotNull

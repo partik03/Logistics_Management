@@ -100,6 +100,7 @@ public class adminContoller {
         return "dashboard_products"; 
     }
     @GetMapping("/admin/dashboard/shipments")
+
     public String showDashboardShipments(Model model){
         List<Shipment> shipments = shipmentDao.getAllShipments();
         model.addAttribute("shipments", shipments);

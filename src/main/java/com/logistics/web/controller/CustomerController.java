@@ -62,9 +62,17 @@ public class CustomerController {
     public String showUserComplaints(){
         return "user_complaints"; 
     }
+    @GetMapping("/user/invoices")
+    public String showUserInvoices(){
+        return "user_invoices"; 
+    }
 
     @GetMapping("/user/placeOrder")
     public String placeOrder(){
         return "placeOrder"; 
+    }
+    @GetMapping("/user/placeComplaint")
+    public String placeComplaint(){
+        return "placeComplaint"; 
     }
 }
