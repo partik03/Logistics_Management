@@ -10,6 +10,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import javax.sql.DataSource;
 
+
 import static jakarta.servlet.DispatcherType.ERROR;
 import static jakarta.servlet.DispatcherType.FORWARD;
 
@@ -31,18 +32,18 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(cs -> cs.disable())
-                .authorizeHttpRequests(
-                        (authz) -> authz
-                                .dispatcherTypeMatchers(FORWARD, ERROR).permitAll()
-                                .requestMatchers("/static/**","/css/**","/js/**","/images/**","/icons/**","/resources/**","/assests/**","/index.html", "/", "/logout", "/dashboard", "/signUp", "/carrier/**","/order/**","/product/**","/shipment/**").permitAll()
-                                .requestMatchers("/customer/**","/invoice/**","/complaint/**").hasAnyAuthority("SA","A")
-                                .requestMatchers("/employee/**").hasAuthority("SA")
-                                .requestMatchers("/warehouse/**").hasAnyAuthority("SA","WM","A")
-//                        .anyRequest().denyAll()
-                ).formLogin((formlogin) ->  formlogin.loginPage("/signUp").loginPage("/logIn").permitAll())
-                .logout(logout -> logout.logoutSuccessUrl("/").permitAll());
+//         http
+//                 .csrf(cs -> cs.disable())
+//                 .authorizeHttpRequests(
+//                         (authz) -> authz
+//                                 .dispatcherTypeMatchers(FORWARD, ERROR).permitAll()
+//                                 .requestMatchers("/static/**","/css/**","/js/**","/images/**","/icons/**","/resources/**","/assests/**","/index.html", "/", "/logout", "/dashboard", "/signUp", "/carrier/**","/order/**","/product/**","/shipment/**").permitAll()
+//                                 .requestMatchers("/customer/**","/invoice/**","/complaint/**").hasAnyAuthority("SA","A")
+//                                 .requestMatchers("/employee/**").hasAuthority("SA")
+//                                 .requestMatchers("/warehouse/**").hasAnyAuthority("SA","WM","A")
+// //                        .anyRequest().denyAll()
+//                 ).formLogin((formlogin) ->  formlogin.loginPage("/signUp").loginPage("/logIn").permitAll())
+//                 .logout(logout -> logout.logoutSuccessUrl("/").permitAll());
 
         return http.build();
     }
