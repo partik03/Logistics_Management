@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Place Complaint</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="back"></div>
+    <div class="bg-image">
+    <div th:replace="fragments/user_navbar"></div>
+    <div
+      class=""
+    >
+      <div class="container bg-light mt-5 p-5 mx-auto">
+        <!-- <div class="container mt-0 mx-auto p-5"> -->
+          <h1 class="mx-auto my-0">Place Complaint</h1>
+          <form>
+            <!-- Text input -->
+            <div class="form-outline mb-2">
+              <input type="text" id="email" class="form-control" />
+              <label class="form-label" for="email"
+                >Contact Email</label
+              >
+            </div>
+            <!-- Text input -->
+            <div class="form-outline mb-2">
+              <input type="text" id="orderId" class="form-control" />
+              <label class="form-label" for="orderId"
+                >Order Id</label
+              >
+            </div>
+
+            <!-- Message input -->
+            <div class="form-outline mb-2">
+              <textarea
+                class="form-control"
+                id="description"
+                rows="4"
+              ></textarea>
+              <label class="form-label" for="description"
+                >Information About Complaint</label
+              >
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn bg-orange text-white btn-block mb-1">
+              Place Complaint
+            </button>
+          </form>
+        </div>
+      <!-- </div> -->
+    </div>
+  </body>
+  <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+  <script type="text/javascript" th:src="@{/js/my.js}"></script>
+</html>
+
