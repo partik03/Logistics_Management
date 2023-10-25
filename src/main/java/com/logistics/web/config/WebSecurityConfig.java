@@ -26,7 +26,7 @@ public class WebSecurityConfig {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-                .usersByUsernameQuery("SELECT userId, password FROM User WHERE userId=?")
+                .usersByUsernameQuery("SELECT userId, password FROM User where userId=?")
                 .authoritiesByUsernameQuery("SELECT userId, role FROM User WHERE userId=?");
     }
 
@@ -44,6 +44,7 @@ public class WebSecurityConfig {
 // //                        .anyRequest().denyAll()
 //                 ).formLogin((formlogin) ->  formlogin.loginPage("/signUp").loginPage("/logIn").permitAll())
 //                 .logout(logout -> logout.logoutSuccessUrl("/").permitAll());
+
 
         return http.build();
     }
