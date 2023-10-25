@@ -52,4 +52,19 @@ public class CustomerController {
     public int updateCustomerById(@Valid @NotNull @PathVariable("id") int id, @Valid @NotNull @RequestBody Customer customer){
         return customerDao.updateCustomerById(customer, id);
     }
+
+    @GetMapping("/user/orders")
+    public String showUserOrders(){
+        return "user_orders"; 
+    }
+    
+    @GetMapping("/user/complaints")
+    public String showUserComplaints(){
+        return "user_complaints"; 
+    }
+
+    @GetMapping("/user/placeOrder")
+    public String placeOrder(){
+        return "placeOrder"; 
+    }
 }

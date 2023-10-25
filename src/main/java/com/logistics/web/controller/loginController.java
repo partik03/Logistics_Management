@@ -7,14 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class loginController {
     
-    @GetMapping("/dashboard")
-    public String showDashboard(){
-        return "dashboard"; 
-    }
-    @GetMapping("/user_dashboard")
-    public String showUserDashboard(){
-        return "user_dashboard"; 
-    }
+    
 
     @GetMapping("/logIn")
     public String login(){
