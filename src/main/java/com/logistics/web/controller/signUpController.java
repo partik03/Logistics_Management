@@ -35,20 +35,19 @@ public class signUpController {
     }
     
 
-    @PostMapping("/signUp")
-    public String signUp(@ModelAttribute Customer customer,Model model){
-       Period age=Period.between((customer.getDateOfBirth()).toLocalDate(),LocalDate.now());
-       int a=age.getYears();
-       customer.setAge(a); 
-      int customerID= customerService.handleAddCustomer(customer);
-      System.out.println(customerID);
-        model.addAttribute("CustomerID",customerID);
-        return "logIn"; 
+    // @PostMapping("/signUp")
+    // public String signUp(@ModelAttribute Customer customer,Model model){
+    //    Period age=Period.between((customer.getDateOfBirth()).toLocalDate(),LocalDate.now());
+    //    int a=age.getYears();
+    //    customer.setAge(a); 
+    //   int customerID= customerService.handleAddCustomer(customer);
+    //   System.out.println(customerID);
+    //     model.addAttribute("CustomerID",customerID);
+    //     return "logIn"; 
 
-    }
+    // }
 
 
 
     
-   
 }
