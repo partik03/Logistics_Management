@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Place Order</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="back"></div>
+    <div class="bg-image">
+    <div
+      class=""
+    >
+      <div class="container bg-light mt-5 p-5 mx-auto">
+          <h1 class="mx-auto my-0">Add a Customer</h1>
+          <form>
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-2">
+              <div class="col">
+                <div class="form-outline">
+                  <input type="text" id="firstName" class="form-control" />
+                  <label class="form-label" for="firstName">First Name</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-outline">
+                  <input type="text" id="lastName" class="form-control" />
+                  <label class="form-label" for="lastName">Last Name</label>
+                </div>
+              </div>
+            </div>
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-2">
+              <div class="col">
+                <div class="form-outline">
+                  <input type="email" id="Email" class="form-control" />
+                  <label class="form-label" for="Email">
+                     Email</label
+                  >
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="contact"
+                    class="form-control"
+                  />
+                  <label class="form-label" for="contact"
+                    >Contact Number
+                  </label>
+                </div>
+              </div>
+            </div>
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-2">
+              <div class="col">
+                <div class="form-outline">
+                  <input
+                    type="date"
+                    id="dateOfBirth"
+                    class="form-control"
+                  />
+                  <label class="form-label" for="dateOfBirth">
+                    Date Of Birth</label
+                  >
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-outline">
+                  <input
+                    type="password"
+                    id="password"
+                    class="form-control"
+                  />
+                  <label class="form-label" for="password"
+                    >Create Password
+                  </label>
+                </div>
+              </div>
+            </div>
+            <!-- Text input -->
+            <div class="form-outline mb-2">
+              <input type="text" id="Address" class="form-control" />
+              <label class="form-label" for="Address"
+                > Address</label
+              >
+            </div>
+            
+            <!-- Submit button -->
+            <button type="submit" class="btn bg-orange text-white btn-block mb-1">
+                Submit
+            </button>
+          </form>
+        </div>
+      <!-- </div> -->
+    </div>
+  </body>
+  <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+  <script type="text/javascript" th:src="@{/js/my.js}"></script>
+</html>

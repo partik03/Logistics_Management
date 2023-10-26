@@ -7,7 +7,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.List;
+import com.logistics.web.dao.CarrierDao;
+import com.logistics.web.dao.ComplaintDao;
+import com.logistics.web.dao.CustomerDao;
+import com.logistics.web.dao.InvoiceDao;
+import com.logistics.web.dao.OrderDao;
+import com.logistics.web.dao.ProductDao;
+import com.logistics.web.dao.ShipmentDao;
+import com.logistics.web.dao.UserDao;
+import com.logistics.web.dao.WarehouseDao;
+import com.logistics.web.models.Complaint;
+import com.logistics.web.models.Customer;
+import com.logistics.web.models.Invoice;
+import com.logistics.web.models.Order;
+import com.logistics.web.models.Product;
+import com.logistics.web.models.Shipment;
+import com.logistics.web.models.User;
+import com.logistics.web.models.Warehouse;
 
 @Controller
 public class adminContoller {
@@ -44,7 +60,7 @@ public class adminContoller {
 
     @GetMapping("/admin/dashboard")
     public String showDashboard(){
-        return "dashboard";
+        return "dashboard_customers"; 
     }
     @GetMapping("/admin/dashboard/customers")
     public String showDashboardCustomer(Model model){
@@ -72,9 +88,9 @@ public class adminContoller {
     }
     @GetMapping("/admin/dashboard/orders")
     public String showDashboardOrders(Model model){
-        List<Orders> orders = orderDao.getAllOrders();
-        model.addAttribute("orders", orders);
-        return "dashboard_orders";
+        // List<Order> orders = orderDao.getAllOrders();
+        // model.addAttribute("orders", orders);
+        return "dashboard_orders"; 
     }
     @GetMapping("/admin/dashboard/products")
     public String showDashboardProducts(Model model){
@@ -83,15 +99,27 @@ public class adminContoller {
         return "dashboard_products";
     }
     @GetMapping("/admin/dashboard/shipments")
+
     public String showDashboardShipments(Model model){
         List<Shipment> shipments = shipmentDao.getAllShipments();
         model.addAttribute("shipments", shipments);
-        return "dashboard_Shipments";
+        return "dashboard_shipments"; 
+    }
+    @GetMapping("/admin/dashboard/carriers")
+    public String showDashboardCarriers(Model model){
+        
+        return "dashboard_carriers"; 
     }
     @GetMapping("/admin/dashboard/warehouses")
     public String showDashboardWarehouses(Model model){
         List<Warehouse> warehouses = warehouseDao.getAllWarehouses();
         model.addAttribute("warehouses", warehouses);
         return "dashboard_warehouses";
+    }
+    
+    
+    @GetMapping("/admin/addCustomer")
+    public String addCustomer(Model model){
+        return "dashboard_addCustomer"; 
     }
 }

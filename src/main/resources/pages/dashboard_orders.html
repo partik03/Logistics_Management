@@ -5,21 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
     <link th:href="@{/css/style.css}" rel="stylesheet" />
-
+    <!-- <link
+      rel="icon"
+      type="image/x-icon"
+      th:href="@{/icons/icons8-truck-50.png}"
+    /> -->
     <title>Admin_Dashboard Orders</title>
   </head>
   <body>
-    <div th:replace="fragments/admin_dashboard_navbar :: header"></div>
-    <div class="container mx-0">
-      <div class="row">
-        <!-- <div class="col-3 m-0 p-0"> -->
+    <div class="mx-0">
+      <div class="row w-full">
+        <div class="col-2">
+          <div th:replace="fragments/admin_dashboard_sideNav :: nav"></div>
+        </div>
+        <div class="col-10 pt-4 mt-5 px-2">
+          <div class="container rounded bg-white">
+            <div
+              class="d-flex align-items-center justify-content-between my-2 p-4"
+            >
+              <div class="h2 font-weight-bold">Orders</div>
+              <input
+                class="form-control border w-50 rounded-5 border-3"
+                type="text"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn bg-orange text-white">
+                <a th:href="@{/admin/addOrder}" class="text-white">Add Order</a>
+              </button>
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Customer ID</th>
+                    <th scope="col">Product ID</th>
+                    <th scope="col">Order Date</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="my-3" th:each="order : ${Orders}">
+                    <td class="pt-3" th:text="${order.orderId}"></td>
+                    <td class="pt-3" th:text="${order.customerId}"></td>
+                    <td class="pt-3" th:text="${order.productId}"></td>
+                    <td class="pt-3" th:text="${order.orderDate}"></td>
+                    <td class="pt-3" th:text="${order.qurntity}"></td>
+                    <td class="pt-3">Edit</td>
+                    <td class="pt-3">Delete</td>
+                  </tr>
 
-            <div th:replace="fragments/admin_dashboard_sideNav :: nav"></div>
-        <!-- </div> -->
-        <div class="col-9">
-            
+                  <tr class="bg-blue my-5">
+                    <td class="pt-3">1</td>
+                    <td class="pt-3">2</td>
+                    <td class="pt-3">dummy@3.com</td>
+                    <td class="pt-3">10/10/2003</td>
+                    <td class="pt-3">324</td>
+
+                    <td class="pt-3">Edit</td>
+                    <td class="pt-3">Delete</td>
+                  </tr>
+                  <tr class="bg-blue my-5">
+                    <td class="pt-3">1</td>
+                    <td class="pt-3">2</td>
+                    <td class="pt-3">dummy@3.com</td>
+                    <td class="pt-3">10/10/2003</td>
+                    <td class="pt-3">324</td>
+
+                    <td class="pt-3">Edit</td>
+                    <td class="pt-3">Delete</td>
+                  </tr>
+                  <tr class="bg-blue my-5">
+                    <td class="pt-3">1</td>
+                    <td class="pt-3">2</td>
+                    <td class="pt-3">dummy@3.com</td>
+                    <td class="pt-3">10/10/2003</td>
+                    <td class="pt-3">324</td>
+
+                    <td class="pt-3">Edit</td>
+                    <td class="pt-3">Delete</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/my.js}"></script>
   </body>
 </html>
