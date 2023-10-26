@@ -29,31 +29,33 @@
                 aria-label="Search"
               />
               <button class="btn bg-orange text-white">
-                  <a th:href="@{/admin/addCustomer}" class="text-white">Add Employee</a>
+                  <a th:href="@{/admin/addEmployee}" class="text-white">Add Employee</a>
                 </button>
             </div>
             <div class="table-responsive">
               <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">Customer ID</th>
-                    <th scope="col">Customer Name</th>
+                    <th scope="col">Employee ID</th>
+                    <th scope="col">Employee Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Date Of Birth</th>
                     <th scope="col">Phone Number</th>
                     <th scope="col">Address</th>
+                    <th scope="col">Authority</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="my-3" th:each="customer : ${Customers}">
-                    <td class="pt-3" th:text="${customer.customerID}"></td>
-                    <td class="pt-3" th:text="${customer.firstName}"></td>
-                    <td class="pt-3" th:text="${customer.email}"></td>
-                    <td class="pt-3" th:text="${customer.dateOfBirth}"></td>
-                    <td class="pt-3" th:text="${customer.phone}"></td>
-                    <td class="pt-3" th:text="${customer.address}"></td>
+                  <tr class="my-3 bg-blue" th:each="employee : ${Employees}">
+                    <td class="pt-3" th:text="${employee.userId}"></td>
+                    <td class="pt-3" th:text="${employee.firstName}"></td>
+                    <td class="pt-3" th:text="${employee.username}"></td>
+                    <td class="pt-3" th:text="${employee.dateOfBirth}"></td>
+                    <td class="pt-3" th:text="${employee.contact}"></td>
+                    <td class="pt-3" th:text="${employee.address}"></td>
+                    <td class="pt-3" th:text="${employee.authority}"></td>
                     <td class="pt-3">Edit</td>
                     <td class="pt-3">Delete</td>
                   </tr>
@@ -68,17 +70,6 @@
                       Lorem, ipsum dolor Lorem ipsum dolor sit amet.
                     </td>
                     <td class="pt-3">Edit</td>
-                    <td class="pt-3">Delete</td>
-                  </tr>
-                  <tr class="bg-blue my-5">
-                    <td class="pt-3">1</td>
-                    <td class="pt-3">dummy</td>
-                    <td class="pt-3">dummy@gmail.com</td>
-                    <td class="pt-3">10/10/2003</td>
-                    <td class="pt-3">329402384</td>
-                    <td class="pt-3">
-                      Lorem, ipsum dolor Lorem ipsum dolor sit amet.
-                    </td>
                     <td class="pt-3">Edit</td>
                     <td class="pt-3">Delete</td>
                   </tr>
@@ -91,6 +82,20 @@
                     <td class="pt-3">
                       Lorem, ipsum dolor Lorem ipsum dolor sit amet.
                     </td>
+                    <td class="pt-3">Edit</td>
+                    <td class="pt-3">Edit</td>
+                    <td class="pt-3">Delete</td>
+                  </tr>
+                  <tr class="bg-blue my-5">
+                    <td class="pt-3">1</td>
+                    <td class="pt-3">dummy</td>
+                    <td class="pt-3">dummy@gmail.com</td>
+                    <td class="pt-3">10/10/2003</td>
+                    <td class="pt-3">329402384</td>
+                    <td class="pt-3">
+                      Lorem, ipsum dolor Lorem ipsum dolor sit amet.
+                    </td>
+                    <td class="pt-3">Edit</td>
                     <td class="pt-3">Edit</td>
                     <td class="pt-3">Delete</td>
                   </tr>

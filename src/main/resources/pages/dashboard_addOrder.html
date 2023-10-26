@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Order</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="back"></div>
+    <div class="bg-image">
+    <div
+      class=""
+    >
+      <div class="container bg-light mt-2 p-5 mx-auto">
+        <!-- <div class="container mt-0 mx-auto p-5"> -->
+          <h1 class="mx-auto my-0">Place Order</h1>
+          <form>
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-2">
+              <div class="col">
+                <div class="form-outline">
+                  <input type="text" id="SendersName" class="form-control" />
+                  <label class="form-label" for="SendersName">Sender's Name</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-outline">
+                  <input type="text" id="RecieversName" class="form-control" />
+                  <label class="form-label" for="RecieversName">Reciever's Name</label>
+                </div>
+              </div>
+            </div>
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-2">
+              <div class="col">
+                <div class="form-outline">
+                  <input type="email" id="SendersEmail" class="form-control" />
+                  <label class="form-label" for="SendersEmail">
+                    Sender's Email</label
+                  >
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-outline">
+                  <input
+                    type="email"
+                    id="RecieversEmail"
+                    class="form-control"
+                  />
+                  <label class="form-label" for="RecieversEmail"
+                    >Reciever's Email
+                  </label>
+                </div>
+              </div>
+            </div>
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-2">
+              <div class="col">
+                <div class="form-outline">
+                  <input
+                    type="number"
+                    id="SendersPhone"
+                    class="form-control"
+                  />
+                  <label class="form-label" for="SendersPhone">
+                    Sender's Phone No.</label
+                  >
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-outline">
+                  <input
+                    type="number"
+                    id="SendersPhone"
+                    class="form-control"
+                  />
+                  <label class="form-label" for="SendersPhone"
+                    >Reciever's Phone No.
+                  </label>
+                </div>
+              </div>
+            </div>
+            <!-- Text input -->
+            <div class="form-outline mb-2">
+              <input type="text" id="SenderyAddress" class="form-control" />
+              <label class="form-label" for="SendersAddress"
+                >Sender's Address</label
+              >
+            </div>
+            <!-- Text input -->
+            <div class="form-outline mb-2">
+              <input type="text" id="RecievingAddress" class="form-control" />
+              <label class="form-label" for="RecievingAddress"
+                >Recieving Address</label
+              >
+            </div>
+
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-2">
+              <div class="col">
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="userId"
+                    class="form-control"
+                  />
+                  <label class="form-label" for="userId">
+                    User Id</label
+                  >
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-outline">
+                  <input type="text" id="productId" class="form-control" />
+                  <label class="form-label" for="productId"
+                    >Product Id
+                  </label>
+                </div>
+              </div>
+              
+            </div>
+
+            
+
+            <!-- Submit button -->
+            <button type="submit" class="btn bg-orange text-white btn-block mb-1">
+              Place order
+            </button>
+          </form>
+        </div>
+      <!-- </div> -->
+    </div>
+  </body>
+  <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+  <script type="text/javascript" th:src="@{/js/my.js}"></script>
+</html>

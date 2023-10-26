@@ -26,9 +26,5 @@ public class Product {
 
      
     @Getter
-    private String address;
-
-     
-    @Getter
     private int userId;
 }

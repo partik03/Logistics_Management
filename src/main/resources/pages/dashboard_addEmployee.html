@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add Customer</title>
+    <title>Add Employee</title>
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
     <link th:href="@{/css/style.css}" rel="stylesheet" />
   </head>
@@ -15,7 +15,7 @@
       class=""
     >
       <div class="container bg-light mt-5 p-5 mx-auto">
-          <h1 class="mx-auto my-0">Add a Customer</h1>
+          <h1 class="mx-auto my-0">Add a Employee</h1>
           <form>
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-2">
@@ -66,6 +66,18 @@
                   />
                   <label class="form-label" for="dateOfBirth">
                     Date Of Birth</label
+                  >
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="authority"
+                    class="form-control"
+                  />
+                  <label class="form-label" for="authority">
+                    Role(SA,A,D,WM,C)</label
                   >
                 </div>
               </div>
