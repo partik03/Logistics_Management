@@ -13,15 +13,32 @@ public class Order {
     @Getter
     private int orderId;
 
-     
+    @Getter
+    private String sendersName;
+    
+    @Getter
+    private String recieversName;
+
+    @Getter
+    private String sendersEmail;
+
+    @Getter
+    private String recieversEmail;
+    
+    @Getter
+    private int sendersPhone;
+
+    @Getter
+    private int recieversPhone;
+    
+    @Getter
+    private String sendersAddress;
+
+    @Getter
+    private String recieversAddress;
+
     @Getter
     private Date orderDate;
-
-     
-    @Getter
-    @Min(value=1,message = "Min quantity is 1")
-    private int quantity;
-
      
     @Getter
     private int productId;
@@ -30,5 +47,6 @@ public class Order {
     @Getter
     private int userId;
 }
+
 
 

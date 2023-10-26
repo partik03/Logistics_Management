@@ -47,13 +47,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="my-3" th:each="customer : ${Customers}">
+                  <tr class="my-3 bg-blue" th:each="customer : ${customers}">
                     
-                    <td class="pt-3" th:text="${customer.customerID}"></td>
+                    <td class="pt-3 " th:text="${customer.userId}"></td>
                     <td class="pt-3" th:text="${customer.firstName}"></td>
-                    <td class="pt-3" th:text="${customer.email}"></td>
+                    <td class="pt-3" th:text="${customer.username}"></td>
                     <td class="pt-3" th:text="${customer.dateOfBirth}"></td>
-                    <td class="pt-3" th:text="${customer.phone}"></td>
+                    <td class="pt-3" th:text="${customer.contact}"></td>
                     <td class="pt-3" th:text="${customer.address}"></td>
                     <td class="pt-3">Edit</td>
                     <td class="pt-3">Delete</td>
