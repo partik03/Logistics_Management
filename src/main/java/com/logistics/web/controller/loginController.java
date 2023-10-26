@@ -16,9 +16,9 @@ public class loginController {
         return "user_dashboard"; 
     }
 
-    @GetMapping("/logIn")
+    @GetMapping("/login")
     public String login(){
-        return "logIn";
+        return "login";
     }
 
 

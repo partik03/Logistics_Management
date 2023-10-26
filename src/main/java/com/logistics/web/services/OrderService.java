@@ -2,33 +2,18 @@
 
  import com.logistics.web.models.Order;
 
- import java.util.Date;
+ import java.sql.Date;
  import java.util.List;
 
  public interface OrderService {
 
      public List<Order> handleListAllOrders();
-     public List<Order> handleListOrdersByCustomerId(int customerId);
-
+     public List<Order> handleListAllOrdersByUserId(int id);
+     public List<Order> handleListAllOrdersByProductId(int id);
+     public List<Order> handleListAllOrdersByDate(Date low, Date high);
      public Order handleGetOrderById(int id);
-
      public int handleCreateNewOrder(Order order);
-
      public int handleUpdateOrderById(Order order, int id);
-
      public  int handleDeleteOrderId(int id);
-
-
-     public Order modifyOrderStatus(int orderId,String status);
-
-
-     public Order getOrderByOrderId(int orderId);
-
-     public List<Order> filterOrdersByData(Date date);
-
-
-     public List<Order> filterByStatus(String status);
-
-//     List<Order>
 
  }

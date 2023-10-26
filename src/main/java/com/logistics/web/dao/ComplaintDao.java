@@ -24,11 +24,11 @@ public class ComplaintDao {
     }
 
     public int addComplaint(Complaint complaint){
-        String sql = "INSERT INTO Complaint(complaintId,orderId,description,email) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO Complaint(userId,orderId,description,email) VALUES(?,?,?,?)";
         KeyHolder keyholder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, complaint.getComplaintId());
+            ps.setInt(1, complaint.getUserId());
             ps.setInt(2, complaint.getOrderId());
             ps.setString(3, complaint.getDescription());
             ps.setString(4, complaint.getEmail());
@@ -50,6 +50,14 @@ public class ComplaintDao {
         String sql = "SELECT * FROM Complaint";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Complaint.class));
     }
+    public List<Complaint> getAllComplaintsByOrderId(int id){
+        String sql = "SELECT * FROM Complaint WHERE orderId =" + id;
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Complaint.class));
+    }
+    public List<Complaint> getAllComplaintsByUserId(int id){
+        String sql = "SELECT * FROM Complaint WHERE userId =" + id;
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Complaint.class));
+    }
 
     public int deleteComplaintById(int id){
         String sql = "DELETE FROM Complaint WHERE complaintId = ?";
@@ -58,7 +66,7 @@ public class ComplaintDao {
 
     public int updateComplaintById(Complaint complaint, int id){
         String sql = "UPDATE Complaint SET customerId=?, orderId=?, description=?, email=? WHERE complaintId = ?";
-        return jdbcTemplate.update(sql,complaint.getCustomerId(),complaint.getOrderId(),complaint.getDescription(),complaint.getEmail(),id);
+        return jdbcTemplate.update(sql,complaint.getUserId(),complaint.getOrderId(),complaint.getDescription(),complaint.getEmail(),id);
     }
 
 }

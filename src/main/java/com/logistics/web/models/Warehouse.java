@@ -1,22 +1,22 @@
 package com.logistics.web.models;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.Getter;
-import jakarta.annotation.Nullable;
-import jakarta.validation.constraints.*;
 
 @Data
 public  class Warehouse {
-    @NotNull
+     
     @Getter
     private int warehouseId;
 
-    @NotNull
+     
     @Getter
     @Min(value=0,message="Capacity must be positive")
     private int capacity;
 
-    @NotNull
+     
     @Getter
     @Size(min=6, max=6)
     private String pinCode;
