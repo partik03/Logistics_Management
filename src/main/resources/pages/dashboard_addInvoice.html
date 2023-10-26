@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add Customer</title>
+    <title>Add Invoice</title>
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
     <link th:href="@{/css/style.css}" rel="stylesheet" />
   </head>
@@ -15,20 +15,20 @@
       class=""
     >
       <div class="container bg-light mt-5 p-5 mx-auto">
-          <h1 class="mx-auto my-0">Add a Customer</h1>
+          <h1 class="mx-auto my-0">Add a Invoice</h1>
           <form>
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-2">
-              <div class="col">
+              <!-- <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="firstName" class="form-control" />
-                  <label class="form-label" for="firstName">First Name</label>
+                  <input type="text" id="userId" class="form-control" />
+                  <label class="form-label" for="userId">User Id</label>
                 </div>
-              </div>
+              </div> -->
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="lastName" class="form-control" />
-                  <label class="form-label" for="lastName">Last Name</label>
+                  <input type="text" id="orderId" class="form-control" />
+                  <label class="form-label" for="orderId">Order Id</label>
                 </div>
               </div>
             </div>
@@ -36,56 +36,31 @@
             <div class="row mb-2">
               <div class="col">
                 <div class="form-outline">
-                  <input type="email" id="Email" class="form-control" />
-                  <label class="form-label" for="Email">
-                     Email</label
+                  <input type="text" id="amount" class="form-control" />
+                  <label class="form-label" for="amount">
+                    Amount</label
                   >
                 </div>
               </div>
-              <div class="col">
-                <div class="form-outline">
-                  <input
-                    type="text"
-                    id="contact"
-                    class="form-control"
-                  />
-                  <label class="form-label" for="contact"
-                    >Contact Number
-                  </label>
-                </div>
-              </div>
-            </div>
-            <!-- 2 column grid layout with text inputs for the first and last names -->
-            <div class="row mb-2">
               <div class="col">
                 <div class="form-outline">
                   <input
                     type="date"
-                    id="dateOfBirth"
+                    id="dateOfPublish"
                     class="form-control"
                   />
-                  <label class="form-label" for="dateOfBirth">
-                    Date Of Birth</label
-                  >
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-outline">
-                  <input
-                    type="password"
-                    id="password"
-                    class="form-control"
-                  />
-                  <label class="form-label" for="password"
-                    >Create Password
+                  <label class="form-label" for="dateOfPublish"
+                    >
+                    Date Of Publish
                   </label>
                 </div>
               </div>
             </div>
+        
             <!-- Text input -->
             <div class="form-outline mb-2">
-              <input type="text" id="Address" class="form-control" />
-              <label class="form-label" for="Address"
+              <input type="text" id="address" class="form-control" />
+              <label class="form-label" for="address"
                 > Address</label
               >
             </div>

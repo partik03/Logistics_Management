@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Invoice</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="back"></div>
+    <div class="bg-image">
+    <div
+      class=""
+    >
+      <div class="container bg-light mt-2 p-5 mx-auto">
+        <!-- <div class="container mt-0 mx-auto p-5"> -->
+          <h1 class="mx-auto my-0">Add Product</h1>
+          <form>
+            
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-2">
+              <div class="col">
+                <div class="form-outline">
+                  <input type="text" id="userId" class="form-control" />
+                  <label class="form-label" for="userId">
+                    Customer Id</label
+                  >
+                </div>
+              </div>
+              <!-- <div class="col">
+                <div class="form-outline">
+                  <input
+                    type="email"
+                    id="RecieversEmail"
+                    class="form-control"
+                  />
+                  <label class="form-label" for="RecieversEmail"
+                    >Reciever's Email
+                  </label>
+                </div>
+              </div> -->
+            </div>
+            
+
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-2">
+              <div class="col">
+                <div class="form-outline">
+                  <input
+                    type="number"
+                    id="ProductsWeight"
+                    class="form-control"
+                  />
+                  <label class="form-label" for="ProductsWeight">
+                    Product's Weight</label
+                  >
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-outline">
+                  <input type="text" id="ProductType" class="form-control" />
+                  <label class="form-label" for="ProductType"
+                    >Product Type
+                  </label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-outline">
+                  <input type="file" class="form-control" id="ProductsPhoto" />
+                  <label class="form-label" for="ProductsPhoto"
+                    >Upload Product's Photo</label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Message input -->
+            <div class="form-outline mb-2">
+              <textarea
+                class="form-control"
+                id="form6Example7"
+                rows="2"
+              ></textarea>
+              <label class="form-label" for="form6Example7"
+                >Additional Information About Product</label
+              >
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn bg-orange text-white btn-block mb-1">
+              Add Product
+            </button>
+          </form>
+        </div>
+      <!-- </div> -->
+    </div>
+  </body>
+  <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+  <script type="text/javascript" th:src="@{/js/my.js}"></script>
+</html>
