@@ -49,7 +49,7 @@ public class InvoiceDao {
     }
     public Invoice getInvoiceByOrderId(int id){
         String sql = "SELECT * FROM Invoice WHERE orderId = ?";
-        Invoice invoice= jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Invoice.class),id);
+        Invoice invoice = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Invoice.class),id);
         return invoice;
     }
 
@@ -62,7 +62,7 @@ public class InvoiceDao {
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Invoice.class));
     }
     public List<Invoice> getAllInvoicesByDate(Date low, Date high){
-        String sql = "SELECT * FROM Invoice WHERE dateOfPublish >= " + low + " AND dateOfPublish <= " + high;
+        String sql = "SELECT * FROM Invoice WHERE dateOfPublish >= \"" + low + "\" AND dateOfPublish <= \"" + high +"\"";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Invoice.class));
     }
 
@@ -73,6 +73,6 @@ public class InvoiceDao {
 
     public int updateInvoiceById(Invoice invoice, int id){
         String sql = "UPDATE Invoice SET amount=?, paymentStatus=?, dateOfPublish=?, address=?, orderId=? WHERE invoiceId = ?";
-        return jdbcTemplate.update(sql,invoice.getAmount(),invoice.getPaymentStatus(),invoice.getDateOfPublish(),invoice.getAddress(),invoice.getOrderId(),id);
+        return jdbcTemplate.update(sql,invoice.getAmount(),String.valueOf(invoice.getPaymentStatus()),invoice.getDateOfPublish(),invoice.getAddress(),invoice.getOrderId(),id);
     }
 }

@@ -1,7 +1,7 @@
  package com.logistics.web.services.impl;
 
  import com.logistics.web.dao.OrderDao;
- import com.logistics.web.models.Order;
+ import com.logistics.web.models.Orders;
  import com.logistics.web.services.OrderService;
  import org.springframework.beans.factory.annotation.Autowired;
  import org.springframework.stereotype.Service;
@@ -19,23 +19,23 @@
       }
 
       @Override
-      public List<Order> handleListAllOrders(){
+      public List<Orders> handleListAllOrders(){
           return orderDao.getAllOrders();
      }
 
      @Override
-     public Order handleGetOrderById(int id){
+     public Orders handleGetOrderById(int id){
          return orderDao.getOrderById(id);
      }
 
      @Override
-     public int handleCreateNewOrder(Order order){
-         return orderDao.addOrder(order);
+     public int handleCreateNewOrder(Orders orders){
+         return orderDao.addOrder(orders);
      }
 
      @Override
-     public int handleUpdateOrderById(Order order, int id){
-         return orderDao.updateOrderById(order,id);
+     public int handleUpdateOrderById(Orders orders, int id){
+         return orderDao.updateOrderById(orders,id);
      }
 
      @Override
@@ -44,17 +44,17 @@
      }
 
     @Override
-     public List<Order> handleListAllOrdersByUserId(int id){
+     public List<Orders> handleListAllOrdersByUserId(int id){
           return orderDao.getAllOrdersByUserId(id);
     }
 
      @Override
-     public List<Order> handleListAllOrdersByProductId(int id) {
+     public List<Orders> handleListAllOrdersByProductId(int id) {
          return orderDao.getAllOrdersByProductId(id);
      }
 
      @Override
-     public List<Order> handleListAllOrdersByDate(Date low, Date high) {
+     public List<Orders> handleListAllOrdersByDate(Date low, Date high) {
          return orderDao.getAllOrdersByDate(low,high);
      }
  }

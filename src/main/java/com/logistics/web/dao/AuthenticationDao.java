@@ -88,6 +88,6 @@ public class AuthenticationDao {
 
     public int updateUserById(User user, int id){
         String sql = "UPDATE User SET username=?, password=?, firstName=?, lastName=?, contact=?, age=?, address=?, dateOfBirth=?, authority=? WHERE userId=?";
-        return jdbcTemplate.update(sql, user.getUsername(),user.getPassword(),user.getFirstName(),user.getLastName(),user.getContact(),user.getAge(),user.getAddress(),user.getDateOfBirth(),user.getAuthority(),id);
+        return jdbcTemplate.update(sql, user.getUsername(),user.getPassword(),user.getFirstName(),user.getLastName(),user.getContact(),user.getAge(),user.getAddress(),user.getDateOfBirth(),String.valueOf(user.getAuthority()),id);
     }
 }

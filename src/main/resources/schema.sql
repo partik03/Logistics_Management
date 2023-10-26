@@ -65,11 +65,11 @@ CREATE TABLE IF NOT EXISTS Carrier(
 CREATE TABLE IF NOT EXISTS Shipment(
                                        shipmentId INT AUTO_INCREMENT PRIMARY KEY,
                                        shipmentDate DATE NOT NULL,
-                                       status ENUM("Preparing","Dipatched","Delivered"),
+                                       status ENUM("Preparing","Dispatched","Delivered"),
                                        estimatedDeliveryDate DATE NOT NULL,
                                        orderId INT NOT NULL,
-                                       warehouseId INT NOT NULL,
-                                       carrierId INT NOT NULL,
+                                       warehouseId INT,
+                                       carrierId INT,
                                        CONSTRAINT FK_ORDER2 FOREIGN KEY(orderId) REFERENCES Orders(orderId),
                                        CONSTRAINT FK_user FOREIGN KEY(warehouseId) REFERENCES Warehouse(warehouseId),
                                        CONSTRAINT FK_CARRIER FOREIGN KEY(carrierId) REFERENCES Carrier(carrierId)

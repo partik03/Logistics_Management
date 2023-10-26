@@ -1,7 +1,7 @@
 package com.logistics.web.controller;
 
-import java.util.List;
-
+import com.logistics.web.dao.*;
+import com.logistics.web.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,7 +44,7 @@ public class adminContoller {
     private final UserDao userDao;
     @Autowired
     private final WarehouseDao warehouseDao;
-    
+
 
     public adminContoller(CarrierDao carrierDao,ComplaintDao complaintDao,InvoiceDao invoiceDao,OrderDao orderDao,ShipmentDao shipmentDao,ProductDao productDao,UserDao userDao,WarehouseDao warehouseDao) {
         this.carrierDao = carrierDao;
@@ -66,25 +66,25 @@ public class adminContoller {
     public String showDashboardCustomer(Model model){
         List<User> customers = userDao.getAllUsers();
         model.addAttribute("customers",customers);
-        return "dashboard_customers"; 
+        return "dashboard_customers";
     }
     @GetMapping("/admin/dashboard/complaints")
     public String showDashboardComplaints(Model model){
         List<Complaint> complaints = complaintDao.getAllComplaints();
         model.addAttribute("complaints", complaints);
-        return "dashboard_complaints"; 
+        return "dashboard_complaints";
     }
-    
+
     @GetMapping("/admin/dashboard/employees")
     public String showDashboardEmployees(){
         // List<Employee> employees = emplo
-        return "dashboard_employees"; 
+        return "dashboard_employees";
     }
     @GetMapping("/admin/dashboard/invoices")
     public String showDashboardInvoices(Model model){
         List<Invoice> invoices = invoiceDao.getAllInvoices();
         model.addAttribute("invoices", invoices);
-        return "dashboard_invoices"; 
+        return "dashboard_invoices";
     }
     @GetMapping("/admin/dashboard/orders")
     public String showDashboardOrders(Model model){
@@ -96,7 +96,7 @@ public class adminContoller {
     public String showDashboardProducts(Model model){
         List<Product> products = productDao.getAllProducts();
         model.addAttribute("products", products);
-        return "dashboard_products"; 
+        return "dashboard_products";
     }
     @GetMapping("/admin/dashboard/shipments")
 
@@ -114,7 +114,7 @@ public class adminContoller {
     public String showDashboardWarehouses(Model model){
         List<Warehouse> warehouses = warehouseDao.getAllWarehouses();
         model.addAttribute("warehouses", warehouses);
-        return "dashboard_warehouses"; 
+        return "dashboard_warehouses";
     }
     
     

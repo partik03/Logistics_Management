@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import javax.sql.DataSource;
 
@@ -27,6 +28,10 @@ public class WebConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+    @Bean
+    public AuthenticationSuccessHandler appAuthenticationSuccessHandler(){
+        return new AppAuthenticationSuccessHandler();
     }
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -49,7 +54,7 @@ public class WebConfig {
 //                                .requestMatchers("/employee/**").hasAuthority("SA")
 //                                .requestMatchers("/warehouse/**").hasAnyAuthority("SA","WM","A")
 //                        .anyRequest().denyAll()
-                ).formLogin((formlogin) ->  formlogin.loginPage("/login").permitAll())
+                ).formLogin((formlogin) ->  formlogin.loginPage("/login").loginProcessingUrl("/login").successHandler(appAuthenticationSuccessHandler()).permitAll())
                 .logout(logout -> logout.logoutSuccessUrl("/").permitAll());
 
         return http.build();
