@@ -14,3 +14,19 @@
 .bg-orange{
   background-color: #f4623a ;
 }
+
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover{
+  color: white;
+  text-decoration: none;
+}
+
+.container{
+  min-height: 100vh;
+}
+.row{
+  min-height: 100vh;
+}

@@ -9,8 +9,11 @@
   </head>
 
   <body>
+    <div class="back"></div>
+    <div class="bg-image">
+    <div th:replace="fragments/user_navbar"></div>
     <div
-      class="bg-image bg-image-logistic d-flex justify-content-center align-items-center"
+      class=""
     >
       <div class="container bg-light mt-2 p-5 mx-auto">
         <!-- <div class="container mt-0 mx-auto p-5"> -->
@@ -20,14 +23,14 @@
             <div class="row mb-2">
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="FirstName" class="form-control" />
-                  <label class="form-label" for="FirstName">First name</label>
+                  <input type="text" id="SendersName" class="form-control" />
+                  <label class="form-label" for="SendersName">Sender's Name</label>
                 </div>
               </div>
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="LastName" class="form-control" />
-                  <label class="form-label" for="LastName">Last name</label>
+                  <input type="text" id="RecieversName" class="form-control" />
+                  <label class="form-label" for="RecieversName">Reciever's Name</label>
                 </div>
               </div>
             </div>
@@ -35,9 +38,9 @@
             <div class="row mb-2">
               <div class="col">
                 <div class="form-outline">
-                  <input type="email" id="DeliversEmail" class="form-control" />
-                  <label class="form-label" for="DeliversEmail">
-                    Deliver's Email</label
+                  <input type="email" id="SendersEmail" class="form-control" />
+                  <label class="form-label" for="SendersEmail">
+                    Sender's Email</label
                   >
                 </div>
               </div>
@@ -60,11 +63,11 @@
                 <div class="form-outline">
                   <input
                     type="number"
-                    id="DeliversPhone"
+                    id="SendersPhone"
                     class="form-control"
                   />
-                  <label class="form-label" for="DeliversPhone">
-                    Deliver's Phone No.</label
+                  <label class="form-label" for="SendersPhone">
+                    Sender's Phone No.</label
                   >
                 </div>
               </div>
@@ -72,14 +75,21 @@
                 <div class="form-outline">
                   <input
                     type="number"
-                    id="DeliversPhone"
+                    id="SendersPhone"
                     class="form-control"
                   />
-                  <label class="form-label" for="DeliversPhone"
+                  <label class="form-label" for="SendersPhone"
                     >Reciever's Phone No.
                   </label>
                 </div>
               </div>
+            </div>
+            <!-- Text input -->
+            <div class="form-outline mb-2">
+              <input type="text" id="SenderyAddress" class="form-control" />
+              <label class="form-label" for="SendersAddress"
+                >Sender's Address</label
+              >
             </div>
             <!-- Text input -->
             <div class="form-outline mb-2">
@@ -89,13 +99,6 @@
               >
             </div>
 
-            <!-- Text input -->
-            <div class="form-outline mb-2">
-              <input type="text" id="DeliveryAddress" class="form-control" />
-              <label class="form-label" for="DeliveryAddress"
-                >Delivery Address</label
-              >
-            </div>
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-2">
               <div class="col">

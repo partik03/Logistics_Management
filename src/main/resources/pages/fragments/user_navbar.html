@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/user_dashboard.css}" rel="stylesheet" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <title>Document</title>
+</head>
+<body>
+     <nav class="main-navigation ">
+        <div class="navbar-header animated fadeInUp">
+            <a class="navbar-brand" href="#">LogiStick</a>
+        </div>
+        <ul class="nav-list text-white-50">
+            <li class="nav-list-item">
+                <a th:href="@{/}" class="nav-link text-white">Home</a>
+            </li>
+            <li class="nav-list-item">
+                <a th:href="@{/user/orders}" class="nav-link text-white">Your Orders</a>
+            </li>
+            <li class="nav-list-item">
+                <a th:href="@{/user/complaints}" class="nav-link text-white">Your Complaints</a>
+            </li>
+            <li class="nav-list-item">
+                <a href="#" class="nav-link text-white">Something Else</a>
+            </li>
+            <li class="nav-list-item">
+                <button class="btn bg-orange text-white">
+                  <a th:href="@{/user/placeOrder}" class="text-white">Place Order</a>
+                </button>
+            </li>
+        </ul>
+
+    </nav>
+</body>
+</html>
