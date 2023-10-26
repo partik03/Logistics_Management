@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.logistics.web.dao.CarrierDao;
 import com.logistics.web.dao.ComplaintDao;
-import com.logistics.web.dao.CustomerDao;
 import com.logistics.web.dao.InvoiceDao;
 import com.logistics.web.dao.OrderDao;
 import com.logistics.web.dao.ProductDao;
@@ -17,7 +16,6 @@ import com.logistics.web.dao.ShipmentDao;
 import com.logistics.web.dao.UserDao;
 import com.logistics.web.dao.WarehouseDao;
 import com.logistics.web.models.Complaint;
-import com.logistics.web.models.Customer;
 import com.logistics.web.models.Invoice;
 import com.logistics.web.models.Order;
 import com.logistics.web.models.Product;
@@ -121,5 +119,33 @@ public class adminContoller {
     @GetMapping("/admin/addCustomer")
     public String addCustomer(Model model){
         return "dashboard_addCustomer"; 
+    }
+    @GetMapping("/admin/addEmployee")
+    public String addEmployee(Model model){
+        return "dashboard_addEmployee"; 
+    }
+    @GetMapping("/admin/addComplaint")
+    public String addComplaint(Model model){
+        return "dashboard_addComplaint"; 
+    }
+    @GetMapping("/admin/addInvoice")
+    public String addInvoice(Model model){
+        return "dashboard_addInvoice"; 
+    }
+    @GetMapping("/admin/addOrder")
+    public String addOrder(Model model){
+        return "dashboard_addOrder"; 
+    }
+    @GetMapping("/admin/addProduct")
+    public String addProduct(Model model){
+        return "dashboard_addProduct"; 
+    }
+    @GetMapping("/admin/addShipment")
+    public String addShipment(Model model){
+        return "dashboard_addShipment"; 
+    }
+    @GetMapping("/admin/addWarehouse")
+    public String addWarehouse(Model model){
+        return "dashboard_addWarehouse"; 
     }
 }
