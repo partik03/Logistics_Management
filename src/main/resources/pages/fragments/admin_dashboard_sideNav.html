@@ -6,10 +6,15 @@
     <title>Document</title>
   </head>
   <body>
-    <nav id="sidebarMenu" class="bg-orange min-h-100 text-white">
+    <nav id="sidebarMenu" class="bg-orange min-h-100 text-white position-fixed ">
+      <div class="mt-3 mx-4  px-3 pt-4" >
+          <a th:href="@{/}" class="text-white"> 
+            <h5>Logi Solutions </h5>
+          </a>
+        </div>
       <ul class="nav d-flex flex-column gap-5 py-5 px-4 ">
         <li class="nav-item my-2   p-2" >
-          <a th:href="@{/admin/dashboard}" class="text-white"> Dashboard </a>
+          <a th:href="@{/user/placeOrder}" class="text-white"> User Mode </a>
         </li>
         <li class="nav-item my-2   p-2" >
           <a th:href="@{/admin/dashboard/customers}" class="text-white"> Customers </a>
@@ -37,11 +42,12 @@
         </li>
         <li class="p-2"></li>
         <li class="p-2"></li>
-        <li class="p-2"></li>
-        <li class="p-2"></li>
-        <li class="p-2"></li>
-        <li class="p-2"></li>
-        
+        <li class="p-2">
+          <button class="btn bg-white text-orange">
+                  <a th:href="@{/}" class="text-orange">Sign Out</a>
+                </button>
+        </li>
+        <!-- <li class="p-2"></li> -->
       </ul>
     </nav>
   </body>

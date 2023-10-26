@@ -1,0 +1,32 @@
+/* h1{
+  color: aqua;
+  font-size: 100px;
+  background-color: blue;
+} */
+
+/* .bg-image-logistic{
+  background-image: url('../images/background.png');
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+} */
+
+.bg-orange{
+  background-color: #f4623a ;
+}
+
+/* a {
+  color: white;
+  text-decoration: none;
+}
+a:hover{
+  color: white;
+  text-decoration: none;
+}
+
+.container{
+  min-height: 100vh;
+}
+.row{
+  min-height: 100vh;
+} */

@@ -13,15 +13,25 @@
     <title>Admin_Dashboard_customers</title>
   </head>
   <body>
-    <div th:replace="fragments/admin_dashboard_navbar :: header"></div>
     <div class="mx-0">
       <div class="row w-full">
-        <div class="col-2 ">
+        <div class="col-2 vh-100">
           <div th:replace="fragments/admin_dashboard_sideNav :: nav"></div>
         </div>
-        <div class="col-10 pt-4 px-2">
+        <div class="col-10 pt-4 mt-5 px-2">
           <div class="container rounded bg-white">
-            <div class="h2 font-weight-bold">Customers</div>
+            <div class="d-flex align-items-center justify-content-between my-2 p-4">
+              <div class="h2 font-weight-bold">Customers</div>
+              <input
+                class="form-control border  w-50  rounded-5 border-3"
+                type="text"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn bg-orange text-white">
+                  <a th:href="@{/admin/addCustomer}" class="text-white">Add Customer</a>
+                </button>
+            </div>
             <div class="table-responsive">
               <table class="table">
                 <thead>
@@ -38,6 +48,7 @@
                 </thead>
                 <tbody>
                   <tr class="my-3" th:each="customer : ${Customers}">
+                    
                     <td class="pt-3" th:text="${customer.customerID}"></td>
                     <td class="pt-3" th:text="${customer.firstName}"></td>
                     <td class="pt-3" th:text="${customer.email}"></td>
@@ -84,11 +95,22 @@
                     <td class="pt-3">Edit</td>
                     <td class="pt-3">Delete</td>
                   </tr>
+                  <tr class="bg-blue my-5">
+                    <td class="pt-3">1</td>
+                    <td class="pt-3">dummy</td>
+                    <td class="pt-3">dummy@gmail.com</td>
+                    <td class="pt-3">10/10/2003</td>
+                    <td class="pt-3">329402384</td>
+                    <td class="pt-3">
+                      Lorem, ipsum dolor Lorem ipsum dolor sit amet.
+                    </td>
+                    <td class="pt-3">Edit</td>
+                    <td class="pt-3">Delete</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
           </div>
-
         </div>
       </div>
     </div>

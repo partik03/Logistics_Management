@@ -18,7 +18,6 @@ import com.logistics.web.dao.UserDao;
 import com.logistics.web.dao.WarehouseDao;
 import com.logistics.web.models.Complaint;
 import com.logistics.web.models.Customer;
-import com.logistics.web.models.Employee;
 import com.logistics.web.models.Invoice;
 import com.logistics.web.models.Order;
 import com.logistics.web.models.Product;
@@ -61,7 +60,7 @@ public class adminContoller {
 
     @GetMapping("/admin/dashboard")
     public String showDashboard(){
-        return "dashboard"; 
+        return "dashboard_customers"; 
     }
     @GetMapping("/admin/dashboard/customers")
     public String showDashboardCustomer(Model model){
@@ -89,8 +88,8 @@ public class adminContoller {
     }
     @GetMapping("/admin/dashboard/orders")
     public String showDashboardOrders(Model model){
-        List<Order> orders = orderDao.getAllOrders();
-        model.addAttribute("orders", orders);
+        // List<Order> orders = orderDao.getAllOrders();
+        // model.addAttribute("orders", orders);
         return "dashboard_orders"; 
     }
     @GetMapping("/admin/dashboard/products")
@@ -104,12 +103,23 @@ public class adminContoller {
     public String showDashboardShipments(Model model){
         List<Shipment> shipments = shipmentDao.getAllShipments();
         model.addAttribute("shipments", shipments);
-        return "dashboard_Shipments"; 
+        return "dashboard_shipments"; 
+    }
+    @GetMapping("/admin/dashboard/carriers")
+    public String showDashboardCarriers(Model model){
+        
+        return "dashboard_carriers"; 
     }
     @GetMapping("/admin/dashboard/warehouses")
     public String showDashboardWarehouses(Model model){
         List<Warehouse> warehouses = warehouseDao.getAllWarehouses();
         model.addAttribute("warehouses", warehouses);
         return "dashboard_warehouses"; 
+    }
+    
+    
+    @GetMapping("/admin/addCustomer")
+    public String addCustomer(Model model){
+        return "dashboard_addCustomer"; 
     }
 }
