@@ -9,13 +9,17 @@ public class loginController {
     
     
 
-    @GetMapping("/login")
-    public String login(){
-        return "login";
-    }
     @GetMapping("/")
     public String home(){
         return "index";
+    }
+    @GetMapping("/logIn")
+    public String login(){
+        return "login";
+    }
+    @GetMapping("/signUp")
+    public String signUp(){
+        return "signUp";
     }
     @GetMapping("/user/placeOrder")
     public String placeOrder(){
@@ -32,6 +36,18 @@ public class loginController {
     @GetMapping("/user/invoices")
     public String getUserInvoices(){
         return "user_invoices";
+    }
+    @GetMapping("/user/placeComplaint")
+    public String placeComplaint(){
+        return "placeComplaint";
+    }
+    @GetMapping("/showWarehouse")
+    public String warehouse(){
+        return "warehouse";
+    }
+    @GetMapping("/showCarrier")
+    public String carrier(){
+        return "carrier";
     }
 
 
