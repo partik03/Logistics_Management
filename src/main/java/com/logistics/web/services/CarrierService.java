@@ -16,6 +16,4 @@ public interface CarrierService {
 
     public int handleUpdateCarrierById(Carrier carrier, int id);
 
-    
-
 }

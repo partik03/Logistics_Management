@@ -22,7 +22,7 @@
           </th:block>
           </p>
 
-          <form method="post" th:action="@{/login}" >
+          <form method="post" action="/login" >
             <!-- form-group// -->
             <div class="form-group input-group">
               <div class="input-group-prepend">
@@ -31,10 +31,10 @@
                 </span>
               </div>
               <input
-                name="userId"
+                name="username"
                 class="form-control"
-                placeholder="Enter Your User ID"
-                type="int"
+                placeholder="Enter Your Username"
+                type="text"
               />
             </div>
 

@@ -11,8 +11,9 @@ public interface ProductService {
     public Product handleGetProductById(int id);
 
     public List<Product> handleGetAllProducts();
+    public List<Product> handleGetAllProductsByUserId(int id);
 
     public int handleDeleteProductById(int id);
 
-    public int handleUpdateProductById(int id,Product product);
+    public int handleUpdateProductById(int id, Product product);
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public abstract class CarrierServiceImpl implements CarrierService {
+public class CarrierServiceImpl implements CarrierService {
 
     public CarrierDao carrierDao;
 
@@ -19,21 +19,27 @@ public abstract class CarrierServiceImpl implements CarrierService {
         this.carrierDao = carrierDao;
     }
 
+    @Override
     public int handleAddCarrier(Carrier carrier){
         return carrierDao.addCarrier(carrier);
     }
 
+    @Override
     public Carrier handleGetCarrierById(int id){
         return carrierDao.getCarrierById(id);
     }
+
+    @Override
     public List<Carrier> handleGetAllCarriers(){
         return carrierDao.getAllCarriers();
     }
 
+    @Override
     public int handleDeleteCarrierById(int id){
         return carrierDao.deleteCarrierById(id);
     }
 
+    @Override
     public int handleUpdateCarrierById(Carrier carrier, int id){
         return carrierDao.updateCarrierById(carrier,id);
     }
