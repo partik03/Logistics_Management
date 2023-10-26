@@ -1,13 +1,13 @@
 package com.logistics.web.models;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 import lombok.Getter;
-import jakarta.annotation.Nullable;
-import jakarta.validation.constraints.*;
 
 @Data
 public class Product {
-    @NotNull
+     
     @Getter
     private int productId;
 
@@ -15,16 +15,20 @@ public class Product {
     @Min(value=0,message="Weight must be positive")
     private int weight;
 
-    @NotNull
+     
     @Getter
     @Size(min=1, max=20)
     private String productName;
 
     @Getter
-    @Size(min=0, max=100)
+    @Size(min=0, max=1000)
     private String description;
 
-    @NotNull
+     
     @Getter
-    private int warehouseId;
+    private String address;
+
+     
+    @Getter
+    private int userId;
 }

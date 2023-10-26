@@ -23,7 +23,7 @@ public class UserDao {
     }
 
     public int addUser(User user){
-        String sql = "INSERT INTO User(firstName,lastName,contact,age,address,dateOfBirth,role) VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO User(firstName,lastName,contact,age,address,dateOfBirth,authority,username) VALUES(?,?,?,?,?,?,?,?)";
         KeyHolder keyholder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -33,7 +33,8 @@ public class UserDao {
             ps.setInt(4,user.getAge());
             ps.setString(5,user.getAddress());
             ps.setDate(6,user.getDateOfBirth());
-            ps.setString(7,user.getRole().name()); // role is an enum
+            ps.setString(7, String.valueOf(user.getAuthority())); // role is an enum
+            ps.setString(8,user.getUsername());
             return ps;
         }, keyholder);
 
@@ -57,7 +58,7 @@ public class UserDao {
     }
 
     public int updateUserById(User user, int id){
-        String sql = "UPDATE User SET firstName=?, lastName=?, contact=?, role=? WHERE userId = ?";
-        return jdbcTemplate.update(sql,user.getFirstName(),user.getLastName(),user.getContact(),user.getRole(),id);
+        String sql = "UPDATE User SET firstName=?, lastName=?, contact=?, authority=? WHERE userId = ?";
+        return jdbcTemplate.update(sql,user.getFirstName(),user.getLastName(),user.getContact(),user.getAuthority(),id);
     }
 }

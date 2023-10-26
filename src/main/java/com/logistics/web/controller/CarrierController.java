@@ -1,9 +1,10 @@
 package com.logistics.web.controller;
 
-import com.logistics.web.dao.CarrierDao;
 import com.logistics.web.models.Carrier;
+import com.logistics.web.services.impl.CarrierServiceImpl;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,39 +12,40 @@ import java.util.List;
 
 @Controller
 public class CarrierController {
-    private final CarrierDao carrierDao;
+    public CarrierServiceImpl carrierService;
 
-    public CarrierController(CarrierDao carrierDao) {
-        this.carrierDao = carrierDao;
+    @Autowired
+    public CarrierController(CarrierServiceImpl carrierService) {
+        this.carrierService = carrierService;
     }
 
     @PostMapping("/carrier")
     @ResponseBody
     public int addCarrier(@Valid @NotNull @RequestBody Carrier carrier){
-        return carrierDao.addCarrier(carrier);
+        return carrierService.handleAddCarrier(carrier);
     }
 
     @GetMapping("/carrier")
     @ResponseBody
     public List<Carrier> getAllCarriers(){
-        return carrierDao.getAllCarriers();
+        return carrierService.handleGetAllCarriers();
     }
 
     @GetMapping("/carrier/{id}")
     @ResponseBody
     public Carrier getCarrierById(@Valid @NotNull @PathVariable("id") int id){
-        return carrierDao.getCarrierById(id);
+        return carrierService.handleGetCarrierById(id);
     }
 
     @DeleteMapping("/carrier/{id}")
     @ResponseBody
     public int deleteCarrierById(@Valid @NotNull @PathVariable("id") int id){
-        return carrierDao.deleteCarrierById(id);
+        return carrierService.handleDeleteCarrierById(id);
     }
 
     @PutMapping("/carrier/{id}")
     @ResponseBody
     public int updateCarrierById(@Valid @NotNull @PathVariable("id") int id, @Valid @NotNull @RequestBody Carrier carrier){
-        return carrierDao.updateCarrierById(carrier,id);
+        return carrierService.handleUpdateCarrierById(carrier,id);
     }
 }

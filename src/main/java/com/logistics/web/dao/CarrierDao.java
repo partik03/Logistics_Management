@@ -23,14 +23,14 @@ public class CarrierDao {
     }
 
     public int addCarrier(Carrier carrier){
-        String sql = "INSERT INTO Carrier(personName,capacity,contact,empId) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO Carrier(name,capacity,number,userId) VALUES(?,?,?,?)";
         KeyHolder keyholder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, carrier.getPersonName());
+            ps.setString(1, carrier.getName());
             ps.setInt(2, carrier.getCapacity());
-            ps.setString(3, carrier.getContact());
-            ps.setInt(4,carrier.getEmpId());
+            ps.setString(3, carrier.getNumber());
+            ps.setInt(4,carrier.getUserId());
 
             return ps;
         }, keyholder);
@@ -55,8 +55,8 @@ public class CarrierDao {
     }
 
     public int updateCarrierById(Carrier carrier, int id){
-        String sql = "UPDATE Carrier SET personName=?, capacity=?, contact=?, empId=? WHERE carrierId=?";
-        return jdbcTemplate.update(sql,carrier.getPersonName(),carrier.getCapacity(),carrier.getContact(),carrier.getEmpId(),id);
+        String sql = "UPDATE Carrier SET name=?, capacity=?, number=?, userId=? WHERE carrierId=?";
+        return jdbcTemplate.update(sql,carrier.getName(),carrier.getCapacity(),carrier.getNumber(),carrier.getUserId(),id);
     }
 }
 
