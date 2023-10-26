@@ -60,7 +60,7 @@ public class ShipmentDao {
 
     public int updateShipmentById(Shipment shipment, int id){
         String sql = "UPDATE Shipment SET shipmentDate=?, status=?, estimatedDeliveryDate=?, orderId=?, warehouseId=?, carrierId=? WHERE shipmentId = ?";
-        return jdbcTemplate.update(sql,shipment.getShipmentDate(),shipment.getStatus(),shipment.getEstimatedDeliveryDate(),shipment.getOrderId(),shipment.getWarehouseId(),shipment.getCarrierId(),id);
+        return jdbcTemplate.update(sql,shipment.getShipmentDate(),String.valueOf(shipment.getStatus()),shipment.getEstimatedDeliveryDate(),shipment.getOrderId(),shipment.getWarehouseId(),shipment.getCarrierId(),id);
     }
 
     public List<Shipment> getAllShipmentsByOrderId(int id){
@@ -83,12 +83,12 @@ public class ShipmentDao {
     }
 
     public List<Shipment> getAllShipmentsByEstimatedDeliveryDate(Date low, Date high){
-        String sql = "SELECT * FROM Shipment WHERE estimatedDeliveryDate >= " + low + " AND estimatedDeliveryDate <= " + high;
+        String sql = "SELECT * FROM Shipment WHERE estimatedDeliveryDate >= \"" + low + "\" AND estimatedDeliveryDate <= \"" + high + "\"";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Shipment.class));
     }
 
     public List<Shipment> getAllShipmentsByShipmentDate(Date low, Date high){
-        String sql = "SELECT * FROM Shipment WHERE shipmentDate >= " + low + " AND shipmentDate <= " + high;
+        String sql = "SELECT * FROM Shipment WHERE shipmentDate >= \"" + low + "\" AND shipmentDate <= \"" + high + "\"";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Shipment.class));
     }
 }

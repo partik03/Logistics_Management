@@ -1,6 +1,6 @@
 package com.logistics.web.dao;
 
-import com.logistics.web.models.Order;
+import com.logistics.web.models.Orders;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -25,15 +25,15 @@ public class OrderDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public int addOrder(Order order){
-        String sql = "INSERT INTO Order(orderDate,quantity,productId,userId) VALUES(?,?,?,?)";
+    public int addOrder(Orders orders){
+        String sql = "INSERT INTO Orders(orderDate,quantity,productId,userId) VALUES(?,?,?,?)";
         KeyHolder keyholder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setDate(1, Date.valueOf(LocalDate.now()));
-            ps.setInt(2, order.getQuantity());
-            ps.setInt(3, order.getProductId());
-            ps.setInt(4, order.getUserId());
+            ps.setInt(2, orders.getQuantity());
+            ps.setInt(3, orders.getProductId());
+            ps.setInt(4, orders.getUserId());
         
             return ps;
         }, keyholder);
@@ -42,45 +42,39 @@ public class OrderDao {
     }
 
 
-    public Order getOrderById(int id){
-         String sql = "SELECT * FROM Order WHERE orderId = ?";
-        Order order= jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Order.class),id);
-        return order;
-    }
-
-    public List<Order> getAllOrders(){
-        String sql = "SELECT * FROM Order";
-        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Order.class));
-    }
-
-    public List<Order> getOrdersByUserId(int customerId ) {
-        String sql = "SELECT * FROM Order WHERE customerId = ?";
-        List<Order> orders = jdbcTemplate.query(sql, new BeanPropertyRowMapper(Order.class),customerId);
+    public Orders getOrderById(int id){
+         String sql = "SELECT * FROM Orders WHERE orderId = ?";
+        Orders orders = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Orders.class),id);
         return orders;
     }
 
+    public List<Orders> getAllOrders(){
+        String sql = "SELECT * FROM Orders";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Orders.class));
+    }
+
     public int deleteOrderById(int id){
-        String sql = "DELETE FROM Order WHERE orderId = ?";
+        String sql = "DELETE FROM Orders WHERE orderId = ?";
         return jdbcTemplate.update(sql,id);
     }
 
-    public int updateOrderById(Order order, int id){
-        String sql = "UPDATE Order SET orderDate=?, quantity=?, productId=?, userId=? WHERE orderId = ?";
-        return jdbcTemplate.update(sql,order.getOrderDate(),order.getQuantity(),order.getProductId(),order.getUserId(),id);
+    public int updateOrderById(Orders orders, int id){
+        String sql = "UPDATE Orders SET orderDate=?, quantity=?, productId=?, userId=? WHERE orderId = ?";
+        return jdbcTemplate.update(sql, orders.getOrderDate(), orders.getQuantity(), orders.getProductId(), orders.getUserId(),id);
     }
 
-    public List<Order> getAllOrdersByUserId(int id){
-        String sql = "SELECT * FROM Order WHERE userId = " + id;
-        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Order.class));
+    public List<Orders> getAllOrdersByUserId(int id){
+        String sql = "SELECT * FROM Orders WHERE userId = " + id;
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Orders.class));
     }
 
-    public List<Order> getAllOrdersByProductId(int id){
-        String sql = "SELECT * FROM Order WHERE productId = " + id;
-        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Order.class));
+    public List<Orders> getAllOrdersByProductId(int id){
+        String sql = "SELECT * FROM Orders WHERE productId = " + id;
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Orders.class));
     }
 
-    public List<Order> getAllOrdersByDate(Date low, Date high){
-        String sql = "SELECT * FROM Order WHERE orderDate >= " + low + " AND orderDate <= " + high;
-        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Order.class));
+    public List<Orders> getAllOrdersByDate(Date low, Date high){
+        String sql = "SELECT * FROM Orders WHERE orderDate >= \"" + low + "\" AND orderDate <= \"" + high + "\"";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Orders.class));
     }
 }

@@ -22,7 +22,6 @@ public class Invoice {
 
      
     @Getter
-    @Size(min=1, max=20)
     private PaymentStatus paymentStatus;
 
      

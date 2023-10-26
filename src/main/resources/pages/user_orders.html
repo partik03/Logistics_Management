@@ -28,14 +28,14 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="my-3" th:each="order : ${orders}">
+            <tr class="my-3" th:each="orders : ${orders}">
               <td class="pt-2">
                 <img src="#" alt="Order-image" class="rounded-circle">
               </td>
-              <td class="pt-3" th:text="${order.orderId}"></td>
-              <td class="pt-3" th:text="${order.orderDate}"></td>
-              <td class="pt-3" th:text="${order.productId}"></td>
-              <td class="pt-3" th:text="${order.status}"></td>
+              <td class="pt-3" th:text="${orders.orderId}"></td>
+              <td class="pt-3" th:text="${orders.orderDate}"></td>
+              <td class="pt-3" th:text="${orders.productId}"></td>
+              <td class="pt-3" th:text="${orders.status}"></td>
             </tr>
             
             <tr class="bg-blue my-5">

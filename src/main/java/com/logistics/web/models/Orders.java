@@ -7,7 +7,7 @@ import lombok.Getter;
 import java.sql.Date;
 
 @Data
-public class Order {
+public class Orders {
 
      
     @Getter

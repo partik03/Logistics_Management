@@ -1,6 +1,6 @@
 package com.logistics.web.controller;
 
-import com.logistics.web.models.Order;
+import com.logistics.web.models.Orders;
 import com.logistics.web.services.impl.OrderServiceImpl;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -22,38 +22,40 @@ public class OrderController {
 
     @GetMapping("/order")
     @ResponseBody
-    public List<Order> getAllOrders(){
+    public List<Orders> getAllOrders(){
         return orderService.handleListAllOrders();
     }
 
     @GetMapping("/order/{id}")
     @ResponseBody
-    public Order getOrderById(@Valid @NotNull @PathVariable("id") int id){
+    public Orders getOrderById(@Valid @NotNull @PathVariable("id") int id){
         return orderService.handleGetOrderById(id);
     }
 
-    @GetMapping("/orderuser")
+    @GetMapping("/orderuser/{id}")
     @ResponseBody
-    public List<Order> getOrderByUserId(@Valid @NotNull @PathVariable("id") int id){
+    public List<Orders> getOrderByUserId(@Valid @NotNull @PathVariable("id") int id){
         return orderService.handleListAllOrdersByUserId(id);
     }
 
-    @GetMapping("/orderproduct")
+    @GetMapping("/orderproduct/{id}")
     @ResponseBody
-    public List<Order> getOrderByProductId(@Valid @NotNull @PathVariable("id") int id){
+    public List<Orders> getOrderByProductId(@Valid @NotNull @PathVariable("id") int id){
         return orderService.handleListAllOrdersByProductId(id);
     }
 
     @GetMapping("/orderdate")
     @ResponseBody
-    public List<Order> getOrderByDate(@RequestParam(name = "low") Date low, @RequestParam(name = "high") Date high){
+    public List<Orders> getOrderByDate(@RequestParam(name = "low") Date low, @RequestParam(name = "high") Date high){
+        System.out.println(low);
+        System.out.println(high);
         return orderService.handleListAllOrdersByDate(low,high);
     }
 
     @PostMapping("/order")
     @ResponseBody
-    public int addOrder(@Valid @NotNull @RequestBody Order order){
-        return orderService.handleCreateNewOrder(order);
+    public int addOrder(@Valid @NotNull @RequestBody Orders orders){
+        return orderService.handleCreateNewOrder(orders);
     }
 
     @DeleteMapping("/order/{id}")
@@ -64,7 +66,7 @@ public class OrderController {
 
     @PutMapping("/order/{id}")
     @ResponseBody
-    public int updateOrderById(@Valid @NotNull @PathVariable("id") int id, @Valid @NotNull @RequestBody Order order){
-        return orderService.handleUpdateOrderById(order,id);
+    public int updateOrderById(@Valid @NotNull @PathVariable("id") int id, @Valid @NotNull @RequestBody Orders orders){
+        return orderService.handleUpdateOrderById(orders,id);
     }
 }

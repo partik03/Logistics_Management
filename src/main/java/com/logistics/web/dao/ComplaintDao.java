@@ -71,7 +71,7 @@ public class ComplaintDao {
     }
 
     public int updateComplaintById(Complaint complaint, int id){
-        String sql = "UPDATE Complaint SET customerId=?, orderId=?, description=?, email=? WHERE complaintId = ?";
+        String sql = "UPDATE Complaint SET userId=?, orderId=?, description=?, email=? WHERE complaintId = ?";
         return jdbcTemplate.update(sql,complaint.getUserId(),complaint.getOrderId(),complaint.getDescription(),complaint.getEmail(),id);
     }
 
