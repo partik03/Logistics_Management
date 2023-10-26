@@ -43,6 +43,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
+    public List<User> handleGetAllEmployees() {
+        return authenticationDao.getAllEmployees();
+    }
+
+    @Override
     public List<User> handleGetAllAdminsByAuthority(String authority) {
         return authenticationDao.getAllAdminsByAuthority(authority);
     }
