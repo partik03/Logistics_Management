@@ -64,6 +64,7 @@ public class adminContoller {
     public String showDashboardCustomer(Model model){
         List<User> customers = userDao.getAllUsers();
         model.addAttribute("customers",customers);
+        // System.out.println(customers);
         return "dashboard_customers"; 
     }
     @GetMapping("/admin/dashboard/complaints")
@@ -74,8 +75,9 @@ public class adminContoller {
     }
     
     @GetMapping("/admin/dashboard/employees")
-    public String showDashboardEmployees(){
-        // List<Employee> employees = emplo
+    public String showDashboardEmployees(Model model){
+        List<User> Employees = userDao.getAllUsers();
+        model.addAttribute("Employees",Employees);
         return "dashboard_employees"; 
     }
     @GetMapping("/admin/dashboard/invoices")

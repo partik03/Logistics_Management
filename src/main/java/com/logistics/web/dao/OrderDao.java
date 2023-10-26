@@ -26,14 +26,21 @@ public class OrderDao {
     }
 
     public int addOrder(Order order){
-        String sql = "INSERT INTO Order(orderDate,quantity,productId,userId) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO Order(orderDate,sendersName,recieversName,sendersEmail,recieversEmail,sendersPhone,recieversPhone,sendersAddress,recieversAddress,productId,userId) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         KeyHolder keyholder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setDate(1, Date.valueOf(LocalDate.now()));
-            ps.setInt(2, order.getQuantity());
-            ps.setInt(3, order.getProductId());
-            ps.setInt(4, order.getUserId());
+            ps.setString(2, order.getSendersName());
+            ps.setString(3, order.getRecieversName());
+            ps.setString(4, order.getSendersEmail());
+            ps.setString(5, order.getRecieversEmail());
+            ps.setInt(6, order.getSendersPhone());
+            ps.setInt(7, order.getRecieversPhone());
+            ps.setString(8, order.getSendersAddress());
+            ps.setString(9, order.getRecieversAddress());
+            ps.setInt(10, order.getProductId());
+            ps.setInt(11, order.getUserId());
         
             return ps;
         }, keyholder);
@@ -65,8 +72,8 @@ public class OrderDao {
     }
 
     public int updateOrderById(Order order, int id){
-        String sql = "UPDATE Order SET orderDate=?, quantity=?, productId=?, userId=? WHERE orderId = ?";
-        return jdbcTemplate.update(sql,order.getOrderDate(),order.getQuantity(),order.getProductId(),order.getUserId(),id);
+        String sql = "UPDATE Order SET orderDate=?, sendersName = ?,recieversName = ?,sendersEmail = ?,recieversEmail = ?,sendersPhone = ?,recieversPhone = ?,sendersAddress = ?,recieversAddress = ?, productId=?, userId=? WHERE orderId = ?";
+        return jdbcTemplate.update(sql,order.getOrderDate(),order.getSendersName(),order.getRecieversName(),order.getSendersEmail(),order.getRecieversEmail(),order.getSendersPhone(),order.getRecieversPhone(),order.getSendersAddress(),order.getRecieversAddress(),order.getProductId(),order.getUserId(),id);
     }
 
     public List<Order> getAllOrdersByUserId(int id){

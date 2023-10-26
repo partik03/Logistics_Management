@@ -28,17 +28,23 @@ CREATE TABLE IF NOT EXISTS Product(
                                       productName VARCHAR(20) NOT NULL,
                                       weight INT,
                                       description VARCHAR(100),
-                                      address VARCHAR(1000) NOT NULL,
                                       userId INT NOT NULL,
                                       CONSTRAINT FK_PRODUCTINUSER FOREIGN KEY(userId) REFERENCES User(userId)
 );
 
 CREATE TABLE IF NOT EXISTS Orders(
                                      orderId INT AUTO_INCREMENT PRIMARY KEY,
-                                     orderDate DATE NOT NULL,
+                                     orderDate DATE,
+                                     sendersName VARCHAR(100),
+                                     recieversName VARCHAR(100),
+                                     sendersEmail VARCHAR(100),
+                                     recieversEmail VARCHAR(100),
+                                     sendersPhone INT,
+                                     recieversPhone INT,
+                                     sendersAddress VARCHAR(100),
+                                     recieversAddress VARCHAR(100),
                                      userId INT NOT NULL,
                                      productId INT NOT NULL,
-                                     quantity INT,
                                      CONSTRAINT FK_userINORDERS FOREIGN KEY(userId) REFERENCES User(userId),
                                      CONSTRAINT FK_PRODUCTINORDERS FOREIGN KEY(productId) REFERENCES Product(productId)
 );
