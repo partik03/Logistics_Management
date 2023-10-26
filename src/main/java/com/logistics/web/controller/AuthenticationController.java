@@ -37,6 +37,12 @@ public class AuthenticationController {
         return authenticationService.handleGetAllCustomers();
     }
 
+    @GetMapping("/employee")
+    @ResponseBody
+    public List<User> getAllEmployees(){
+        return authenticationService.handleGetAllEmployees();
+    }
+
     @GetMapping("/admin/{authority}")
     @ResponseBody
     public List<User> getAllAdminsByAuthority(@Valid @NotNull @PathVariable("authority") String authority){

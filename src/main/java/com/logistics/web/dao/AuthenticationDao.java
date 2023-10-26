@@ -77,6 +77,11 @@ public class AuthenticationDao {
         String sql = "SELECT * FROM User WHERE authority = \"C\"";
         return jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(User.class));
     }
+
+    public List<User> getAllEmployees(){
+        String sql = "SELECT * FROM User WHERE NOT authority = \"C\"";
+        return jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(User.class));
+    }
     public List<User> getAllAdminsByAuthority(String authority){
         String sql = "SELECT * FROM User WHERE authority = \"" + authority+"\"";
         return jdbcTemplate.query(sql,new BeanPropertyRowMapper<>(User.class));
