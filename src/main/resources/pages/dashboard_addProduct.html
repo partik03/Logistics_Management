@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
-    <meta charset="UTF-8" />
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Product</title>
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
@@ -16,13 +16,15 @@
     >
       <div class="container bg-light mt-2 p-5 mx-auto">
           <h1 class="mx-auto my-0">Add Product</h1>
-          <form th:action="@{/product}" th:object="${product}" method="post"  >
-            <!-- <input type="hidden" th:field="*{productId}" /> -->
+
+          <form th:action="@{/product}" method="post" th:object="${product}">
+            
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-2">
               <div class="col">
                 <div class="form-outline">
                   <input type="number" id="userId" class="form-control" th:field="*{userId}" />
+
                   <label class="form-label" for="userId">
                     Customer Id</label
                   >
@@ -57,12 +59,12 @@
                 </div>
               </div>
               <div class="col">
-                <div class="form-outline">
+                <!-- <div class="form-outline">
                   <input type="file" class="form-control" id="ProductsPhoto" />
                   <label class="form-label" for="ProductsPhoto"
                     >Upload Product's Photo</label
                   >
-                </div>
+                </div> -->
               </div>
             </div>
 

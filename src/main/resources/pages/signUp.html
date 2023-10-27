@@ -17,103 +17,8 @@
             <h4 class="card-title mt-3 text-center">Create Account</h4>
             <p class="text-center">Get started with your free account</p>
             <p class="divider-text"></p>
-            <form th:action="@{/signUp}" method="post" >
-              
-              <div class="form-group input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-user"></i>
-                  </span>
-                </div>
-                <input
-                  name="firstName"
-                  class="form-control"
-                  placeholder="First name"
-                  type="text"
-                />
-              </div>
-              <div class="form-group input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-user"></i>
-                  </span>
-                </div>
-                <input
-                  class="form-control"
-                  placeholder="Last name"
-                  type="text"
-                />
-              </div>
-
-              <!-- form-group// -->
-              <div class="form-group input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-envelope"></i>
-                  </span>
-                </div>
-                <input
-                  class="form-control"
-                  placeholder="Address"
-                  type="text"
-                />
-              </div>
-              <!-- form-group// -->
-              <div class="form-group input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-envelope"></i>
-                  </span>
-                </div>
-                <input
-                  class="form-control"
-                  placeholder="Date Of Birth"
-                  type="date"
-                />
-              </div>
-              <!-- form-group// -->
-              <div class="form-group input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-phone"></i>
-                  </span>
-                </div>
-                <input
-                  class="form-control"
-                  placeholder="Phone number"
-                  type="text"
-                />
-              </div>
-
-              <!-- form-group end.// -->
-              <div class="form-group input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fa fa-lock"></i>
-                  </span>
-                </div>
-                <input
-                  class="form-control"
-                  placeholder="Create password"
-                  type="password"
-                />
-              </div>
-
-              <!-- form-group// -->
-              <div class="form-group">
-                <button
-                  type="submit"
-                  class="btn btn-block bg-orange text-white"
-                >
-                  Create Account
-                </button>
-              </div>
-              <!-- form-group// -->
-              <p class="text-center">
-                Have an account? <a th:href="@{/login}" class="text-primary">Log In</a>
-              </p>
-            </form>
-            <!-- <form th:action="@{/signUp}" method="post" th:object="${customer}">
+           
+            <form th:action="@{/signUp}" method="post" th:object="${user}">
               
               <div class="form-group input-group">
                 <div class="input-group-prepend">
@@ -176,9 +81,22 @@
                   </span>
                 </div>
                 <input
-                  th:field="*{phone}"
+                  th:field="*{contact}"
                   class="form-control"
                   placeholder="Phone number"
+                  type="text"
+                />
+              </div>
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="fa fa-phone"></i>
+                  </span>
+                </div>
+                <input
+                  th:field="*{username}"
+                  class="form-control"
+                  placeholder="Email"
                   type="text"
                 />
               </div>
@@ -206,9 +124,9 @@
                 </button>
               </div>
               <p class="text-center">
-                Have an account? <a th:href="@{/logIn}" class="text-primary">Log In</a>
+                Have an account? <a th:href="@{/login}" class="text-primary">Log In</a>
               </p>
-            </form> -->
+            </form>
           </article>
         </div>
         <!-- card.// -->

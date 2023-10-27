@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,9 +12,10 @@
     <div class="back"></div>
     <div class="bg-image">
       <div th:replace="fragments/user_navbar"></div>
-
+      <h1 th:text="${USERNAME}">HELLO WORLD</h1>
       <div class="container rounded mt-5 bg-white p-md-5">
         <div class="h2 font-weight-bold">Orders</div>
+        
         <div class="table-responsive">
           <table class="table">
             <thead>
@@ -24,6 +25,7 @@
                 <th scope="col">Order Date</th>
                 <th scope="col">Product Id</th>
                 <th scope="col">Status</th>
+                <th scope="col">Add Complaint</th>
                 <th scope="col">Add Complaint</th>
               </tr>
             </thead>

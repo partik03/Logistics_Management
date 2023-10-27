@@ -128,8 +128,11 @@ public class adminContoller {
     }
     @GetMapping("/admin/addProduct")
     public String addProduct(Model model){
-        Product product = new Product();
-        model.addAttribute("product", product);
+      
+
+        Product product=new Product();
+        model.addAttribute("product",product);
+
         return "dashboard_addProduct"; 
     }
     @GetMapping("/admin/updateProduct")
