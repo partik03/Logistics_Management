@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
-    
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Product</title>
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
@@ -15,29 +15,38 @@
       class=""
     >
       <div class="container bg-light mt-2 p-5 mx-auto">
+        <!-- <div class="container mt-0 mx-auto p-5"> -->
           <h1 class="mx-auto my-0">Add Product</h1>
-
-          <form th:action="@{/product}" method="post" th:object="${product}">
+          <form th:action="@{/product}" th:object="${product}" method="post" >
             
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-2">
               <div class="col">
                 <div class="form-outline">
-                  <input type="number" id="userId" class="form-control" th:field="*{userId}" />
-
+                  <input type="text" id="userId" class="form-control" th:field="*{userId}" />
                   <label class="form-label" for="userId">
                     Customer Id</label
                   >
                 </div>
               </div>
-              
+              <!-- <div class="col">
+                <div class="form-outline">
+                  <input
+                    type="email"
+                    id="RecieversEmail"
+                    class="form-control"
+                  />
+                  <label class="form-label" for="RecieversEmail"
+                    >Reciever's Email
+                  </label>
+                </div>
+              </div> -->
             </div>
             
 
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-2">
               <div class="col">
-                
                 <div class="form-outline">
                   <input
                     type="number"
@@ -59,12 +68,12 @@
                 </div>
               </div>
               <div class="col">
-                <!-- <div class="form-outline">
+                <div class="form-outline">
                   <input type="file" class="form-control" id="ProductsPhoto" />
                   <label class="form-label" for="ProductsPhoto"
                     >Upload Product's Photo</label
                   >
-                </div> -->
+                </div>
               </div>
             </div>
 
@@ -87,6 +96,7 @@
             </button>
           </form>
         </div>
+      <!-- </div> -->
     </div>
   </body>
   <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>

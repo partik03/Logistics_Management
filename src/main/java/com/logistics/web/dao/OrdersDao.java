@@ -26,7 +26,7 @@ public class OrdersDao {
     }
 
     public int addOrder(Orders order){
-        String sql = "INSERT INTO Order(orderDate,sendersName,recieversName,sendersEmail,recieversEmail,sendersPhone,recieversPhone,sendersAddress,recieversAddress,productId,userId) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Orders(orderDate,sendersName,recieversName,sendersEmail,recieversEmail,sendersPhone,recieversPhone,sendersAddress,recieversAddress,productId,userId) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         KeyHolder keyholder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -50,44 +50,44 @@ public class OrdersDao {
 
 
     public Orders getOrderById(int id){
-         String sql = "SELECT * FROM Order WHERE orderId = ?";
+         String sql = "SELECT * FROM Orders WHERE orderId = ?";
         Orders order= jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Orders.class),id);
         return order;
     }
 
     public List<Orders> getAllOrders(){
-        String sql = "SELECT * FROM Order";
+        String sql = "SELECT * FROM Orders";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Orders.class));
     }
 
     public List<Orders> getOrdersByUserId(int customerId ) {
-        String sql = "SELECT * FROM Order WHERE customerId = ?";
+        String sql = "SELECT * FROM Orders WHERE customerId = ?";
         List<Orders> orders = jdbcTemplate.query(sql, new BeanPropertyRowMapper(Orders.class),customerId);
         return orders;
     }
 
     public int deleteOrderById(int id){
-        String sql = "DELETE FROM Order WHERE orderId = ?";
+        String sql = "DELETE FROM Orders WHERE orderId = ?";
         return jdbcTemplate.update(sql,id);
     }
 
     public int updateOrderById(Orders order, int id){
-        String sql = "UPDATE Order SET orderDate=?, sendersName = ?,recieversName = ?,sendersEmail = ?,recieversEmail = ?,sendersPhone = ?,recieversPhone = ?,sendersAddress = ?,recieversAddress = ?, productId=?, userId=? WHERE orderId = ?";
+        String sql = "UPDATE Orders SET orderDate=?, sendersName = ?,recieversName = ?,sendersEmail = ?,recieversEmail = ?,sendersPhone = ?,recieversPhone = ?,sendersAddress = ?,recieversAddress = ?, productId=?, userId=? WHERE orderId = ?";
         return jdbcTemplate.update(sql,order.getOrderDate(),order.getSendersName(),order.getRecieversName(),order.getSendersEmail(),order.getRecieversEmail(),order.getSendersPhone(),order.getRecieversPhone(),order.getSendersAddress(),order.getRecieversAddress(),order.getProductId(),order.getUserId(),id);
     }
 
     public List<Orders> getAllOrdersByUserId(int id){
-        String sql = "SELECT * FROM Order WHERE userId = " + id;
+        String sql = "SELECT * FROM Orders WHERE userId = " + id;
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Orders.class));
     }
 
     public List<Orders> getAllOrdersByProductId(int id){
-        String sql = "SELECT * FROM Order WHERE productId = " + id;
+        String sql = "SELECT * FROM Orders WHERE productId = " + id;
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Orders.class));
     }
 
     public List<Orders> getAllOrdersByDate(Date low, Date high){
-        String sql = "SELECT * FROM Order WHERE orderDate >= " + low + " AND orderDate <= " + high;
+        String sql = "SELECT * FROM Orders WHERE orderDate >= " + low + " AND orderDate <= " + high;
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Orders.class));
     }
 }

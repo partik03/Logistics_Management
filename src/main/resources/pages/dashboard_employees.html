@@ -48,7 +48,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="my-3 bg-blue" th:each="employee : ${Employees}">
+                  <tr class="my-3 bg-blue" th:each="employee : ${employees}">
                     <td class="pt-3" th:text="${employee.userId}"></td>
                     <td class="pt-3" th:text="${employee.firstName}"></td>
                     <td class="pt-3" th:text="${employee.username}"></td>
@@ -60,7 +60,7 @@
                     <td class="pt-3">Delete</td>
                   </tr>
 
-                  <tr class="bg-blue my-5">
+                  <!-- <tr class="bg-blue my-5">
                     <td class="pt-3">1</td>
                     <td class="pt-3">dummy</td>
                     <td class="pt-3">dummy@gmail.com</td>
@@ -98,7 +98,7 @@
                     <td class="pt-3">Edit</td>
                     <td class="pt-3">Edit</td>
                     <td class="pt-3">Delete</td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
             </div>

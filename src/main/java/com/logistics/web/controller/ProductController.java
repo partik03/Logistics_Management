@@ -2,12 +2,18 @@ package com.logistics.web.controller;
 
 import com.logistics.web.models.Product;
 import com.logistics.web.services.impl.ProductServiceImpl;
+
+import ch.qos.logback.core.model.Model;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+
 
 import java.util.List;
 
@@ -48,8 +54,17 @@ public class ProductController {
 
     @DeleteMapping("/product/{id}")
     @ResponseBody
-    public int deleteProductById(@Valid @NotNull @PathVariable("id") int id){
-        return productService.handleDeleteProductById(id);
+    public String deleteProductById(@Valid @NotNull @PathVariable("id") int id, RedirectAttributes redirectAttributes){
+        int res = productService.handleDeleteProductById(id);
+        // if (res > 0) {
+        //     // Product deleted successfully
+        //     redirectAttributes.addFlashAttribute("successMessage", "Product deleted successfully.");
+        // } else {
+        //     // Product not found or deletion failed
+        //     redirectAttributes.addFlashAttribute("errorMessage", "Product not found or deletion failed.");
+        // }
+        
+        return "redirect:/admin/dashboard/products";
     }
 
     @PutMapping("/product/{id}")

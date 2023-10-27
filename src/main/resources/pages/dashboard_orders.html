@@ -42,23 +42,34 @@
                     <th scope="col">Customer ID</th>
                     <th scope="col">Product ID</th>
                     <th scope="col">Order Date</th>
-                    <th scope="col">Quantity</th>
+                    <th scope="col">Sender's Name</th>
+                    <th scope="col">Receiver's Name</th>
+                    <th scope="col">Sender's Email</th>
+                    <th scope="col">Receiver's Email</th>
+                    <th scope="col">Sender's Phone</th>
+                    <th scope="col">Receiver's Phone</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="my-3" th:each="order : ${Orders}">
+                  <tr class="my-3 bg-blue" th:each="order : ${orders}">
                     <td class="pt-3" th:text="${order.orderId}"></td>
-                    <td class="pt-3" th:text="${order.customerId}"></td>
+                    <td class="pt-3" th:text="${order.userId}"></td>
                     <td class="pt-3" th:text="${order.productId}"></td>
                     <td class="pt-3" th:text="${order.orderDate}"></td>
-                    <td class="pt-3" th:text="${order.qurntity}"></td>
+                    <td class="pt-3" th:text="${order.sendersName}"></td>
+                    <td class="pt-3" th:text="${order.recieversName}"></td>
+                    <td class="pt-3" th:text="${order.sendersEmail}"></td>
+                    <td class="pt-3" th:text="${order.recieversEmail}"></td>
+                    <td class="pt-3" th:text="${order.sendersPhone}"></td>
+                    <td class="pt-3" th:text="${order.recieversPhone}"></td>
+          
                     <td class="pt-3">Edit</td>
                     <td class="pt-3">Delete</td>
                   </tr>
 
-                  <tr class="bg-blue my-5">
+                  <!-- <tr class="bg-blue my-5">
                     <td class="pt-3">1</td>
                     <td class="pt-3">2</td>
                     <td class="pt-3">dummy@3.com</td>
@@ -87,7 +98,7 @@
 
                     <td class="pt-3">Edit</td>
                     <td class="pt-3">Delete</td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
             </div>
