@@ -1,7 +1,7 @@
 package com.logistics.web.controller;
 
 import com.logistics.web.models.Orders;
-import com.logistics.web.services.impl.OrderServiceImpl;
+import com.logistics.web.services.impl.OrdersServiceImpl;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,18 +12,18 @@ import java.sql.Date;
 import java.util.List;
 
 @Controller
-public class OrderController {
-    public OrderServiceImpl orderService;
+public class OrdersController {
+    public OrdersServiceImpl orderService;
 
     @Autowired
-    public OrderController(OrderServiceImpl orderService){
+    public OrdersController(OrdersServiceImpl orderService){
         this.orderService = orderService;
     }
 
     @GetMapping("/order")
     @ResponseBody
-    public List<Orders> getAllOrders(){
-        return orderService.handleListAllOrders();
+    public List<Orders> getAllOrder(){
+        return orderService.handleListAllOrder();
     }
 
     @GetMapping("/order/{id}")
@@ -35,13 +35,13 @@ public class OrderController {
     @GetMapping("/orderuser/{id}")
     @ResponseBody
     public List<Orders> getOrderByUserId(@Valid @NotNull @PathVariable("id") int id){
-        return orderService.handleListAllOrdersByUserId(id);
+        return orderService.handleListAllOrderByUserId(id);
     }
 
     @GetMapping("/orderproduct/{id}")
     @ResponseBody
     public List<Orders> getOrderByProductId(@Valid @NotNull @PathVariable("id") int id){
-        return orderService.handleListAllOrdersByProductId(id);
+        return orderService.handleListAllOrderByProductId(id);
     }
 
     @GetMapping("/orderdate")
@@ -49,7 +49,7 @@ public class OrderController {
     public List<Orders> getOrderByDate(@RequestParam(name = "low") Date low, @RequestParam(name = "high") Date high){
         System.out.println(low);
         System.out.println(high);
-        return orderService.handleListAllOrdersByDate(low,high);
+        return orderService.handleListAllOrderByDate(low,high);
     }
 
     @PostMapping("/order")

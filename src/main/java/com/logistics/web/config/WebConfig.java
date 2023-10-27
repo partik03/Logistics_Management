@@ -49,11 +49,11 @@ public class WebConfig {
                         (authz) -> authz
                                 .dispatcherTypeMatchers(FORWARD, ERROR).permitAll()
                                 .requestMatchers("/**").permitAll()
-//                                .requestMatchers("/resources/**","/static/**","/css/**", "/js/**","/images/**", "/webjars/**", "/assests/**","/index.html", "/", "/logout", "/dashboard", "/signUp", "/carrier","/order/**","/product/**","/shipment/**").permitAll()
-//                                .requestMatchers("/customer/**","/invoice/**","/complaint/**").hasAnyAuthority("SA","A")
-//                                .requestMatchers("/employee/**").hasAuthority("SA")
-//                                .requestMatchers("/warehouse/**").hasAnyAuthority("SA","WM","A")
-//                        .anyRequest().denyAll()
+                    //            .requestMatchers("/resources/**","/static/**","/css/**", "/js/**","/images/**", "/webjars/**", "/assests/**","/index.html", "/", "/logout", "/dashboard", "/signUp", "/carrier","/order/**","/product/**","/shipment/**").permitAll()
+                    //            .requestMatchers("/customer/**","/invoice/**","/complaint/**").hasAnyAuthority("SA","A")
+                    //            .requestMatchers("/employee/**").hasAuthority("SA")
+                    //            .requestMatchers("/warehouse/**").hasAnyAuthority("SA","WM","A")
+                    //    .anyRequest().denyAll()
                 ).formLogin((formlogin) ->  formlogin.loginPage("/login").loginProcessingUrl("/login").successHandler(appAuthenticationSuccessHandler()).permitAll())
                 .logout(logout -> logout.logoutSuccessUrl("/").permitAll());
 

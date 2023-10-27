@@ -13,9 +13,9 @@ public class loginController {
     public String home(){
         return "index";
     }
-    @GetMapping("/logIn")
+    @GetMapping("/login")
     public String login(){
-        return "login";
+        return "logIn";
     }
     @GetMapping("/signUp")
     public String signUp(){
