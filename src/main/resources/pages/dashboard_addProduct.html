@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
-    <meta charset="UTF-8" />
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Invoice</title>
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
@@ -17,13 +17,13 @@
       <div class="container bg-light mt-2 p-5 mx-auto">
         <!-- <div class="container mt-0 mx-auto p-5"> -->
           <h1 class="mx-auto my-0">Add Product</h1>
-          <form>
+          <form th:action="@{/product}" method="post" th:object="${product}">
             
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-2">
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="userId" class="form-control" />
+                  <input type="number" id="userId" class="form-control" th:field="*{userId}"/>
                   <label class="form-label" for="userId">
                     Customer Id</label
                   >
@@ -52,6 +52,7 @@
                     type="number"
                     id="ProductsWeight"
                     class="form-control"
+                    th:field="*{weight}"
                   />
                   <label class="form-label" for="ProductsWeight">
                     Product's Weight</label
@@ -60,19 +61,19 @@
               </div>
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="ProductType" class="form-control" />
+                  <input type="text" id="ProductType" class="form-control" th:field="*{productName}" />
                   <label class="form-label" for="ProductType"
-                    >Product Type
+                    >Product Name
                   </label>
                 </div>
               </div>
               <div class="col">
-                <div class="form-outline">
+                <!-- <div class="form-outline">
                   <input type="file" class="form-control" id="ProductsPhoto" />
                   <label class="form-label" for="ProductsPhoto"
                     >Upload Product's Photo</label
                   >
-                </div>
+                </div> -->
               </div>
             </div>
 
@@ -82,6 +83,7 @@
                 class="form-control"
                 id="form6Example7"
                 rows="2"
+                th:field="*{description}"
               ></textarea>
               <label class="form-label" for="form6Example7"
                 >Additional Information About Product</label

@@ -10,10 +10,10 @@
  @Service
  public abstract class UserServiceImpl implements UserService {
 
-
+    @Autowired
      public UserDao userDao;
 
-     @Autowired
+     
      public UserServiceImpl(UserDao userDao){
          this.userDao = userDao;
      }

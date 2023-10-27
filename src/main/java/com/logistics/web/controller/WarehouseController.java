@@ -12,17 +12,20 @@ import java.util.List;
 
 @Controller
 public class WarehouseController {
+    @Autowired
     public WarehouseServiceImpl warehouseService;
 
-    @Autowired
+    
     public WarehouseController(WarehouseServiceImpl warehouseService){
         this.warehouseService = warehouseService;
     }
 
     @GetMapping("/warehouse")
-    @ResponseBody
-    public List<Warehouse> getAllWarehouses(){
-        return warehouseService.handleGetAllWarehouses();
+    // @ResponseBody
+    public String getAllWarehouses(){
+
+        return "warehouse";
+        // return warehouseService.handleGetAllWarehouses();
     }
 
     @GetMapping("/warehouse/{id}")

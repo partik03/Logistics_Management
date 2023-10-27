@@ -8,7 +8,6 @@ public interface UserService {
 
     public List<User> handleGetAllUsers();
 
-
     public User handleGetUserById(int id);
 
     public int handleAddUser( User User );
