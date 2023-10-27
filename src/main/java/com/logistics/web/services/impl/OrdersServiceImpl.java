@@ -1,8 +1,8 @@
  package com.logistics.web.services.impl;
 
- import com.logistics.web.dao.OrderDao;
+ import com.logistics.web.dao.OrdersDao;
  import com.logistics.web.models.Orders;
- import com.logistics.web.services.OrderService;
+ import com.logistics.web.services.OrdersService;
  import org.springframework.beans.factory.annotation.Autowired;
  import org.springframework.stereotype.Service;
 
@@ -10,16 +10,16 @@
  import java.util.List;
 
  @Service
- public class OrderServiceImpl implements OrderService {
+ public class OrdersServiceImpl implements OrdersService {
 
-      public OrderDao orderDao;
+      public OrdersDao orderDao;
       @Autowired
-      public OrderServiceImpl(OrderDao orderDao){
+      public OrdersServiceImpl(OrdersDao orderDao){
           this.orderDao = orderDao;
       }
 
       @Override
-      public List<Orders> handleListAllOrders(){
+      public List<Orders> handleListAllOrder(){
           return orderDao.getAllOrders();
      }
 
@@ -44,17 +44,17 @@
      }
 
     @Override
-     public List<Orders> handleListAllOrdersByUserId(int id){
+     public List<Orders> handleListAllOrderByUserId(int id){
           return orderDao.getAllOrdersByUserId(id);
     }
 
      @Override
-     public List<Orders> handleListAllOrdersByProductId(int id) {
+     public List<Orders> handleListAllOrderByProductId(int id) {
          return orderDao.getAllOrdersByProductId(id);
      }
 
      @Override
-     public List<Orders> handleListAllOrdersByDate(Date low, Date high) {
+     public List<Orders> handleListAllOrderByDate(Date low, Date high) {
          return orderDao.getAllOrdersByDate(low,high);
      }
  }

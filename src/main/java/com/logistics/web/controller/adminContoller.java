@@ -19,7 +19,7 @@ public class adminContoller {
     @Autowired
     private final InvoiceDao invoiceDao;
     @Autowired
-    private final OrderDao orderDao;
+    private final OrdersDao orderDao;
     @Autowired
     private final ShipmentDao shipmentDao;
     @Autowired
@@ -30,7 +30,7 @@ public class adminContoller {
     private final WarehouseDao warehouseDao;
 
 
-    public adminContoller(CarrierDao carrierDao,ComplaintDao complaintDao,InvoiceDao invoiceDao,OrderDao orderDao,ShipmentDao shipmentDao,ProductDao productDao,AuthenticationDao authenticationDao,WarehouseDao warehouseDao) {
+    public adminContoller(CarrierDao carrierDao,ComplaintDao complaintDao,InvoiceDao invoiceDao,OrdersDao orderDao,ShipmentDao shipmentDao,ProductDao productDao,AuthenticationDao authenticationDao,WarehouseDao warehouseDao) {
         this.carrierDao = carrierDao;
         this.complaintDao = complaintDao;
         this.invoiceDao = invoiceDao;
