@@ -24,7 +24,7 @@ public class User {
 
      
     @Getter
-    @Size(min=1,max=50)
+    @Size(min=1,max=100)
     private String password;
 
      
