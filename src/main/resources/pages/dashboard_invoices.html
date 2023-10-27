@@ -47,18 +47,18 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="my-3" th:each="invoice : ${Invoices}">
+                  <tr class="my-3 bg-blue" th:each="invoice : ${invoices}">
                     <td class="pt-3" th:text="${invoice.invoiceId}"></td>
                     <td class="pt-3" th:text="${invoice.orderId}"></td>
                     <td class="pt-3" th:text="${invoice.amount}"></td>
                     <td class="pt-3" th:text="${invoice.dateOfPublish}"></td>
                     <td class="pt-3" th:text="${invoice.address}"></td>
-                    <td class="pt-3" th:text="${invoice.status}"></td>
+                    <td class="pt-3" th:text="${invoice.paymentStatus}"></td>
                     <td class="pt-3">Edit</td>
                     <td class="pt-3">Delete</td>
                   </tr>
 
-                  <tr class="bg-blue my-5">
+                  <!-- <tr class="bg-blue my-5">
                     <td class="pt-3">1</td>
                     <td class="pt-3">2</td>
                     <td class="pt-3">300</td>
@@ -93,7 +93,7 @@
                     <td class="pt-3">Success</td>
                     <td class="pt-3">Edit</td>
                     <td class="pt-3">Delete</td>
-                  </tr>
+                  </tr> -->
                   
                 </tbody>
               </table>

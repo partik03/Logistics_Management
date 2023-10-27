@@ -62,7 +62,7 @@ public class adminContoller {
     @GetMapping("/admin/dashboard/employees")
     public String showDashboardEmployees(Model model){
         List<User> Employees = authenticationDao.getAllEmployees();
-        model.addAttribute("Employees",Employees);
+        model.addAttribute("employees",Employees);
         return "dashboard_employees"; 
     }
     @GetMapping("/admin/dashboard/invoices")
@@ -73,8 +73,8 @@ public class adminContoller {
     }
     @GetMapping("/admin/dashboard/orders")
     public String showDashboardOrders(Model model){
-        // List<Order> orders = orderDao.getAllOrders();
-        // model.addAttribute("orders", orders);
+        List<Orders> orders = orderDao.getAllOrders();
+        model.addAttribute("orders", orders);
         return "dashboard_orders"; 
     }
     @GetMapping("/admin/dashboard/products")
@@ -92,13 +92,15 @@ public class adminContoller {
     }
     @GetMapping("/admin/dashboard/carriers")
     public String showDashboardCarriers(Model model){
-        
+        List<Carrier> carriers = carrierDao.getAllCarriers();
+        model.addAttribute("carriers", carriers);
         return "dashboard_carriers"; 
     }
     @GetMapping("/admin/dashboard/warehouses")
     public String showDashboardWarehouses(Model model){
         List<Warehouse> warehouses = warehouseDao.getAllWarehouses();
         model.addAttribute("warehouses", warehouses);
+        System.out.println(warehouses);
         return "dashboard_warehouses";
     }
     
@@ -126,6 +128,10 @@ public class adminContoller {
     @GetMapping("/admin/addProduct")
     public String addProduct(Model model){
         return "dashboard_addProduct"; 
+    }
+    @GetMapping("/admin/addCarrier")
+    public String addCarrier(Model model){
+        return "dashboard_addCarrier"; 
     }
     @GetMapping("/admin/addShipment")
     public String addShipment(Model model){

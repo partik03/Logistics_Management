@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Carrier</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="back"></div>
+    <div class="bg-image">
+    <div
+      class=""
+    >
+      <div class="container bg-light mt-5 p-5 mx-auto">
+          <h1 class="mx-auto my-0">Add a Carrier</h1>
+          <form>
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-2">
+              <div class="col">
+                <div class="form-outline">
+                  <input type="text" id="userId" class="form-control" />
+                  <label class="form-label" for="userId">User Id Of Driver</label>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-outline">
+                  <input type="text" id="name" class="form-control" />
+                  <label class="form-label" for="name">Carrier Name</label>
+                </div>
+              </div>
+            </div>
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-2">
+              <div class="col">
+                <div class="form-outline">
+                  <input type="number" id="number" class="form-control" />
+                  <label class="form-label" for="number">
+                    Carrier Number</label
+                  >
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-outline">
+                  <input
+                    type="number"
+                    id="capacity"
+                    class="form-control"
+                  />
+                  <label class="form-label" for="capacity"
+                    >Carrier Capacity
+                  </label>
+                </div>
+              </div>
+            </div>
+        
+           
+            
+            <!-- Submit button -->
+            <button type="submit" class="btn bg-orange text-white btn-block mb-1">
+                Submit
+            </button>
+          </form>
+        </div>
+      <!-- </div> -->
+    </div>
+  </body>
+  <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+  <script type="text/javascript" th:src="@{/js/my.js}"></script>
+</html>
