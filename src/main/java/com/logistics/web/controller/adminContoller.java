@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -127,7 +128,15 @@ public class adminContoller {
     }
     @GetMapping("/admin/addProduct")
     public String addProduct(Model model){
+        Product product = new Product();
+        model.addAttribute("product", product);
         return "dashboard_addProduct"; 
+    }
+    @GetMapping("/admin/updateProduct")
+    public String updateProduct(@PathVariable(value = "id") int id,Model model){
+        Product product = productDao.getProductById(id);
+        model.addAttribute("product", product);
+        return "dashboard_updateProduct"; 
     }
     @GetMapping("/admin/addCarrier")
     public String addCarrier(Model model){

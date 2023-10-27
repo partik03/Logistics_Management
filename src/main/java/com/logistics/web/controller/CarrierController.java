@@ -38,9 +38,10 @@ public class CarrierController {
     }
 
     @DeleteMapping("/carrier/{id}")
-    @ResponseBody
-    public int deleteCarrierById(@Valid @NotNull @PathVariable("id") int id){
-        return carrierService.handleDeleteCarrierById(id);
+    // @ResponseBody
+    public String deleteCarrierById(@Valid @NotNull @PathVariable("id") int id){
+        int res = carrierService.handleDeleteCarrierById(id);
+        return "redirect:/admin/dashboard/carriers";
     }
 
     @PutMapping("/carrier/{id}")
