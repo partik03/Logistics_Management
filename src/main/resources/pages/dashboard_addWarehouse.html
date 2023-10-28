@@ -17,18 +17,18 @@
       <div class="container bg-light mt-2 p-5 mx-auto">
         <!-- <div class="container mt-0 mx-auto p-5"> -->
           <h1 class="mx-auto my-0">Add Warehouse</h1>
-          <form>
+          <form th:action="@{/warehouse}" method="post" th:object="${warehouse}">
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-2">
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="state" class="form-control" />
+                  <input type="text" id="state" th:field="*{state}" class="form-control" />
                   <label class="form-label" for="state">State</label>
                 </div>
               </div>
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="city" class="form-control" />
+                  <input type="text" id="city" th:field="*{city}" class="form-control" />
                   <label class="form-label" for="city">City</label>
                 </div>
               </div>
@@ -37,7 +37,7 @@
             <div class="row mb-2">
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="street" class="form-control" />
+                  <input type="text" id="street" th:field="*{street}" class="form-control" />
                   <label class="form-label" for="street">
                     Street</label
                   >
@@ -48,6 +48,7 @@
                   <input
                     type="number"
                     id="pinCode"
+                    th:field="*{pinCode}"
                     class="form-control"
                   />
                   <label class="form-label" for="pinCode"
@@ -63,6 +64,7 @@
                   <input
                     type="number"
                     id="capacity"
+                    th:field="*{capacity}"
                     class="form-control"
                   />
                   <label class="form-label" for="capacity">

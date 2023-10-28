@@ -21,9 +21,9 @@ public class ShipmentController {
     }
 
     @PostMapping("/shipment")
-    @ResponseBody
-    public int addShipment(@Valid @NotNull @RequestBody Shipment shipment){
-        return shipmentService.handleAddShipment(shipment);
+    public String addShipment(@ModelAttribute Shipment shipment){
+        shipmentService.handleAddShipment(shipment);
+         return "redirect:/admin/dashboard/shipments";
     }
 
     @GetMapping("/shipment")
@@ -39,15 +39,17 @@ public class ShipmentController {
     }
 
     @DeleteMapping("/shipment/{id}")
-    @ResponseBody
-    public int deleteShipmentById(@Valid @NotNull @PathVariable("id") int id){
-        return shipmentService.handleDeleteShipmentById(id);
+    public String deleteShipmentById(@Valid @NotNull @PathVariable("id") int id){
+         shipmentService.handleDeleteShipmentById(id);
+         return "redirect:/admin/dashboard/shipments";
+
     }
 
     @PutMapping("/shipment/{id}")
-    @ResponseBody
-    public int updateShipmentById(@Valid @NotNull @PathVariable("id") int id, @Valid @NotNull @RequestBody Shipment shipment){
-        return shipmentService.handleUpdateShipmentById(id,shipment);
+    public String updateShipmentById(@Valid @NotNull @PathVariable("id") int id, @ModelAttribute Shipment shipment){
+        shipmentService.handleUpdateShipmentById(id,shipment);
+                 return "redirect:/admin/dashboard/shipments";
+
     }
 
     @GetMapping("/shipmentorder/{id}")

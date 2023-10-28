@@ -54,43 +54,37 @@
                     <td class="pt-3" th:text="${warehouse.street}"></td>
                     <td class="pt-3" th:text="${warehouse.city}"></td>
                     <td class="pt-3" th:text="${warehouse.state}"></td>
-                    <td class="pt-3">Edit</td>
-                    <td class="pt-3">Delete</td>
+                    
+                    <td class="pt-3">
+                      <form
+                        th:action="@{'/admin/updateWarehouse/' + ${warehouse.warehouseId}}"
+                        method="get"
+                      >
+                        
+                        <button type="" class="btn btn-danger">
+                          Update 
+                        </button>
+                      </form>
+                    </td>
+                    <td class="pt-3">
+                      <form
+                        th:action="@{'/warehouse/' + ${warehouse.warehouseId}}"
+                        method="post"
+                      >
+                        <input
+                          type="hidden"
+                          th:name="_method"
+                          th:value="delete"
+                        />
+                        <button type="" class="btn btn-danger">
+                          Delete 
+                        </button>
+                      </form>
+      
+                      
+                    </td>
                   </tr>
 
-                  <!-- <tr class="bg-blue my-5">
-                    <td class="pt-3">1</td>
-                    <td class="pt-3">5000</td>
-                    <td class="pt-3">346744</td>
-                    <td class="pt-3">BHU</td>
-                    <td class="pt-3">Vanarasi</td>
-                    <td class="pt-3">UP</td>
-                    
-                    <td class="pt-3">Edit</td>
-                    <td class="pt-3">Delete</td>
-                  </tr>
-                  <tr class="bg-blue my-5">
-                    <td class="pt-3">1</td>
-                    <td class="pt-3">5000</td>
-                    <td class="pt-3">346744</td>
-                    <td class="pt-3">BHU</td>
-                    <td class="pt-3">Vanarasi</td>
-                    <td class="pt-3">UP</td>
-                    
-                    <td class="pt-3">Edit</td>
-                    <td class="pt-3">Delete</td>
-                  </tr>
-                  <tr class="bg-blue my-5">
-                    <td class="pt-3">1</td>
-                    <td class="pt-3">5000</td>
-                    <td class="pt-3">346744</td>
-                    <td class="pt-3">BHU</td>
-                    <td class="pt-3">Vanarasi</td>
-                    <td class="pt-3">UP</td>
-                    
-                    <td class="pt-3">Edit</td>
-                    <td class="pt-3">Delete</td>
-                  </tr> -->
                  
                 </tbody>
               </table>

@@ -52,8 +52,34 @@
                     <td class="pt-3" th:text="${carrier.number}"></td>
                     <td class="pt-3" th:text="${carrier.capacity}"></td>
                     <td class="pt-3" th:text="${carrier.userId}"></td>
-                    <td class="pt-3">Edit</td>
-                    <td class="pt-3">Delete</td>
+                    <td class="pt-3">
+                      <form
+                        th:action="@{'/admin/updateCarrier/' + ${carrier.carrierId}}"
+                        method="get"
+                      >
+                        
+                        <button type="" class="btn btn-danger">
+                          Update 
+                        </button>
+                      </form>
+                    </td>
+                    <td class="pt-3">
+                      <form
+                        th:action="@{'/carrier/' + ${carrier.carrierId}}"
+                        method="post"
+                      >
+                        <input
+                          type="hidden"
+                          th:name="_method"
+                          th:value="delete"
+                        />
+                        <button type="" class="btn btn-danger">
+                          Delete 
+                        </button>
+                      </form>
+      
+                      </form>
+                    </td>
                   </tr>
 
                   <!-- <tr class="bg-blue my-5">

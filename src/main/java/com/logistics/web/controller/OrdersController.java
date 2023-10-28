@@ -16,57 +16,60 @@ public class OrdersController {
     public OrdersServiceImpl orderService;
 
     @Autowired
-    public OrdersController(OrdersServiceImpl orderService){
+    public OrdersController(OrdersServiceImpl orderService) {
         this.orderService = orderService;
     }
 
     @GetMapping("/order")
     @ResponseBody
-    public List<Orders> getAllOrder(){
+    public List<Orders> getAllOrder() {
         return orderService.handleListAllOrder();
     }
 
     @GetMapping("/order/{id}")
     @ResponseBody
-    public Orders getOrderById(@Valid @NotNull @PathVariable("id") int id){
+    public Orders getOrderById(@Valid @NotNull @PathVariable("id") int id) {
         return orderService.handleGetOrderById(id);
     }
 
     @GetMapping("/orderuser/{id}")
     @ResponseBody
-    public List<Orders> getOrderByUserId(@Valid @NotNull @PathVariable("id") int id){
+    public List<Orders> getOrderByUserId(@Valid @NotNull @PathVariable("id") int id) {
         return orderService.handleListAllOrderByUserId(id);
     }
 
     @GetMapping("/orderproduct/{id}")
     @ResponseBody
-    public List<Orders> getOrderByProductId(@Valid @NotNull @PathVariable("id") int id){
+    public List<Orders> getOrderByProductId(@Valid @NotNull @PathVariable("id") int id) {
         return orderService.handleListAllOrderByProductId(id);
     }
 
     @GetMapping("/orderdate")
     @ResponseBody
-    public List<Orders> getOrderByDate(@RequestParam(name = "low") Date low, @RequestParam(name = "high") Date high){
+    public List<Orders> getOrderByDate(@RequestParam(name = "low") Date low, @RequestParam(name = "high") Date high) {
         System.out.println(low);
         System.out.println(high);
-        return orderService.handleListAllOrderByDate(low,high);
+        return orderService.handleListAllOrderByDate(low, high);
     }
 
     @PostMapping("/order")
-    @ResponseBody
-    public int addOrder(@Valid @NotNull @RequestBody Orders orders){
-        return orderService.handleCreateNewOrder(orders);
+    public String addOrder(@ModelAttribute Orders orders) {
+        orderService.handleCreateNewOrder(orders);
+        return "redirect:/admin/dashboard/orders";
     }
 
     @DeleteMapping("/order/{id}")
-    @ResponseBody
-    public int deleteOrderById(@Valid @NotNull @PathVariable("id") int id){
-        return orderService.handleDeleteOrderId(id);
+    public String deleteOrderById(@Valid @NotNull @PathVariable("id") int id) {
+        orderService.handleDeleteOrderId(id);
+        return "redirect:/admin/dashboard/orders";
+
     }
 
     @PutMapping("/order/{id}")
-    @ResponseBody
-    public int updateOrderById(@Valid @NotNull @PathVariable("id") int id, @Valid @NotNull @RequestBody Orders orders){
-        return orderService.handleUpdateOrderById(orders,id);
+    public String updateOrderById(@Valid @NotNull @PathVariable("id") int id,
+            @ModelAttribute Orders orders) {
+        orderService.handleUpdateOrderById(orders, id);
+        return "redirect:/admin/dashboard/orders";
+
     }
 }

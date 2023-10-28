@@ -18,46 +18,54 @@ public class InvoiceController {
 
     @GetMapping("/invoice")
     @ResponseBody
-    public List<Invoice> getAllInvoices(){
+    public List<Invoice> getAllInvoices() {
         return invoiceService.handleGetAllInvoices();
     }
 
     @GetMapping("/invoice/{id}")
     @ResponseBody
-    public Invoice getInvoiceById(@Valid @NotNull @PathVariable("id") int id){
+    public Invoice getInvoiceById(@Valid @NotNull @PathVariable("id") int id) {
         return invoiceService.handleGetInvoiceById(id);
     }
+
     @GetMapping("/invoiceorder/{id}")
     @ResponseBody
-    public Invoice getInvoiceByOrderId(@Valid @NotNull @PathVariable("id") int id){
+    public Invoice getInvoiceByOrderId(@Valid @NotNull @PathVariable("id") int id) {
         return invoiceService.handleGetInvoiceByOrderId(id);
     }
+
     @GetMapping("/invoiceamount")
     @ResponseBody
-    public List<Invoice> getInvoiceByAmount(@RequestParam(name = "low") int low, @RequestParam(name = "high") int high){
-        return invoiceService.handleGetAllInvoicesByAmount(low,high);
+    public List<Invoice> getInvoiceByAmount(@RequestParam(name = "low") int low,
+            @RequestParam(name = "high") int high) {
+        return invoiceService.handleGetAllInvoicesByAmount(low, high);
     }
+
     @GetMapping("/invoicedate")
     @ResponseBody
-    public List<Invoice> getInvoiceByDate(@RequestParam(name = "low") Date low, @RequestParam(name = "high") Date high){
-        return invoiceService.handleGetAllInvoicesByDate(low,high);
+    public List<Invoice> getInvoiceByDate(@RequestParam(name = "low") Date low,
+            @RequestParam(name = "high") Date high) {
+        return invoiceService.handleGetAllInvoicesByDate(low, high);
     }
 
     @PostMapping("/invoice")
-    @ResponseBody
-    public int addInvoice(@Valid @NotNull @RequestBody Invoice invoice){
-        return invoiceService.handleAddInvoice(invoice);
+    public String addInvoice(@ModelAttribute Invoice invoice) {
+        invoiceService.handleAddInvoice(invoice);
+        return "redirect:/admin/dashboard/invoices";
+
     }
 
     @PutMapping("/invoice/{id}")
-    @ResponseBody
-    public int updateInvoiceById(@Valid @NotNull @RequestBody Invoice invoice, @Valid @NotNull @PathVariable("id") int id){
-        return invoiceService.handleUpdateInvoiceById(invoice,id);
+    public String updateInvoiceById(@ModelAttribute Invoice invoice, @Valid @NotNull @PathVariable("id") int id) {
+        invoiceService.handleUpdateInvoiceById(invoice, id);
+        return "redirect:/admin/dashboard/invoices";
+
     }
 
     @DeleteMapping("/invoice/{id}")
-    @ResponseBody
-    public int deleteInvoiceById(@Valid @NotNull @PathVariable("id") int id){
-        return invoiceService.handleDeleteInvoiceById(id);
+    public String deleteInvoiceById(@Valid @NotNull @PathVariable("id") int id) {
+        invoiceService.handleDeleteInvoiceById(id);
+        return "redirect:/admin/dashboard/invoices";
+
     }
 }

@@ -35,20 +35,23 @@ public class WarehouseController {
     }
 
     @PostMapping("/warehouse")
-    @ResponseBody
-    public int addWarehouse(@Valid @NotNull @RequestBody Warehouse warehouse){
-        return warehouseService.handleAddWarehouse(warehouse);
+    public String addWarehouse(@ModelAttribute Warehouse warehouse){
+        warehouseService.handleAddWarehouse(warehouse);
+        return "redirect:/admin/dashboard/warehouses";
+
     }
 
     @PutMapping("/warehouse/{id}")
-    @ResponseBody
-    public int updateWarehouseById(@Valid @NotNull @RequestBody Warehouse warehouse, @Valid @NotNull @PathVariable("id") int id){
-        return warehouseService.handleUpdateWarehouseById(id,warehouse);
+    public String updateWarehouseById(@ModelAttribute Warehouse warehouse, @Valid @NotNull @PathVariable("id") int id){
+        warehouseService.handleUpdateWarehouseById(id,warehouse);
+                return "redirect:/admin/dashboard/warehouses";
+
     }
 
     @DeleteMapping("/warehouse/{id}")
-    @ResponseBody
-    public int deleteWarehouseById(@Valid @NotNull @PathVariable("id") int id){
-        return warehouseService.handleDeleteWarehouseById(id);
+    public String deleteWarehouseById(@Valid @NotNull @PathVariable("id") int id){
+        warehouseService.handleDeleteWarehouseById(id);
+                return "redirect:/admin/dashboard/warehouses";
+
     }
 }

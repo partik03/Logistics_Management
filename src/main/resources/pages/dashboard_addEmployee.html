@@ -16,18 +16,18 @@
     >
       <div class="container bg-light mt-5 p-5 mx-auto">
           <h1 class="mx-auto my-0">Add a Employee</h1>
-          <form>
+          <form th:action="@{/employee}" method="post" th:object="${employee}">
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-2">
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="firstName" class="form-control" />
+                  <input type="text" id="firstName" th:field="*{firstName}" class="form-control" />
                   <label class="form-label" for="firstName">First Name</label>
                 </div>
               </div>
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="lastName" class="form-control" />
+                  <input type="text" id="lastName" th:field="*{lastName}" class="form-control" />
                   <label class="form-label" for="lastName">Last Name</label>
                 </div>
               </div>
@@ -36,7 +36,7 @@
             <div class="row mb-2">
               <div class="col">
                 <div class="form-outline">
-                  <input type="email" id="Email" class="form-control" />
+                  <input type="email" id="Email" th:field="*{username}" class="form-control" />
                   <label class="form-label" for="Email">
                      Email</label
                   >
@@ -47,6 +47,7 @@
                   <input
                     type="text"
                     id="contact"
+                    th:field="*{contact}"
                     class="form-control"
                   />
                   <label class="form-label" for="contact"
@@ -62,6 +63,7 @@
                   <input
                     type="date"
                     id="dateOfBirth"
+                    th:field="*{dateOfBirth}"
                     class="form-control"
                   />
                   <label class="form-label" for="dateOfBirth">
@@ -74,6 +76,7 @@
                   <input
                     type="text"
                     id="authority"
+                    th:field="*{authority}"
                     class="form-control"
                   />
                   <label class="form-label" for="authority">
@@ -86,6 +89,7 @@
                   <input
                     type="password"
                     id="password"
+                    th:field="*{password}"
                     class="form-control"
                   />
                   <label class="form-label" for="password"
@@ -96,7 +100,7 @@
             </div>
             <!-- Text input -->
             <div class="form-outline mb-2">
-              <input type="text" id="Address" class="form-control" />
+              <input type="text" id="Address" th:field="*{address}" class="form-control" />
               <label class="form-label" for="Address"
                 > Address</label
               >

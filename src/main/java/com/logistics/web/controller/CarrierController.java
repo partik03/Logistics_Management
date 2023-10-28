@@ -20,9 +20,9 @@ public class CarrierController {
     }
 
     @PostMapping("/carrier")
-    @ResponseBody
-    public int addCarrier(@Valid @NotNull @RequestBody Carrier carrier){
-        return carrierService.handleAddCarrier(carrier);
+    public String addCarrier(@ModelAttribute Carrier carrier){
+        carrierService.handleAddCarrier(carrier);
+        return "redirect:/admin/dashboard/carriers";
     }
 
     @GetMapping("/carrier")
@@ -38,15 +38,14 @@ public class CarrierController {
     }
 
     @DeleteMapping("/carrier/{id}")
-    // @ResponseBody
     public String deleteCarrierById(@Valid @NotNull @PathVariable("id") int id){
-        int res = carrierService.handleDeleteCarrierById(id);
+        carrierService.handleDeleteCarrierById(id);
         return "redirect:/admin/dashboard/carriers";
     }
 
     @PutMapping("/carrier/{id}")
-    @ResponseBody
-    public int updateCarrierById(@Valid @NotNull @PathVariable("id") int id, @Valid @NotNull @RequestBody Carrier carrier){
-        return carrierService.handleUpdateCarrierById(carrier,id);
+    public String updateCarrierById(@Valid @NotNull @PathVariable("id") int id, @ModelAttribute Carrier carrier){
+        carrierService.handleUpdateCarrierById(carrier,id);
+        return "redirect:/admin/dashboard/carriers";
     }
 }

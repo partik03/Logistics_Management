@@ -17,18 +17,18 @@
       <div class="container bg-light mt-2 p-5 mx-auto">
         <!-- <div class="container mt-0 mx-auto p-5"> -->
           <h1 class="mx-auto my-0">Add Shipment</h1>
-          <form>
+          <form th:action="@{/shipment}" method="post" th:object="${shipment}">
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-2">
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="orderId" class="form-control" />
+                  <input type="text" id="orderId" th:field="*{orderId}" class="form-control" />
                   <label class="form-label" for="orderId">Order Id</label>
                 </div>
               </div>
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="carrierId" class="form-control" />
+                  <input type="text" id="carrierId" th:field="*{carrierId}" class="form-control" />
                   <label class="form-label" for="carrierId">Carrier Id</label>
                 </div>
               </div>
@@ -37,7 +37,7 @@
             <div class="row mb-2">
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="warehouseId" class="form-control" />
+                  <input type="text" id="warehouseId" th:field="*{warehouseId}" class="form-control" />
                   <label class="form-label" for="warehouseId">
                     Warehouse Id</label
                   >
@@ -48,6 +48,7 @@
                   <input
                     type="text"
                     id="status"
+                    th:field="*{status}"
                     class="form-control"
                   />
                   <label class="form-label" for="status"
@@ -63,6 +64,7 @@
                   <input
                     type="date"
                     id="shipmentDate"
+                    th:field="*{shipmentDate}"
                     class="form-control"
                   />
                   <label class="form-label" for="shipmentDate">
@@ -72,7 +74,7 @@
               </div>
               <div class="col">
                 <div class="form-outline">
-                  <input type="date" id="estimatedDeliveryDate" class="form-control" />
+                  <input type="date" id="estimatedDeliveryDate" th:field="*{estimatedDeliveryDate}" class="form-control" />
               <label class="form-label" for="estimatedDeliveryDate"
                 >Estimated Delivery Date</label
               >

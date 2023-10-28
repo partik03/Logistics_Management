@@ -16,9 +16,13 @@
     >
       <div class="container bg-light mt-2 p-5 mx-auto">
         <!-- <div class="container mt-0 mx-auto p-5"> -->
-          <h1 class="mx-auto my-0">Add Product</h1>
-          <form th:action="@{/product}" th:object="${product}" method="post" >
-            
+          <h1 class="mx-auto my-0">Update Product</h1>
+          <form  th:action="@{'/product/' + ${product.productId}}" th:object="${product}" method="post" >
+            <input
+                          type="hidden"
+                          th:name="_method"
+                          th:value="put"
+                        />
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-2">
               <div class="col">
@@ -68,16 +72,17 @@
                 </div>
               </div>
               <div class="col">
-                <div class="form-outline">
+                <!-- <div class="form-outline">
                   <input type="file" class="form-control" id="ProductsPhoto" />
                   <label class="form-label" for="ProductsPhoto"
                     >Upload Product's Photo</label
                   >
-                </div>
+                </div> -->
               </div>
             </div>
 
             <!-- Message input -->
+            
             <div class="form-outline mb-2">
               <textarea
                 class="form-control"
@@ -92,7 +97,7 @@
 
             <!-- Submit button -->
             <button type="submit" class="btn bg-orange text-white btn-block mb-1">
-              Add Product
+              Update Product
             </button>
           </form>
         </div>

@@ -65,40 +65,37 @@
                     <td class="pt-3" th:text="${order.sendersPhone}"></td>
                     <td class="pt-3" th:text="${order.recieversPhone}"></td>
           
-                    <td class="pt-3">Edit</td>
-                    <td class="pt-3">Delete</td>
+                    <td class="pt-3">
+                      <form
+                        th:action="@{'/admin/updateOrder/' + ${order.orderId}}"
+                        method="get"
+                      >
+                        
+                        <button type="" class="btn btn-danger">
+                          Update 
+                        </button>
+                      </form>
+                    </td>
+                    <td class="pt-3">
+                      <form
+                        th:action="@{'/order/' + ${order.orderId}}"
+                        method="post"
+                      >
+                        <input
+                          type="hidden"
+                          th:name="_method"
+                          th:value="delete"
+                        />
+                        <button type="" class="btn btn-danger">
+                          Delete 
+                        </button>
+                      </form>
+      
+                      </form>
+                    </td>
                   </tr>
 
-                  <!-- <tr class="bg-blue my-5">
-                    <td class="pt-3">1</td>
-                    <td class="pt-3">2</td>
-                    <td class="pt-3">dummy@3.com</td>
-                    <td class="pt-3">10/10/2003</td>
-                    <td class="pt-3">324</td>
-
-                    <td class="pt-3">Edit</td>
-                    <td class="pt-3">Delete</td>
-                  </tr>
-                  <tr class="bg-blue my-5">
-                    <td class="pt-3">1</td>
-                    <td class="pt-3">2</td>
-                    <td class="pt-3">dummy@3.com</td>
-                    <td class="pt-3">10/10/2003</td>
-                    <td class="pt-3">324</td>
-
-                    <td class="pt-3">Edit</td>
-                    <td class="pt-3">Delete</td>
-                  </tr>
-                  <tr class="bg-blue my-5">
-                    <td class="pt-3">1</td>
-                    <td class="pt-3">2</td>
-                    <td class="pt-3">dummy@3.com</td>
-                    <td class="pt-3">10/10/2003</td>
-                    <td class="pt-3">324</td>
-
-                    <td class="pt-3">Edit</td>
-                    <td class="pt-3">Delete</td>
-                  </tr> -->
+                 
                 </tbody>
               </table>
             </div>

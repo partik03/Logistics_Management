@@ -15,8 +15,13 @@
       class=""
     >
       <div class="container bg-light mt-5 p-5 mx-auto">
-          <h1 class="mx-auto my-0">Add a Customer</h1>
-          <form th:action="@{/customer}" method="post" th:object="${customer}">
+          <h1 class="mx-auto my-0">UPdate Customer</h1>
+          <form th:action="@{'/customer/' + ${customer.userId}}" method="post" th:object="${customer}">
+            <input
+                          type="hidden"
+                          th:name="_method"
+                          th:value="put"
+                        />
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-2">
               <div class="col">

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add Customer</title>
+    <title>Add Shipment</title>
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
     <link th:href="@{/css/style.css}" rel="stylesheet" />
   </head>
@@ -14,21 +14,27 @@
     <div
       class=""
     >
-      <div class="container bg-light mt-5 p-5 mx-auto">
-          <h1 class="mx-auto my-0">Add a Customer</h1>
-          <form th:action="@{/customer}" method="post" th:object="${customer}">
+      <div class="container bg-light mt-2 p-5 mx-auto">
+        <!-- <div class="container mt-0 mx-auto p-5"> -->
+          <h1 class="mx-auto my-0">Add Shipment</h1>
+          <form th:action="@{'/shipment/' + ${shipment.shipmentId}}" method="post" th:object="${shipment}">
+            <input
+                          type="hidden"
+                          th:name="_method"
+                          th:value="put"
+                        />
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-2">
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="firstName" th:field="*{firstName}" class="form-control" />
-                  <label class="form-label" for="firstName">First Name</label>
+                  <input type="text" id="orderId" th:field="*{orderId}" class="form-control" />
+                  <label class="form-label" for="orderId">Order Id</label>
                 </div>
               </div>
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="lastName" th:field="*{lastName}" class="form-control" />
-                  <label class="form-label" for="lastName">Last Name</label>
+                  <input type="text" id="carrierId" th:field="*{carrierId}" class="form-control" />
+                  <label class="form-label" for="carrierId">Carrier Id</label>
                 </div>
               </div>
             </div>
@@ -36,9 +42,9 @@
             <div class="row mb-2">
               <div class="col">
                 <div class="form-outline">
-                  <input type="email" id="Email" th:field="*{username}" class="form-control" />
-                  <label class="form-label" for="Email">
-                     Email</label
+                  <input type="text" id="warehouseId" th:field="*{warehouseId}" class="form-control" />
+                  <label class="form-label" for="warehouseId">
+                    Warehouse Id</label
                   >
                 </div>
               </div>
@@ -46,12 +52,12 @@
                 <div class="form-outline">
                   <input
                     type="text"
-                    id="contact"
-                    th:field="*{contact}"
+                    id="status"
+                    th:field="*{status}"
                     class="form-control"
                   />
-                  <label class="form-label" for="contact"
-                    >Contact Number
+                  <label class="form-label" for="status"
+                    >Status(Preparing, Dispatched, Delivered)
                   </label>
                 </div>
               </div>
@@ -62,40 +68,31 @@
                 <div class="form-outline">
                   <input
                     type="date"
-                    id="dateOfBirth"
-                    th:field="*{dateOfBirth}"
+                    id="shipmentDate"
+                    th:field="*{shipmentDate}"
                     class="form-control"
                   />
-                  <label class="form-label" for="dateOfBirth">
-                    Date Of Birth</label
+                  <label class="form-label" for="shipmentDate">
+                    Shipment Date</label
                   >
                 </div>
               </div>
               <div class="col">
                 <div class="form-outline">
-                  <input
-                    type="password"
-                    id="password"
-                    th:field="*{password}"
-                    class="form-control"
-                  />
-                  <label class="form-label" for="password"
-                    >Create Password
-                  </label>
+                  <input type="date" id="estimatedDeliveryDate" th:field="*{estimatedDeliveryDate}" class="form-control" />
+              <label class="form-label" for="estimatedDeliveryDate"
+                >Estimated Delivery Date</label
+              >
                 </div>
               </div>
             </div>
-            <!-- Text input -->
-            <div class="form-outline mb-2">
-              <input type="text" id="Address" th:field="*{address}" class="form-control" />
-              <label class="form-label" for="Address"
-                > Address</label
-              >
-            </div>
             
+
+            
+
             <!-- Submit button -->
             <button type="submit" class="btn bg-orange text-white btn-block mb-1">
-                Submit
+              Update shipment
             </button>
           </form>
         </div>
