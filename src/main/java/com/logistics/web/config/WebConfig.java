@@ -33,7 +33,7 @@ public class WebConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((requests) -> {
-                            requests.requestMatchers("/resources/**","/static/**","/css/**", "/js/**","/images/**","/icons/**", "/webjars/**", "/assests/**","/index.html", "/", "/logout","/logIn","/signUp").permitAll();
+                            requests.requestMatchers("/resources/**","/static/**","/css/**", "/js/**","/images/**","/icons/**", "/webjars/**", "/assests/**","/index.html", "/index", "/", "/logout","/logIn","/signUp").permitAll();
                             requests.requestMatchers("/error").permitAll();
                             requests.requestMatchers("/customer/**","/invoice/**","/complaint/**","/admin/**").hasAnyAuthority("SA","A");
                             requests.requestMatchers("/employee/**").hasAuthority("SA");

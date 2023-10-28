@@ -99,7 +99,7 @@ INSERT INTO Carrier values(1,"BlankCarrier","0000",9999,1);
 INSERT INTO Warehouse values(1,"blank","blank","blank","000000",9999,1);
 
 
-select * from User;	
-select * from Product;
-select username, password from User where username="hitanshumusicz@gmail.com";
-update user set authority="A" where userId=1;
+-- select * from User;	
+-- select * from Product;
+-- select username, password from User where username="hitanshumusicz@gmail.com";
+-- update user set authority="A" where userId=1;
