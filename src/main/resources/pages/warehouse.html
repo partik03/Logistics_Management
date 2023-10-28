@@ -14,80 +14,36 @@
       
 
       <div class="container rounded mt-5 bg-white p-md-5">
-        <div class="h2 font-weight-bold">Products In Warehouse</div>
+        <div class="h2 font-weight-bold">Shipments In Warehouse</div>
         <div class="table-responsive">
           <table class="table">
             <thead>
               <tr>
+                <th scope="col">Shipment Id</th>
                 <th scope="col">Order Id</th>
-                <th scope="col">User Id</th>
-                <th scope="col">Product Id</th>
-                <th scope="col">Product Name</th>
-                <th scope="col">Image</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
-               
+                <th scope="col">Shipment Date</th>
+                <th scope="col">Estimated Delivery Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Dispatch</th>               
               </tr>
             </thead>
             <tbody>
-              <tr class="my-3" th:each="product : ${products}">
-                  <td class="pt-3" th:text="${product.orderId}"></td>
-                  <td class="pt-3" th:text="${product.userId}"></td>
-                  <td class="pt-3" th:text="${product.productId}"></td>
-                  <td class="pt-3" th:text="${product.productName}"></td>
-                  <td class="pt-2">
-                    <img src="#" alt="Product-image" class="rounded-circle" />
+              <tr class="my-3 bg-blue" th:each="shipment : ${shipments}">
+                  <td class="pt-3" th:text="${shipment.shipmentId}"></td>
+                  <td class="pt-3" th:text="${shipment.orderId}"></td>
+                  <td class="pt-3" th:text="${shipment.shipmentDate}"></td>
+                  <td class="pt-3" th:text="${shipment.estimatedDeliveryDate}"></td>
+                  <td class="pt-3" th:text="${shipment.status}"></td>
+                  
+                  <td class="pt-3">
+                    <button class="btn bg-orange text-white">
+                  <a th:href="@{'/wm/dispatchShipment/' + ${shipment.shipmentId}}" class="text-white">Dispatch</a>
+                </button>
                   </td>
-                  <td class="pt-3">Edit</td>
-                  <td class="pt-3">Delete</td>
 
               </tr>
 
-              <tr class="bg-blue my-5">
-                  <td class="pt-3">1</td>
-                  <td class="pt-3">2</td>
-                  <td class="pt-3">3</td>
-                  <td class="pt-3">name</td>
-                  <td class="pt-3">
-                    <img
-                      src="https://images.pexels.com/photos/3765114/pexels-photo-3765114.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                      class="rounded-circle"
-                      alt=""
-                    />
-                  </td>
-                 <td class="pt-3">Edit</td>
-                  <td class="pt-3">Delete</td>
-              </tr>
-              <tr class="bg-blue my-5">
-                  <td class="pt-3">1</td>
-                  <td class="pt-3">2</td>
-                  <td class="pt-3">3</td>
-                  <td class="pt-3">name</td>
-                  <td class="pt-3">
-                    <img
-                      src="https://images.pexels.com/photos/3765114/pexels-photo-3765114.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                      class="rounded-circle"
-                      alt=""
-                    />
-                  </td>
-                 <td class="pt-3">Edit</td>
-                  <td class="pt-3">Delete</td>
-              </tr>
-              <tr class="bg-blue my-5">
-                  <td class="pt-3">1</td>
-                  <td class="pt-3">2</td>
-                  <td class="pt-3">3</td>
-                  <td class="pt-3">name</td>
-                  <td class="pt-3">
-                    <img
-                      src="https://images.pexels.com/photos/3765114/pexels-photo-3765114.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                      class="rounded-circle"
-                      alt=""
-                    />
-                  </td>
-                 <td class="pt-3">Edit</td>
-                  <td class="pt-3">Delete</td>
-              </tr>
+              
              
             </tbody>
           </table>

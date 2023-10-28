@@ -92,6 +92,14 @@ public class adminContoller {
 
     public String showDashboardShipments(Model model){
         List<Shipment> shipments = shipmentDao.getAllShipments();
+        shipments.forEach(shipment -> {
+            if (shipment.getCarrierId() == 1) {
+                shipment.setCarrierId(0);
+            }
+            if(shipment.getWarehouseId() == 1){
+                shipment.setWarehouseId(0);
+            }
+        });
         model.addAttribute("shipments", shipments);
         return "dashboard_shipments"; 
     }

@@ -37,6 +37,7 @@
                 <thead>
                   <tr>
                     <th scope="col">Warehouse ID</th>
+                    <th scope="col">Warehouse Manager ID</th>
                     <th scope="col">Capacity</th>
                     <th scope="col">Pin Code</th>
                     <th scope="col">Street</th>
@@ -49,6 +50,7 @@
                 <tbody>
                   <tr class="my-3 bg-blue" th:each="warehouse : ${warehouses}">
                     <td class="pt-3" th:text="${warehouse.warehouseId}"></td>
+                    <td class="pt-3" th:text="${warehouse.userId}"></td>
                     <td class="pt-3" th:text="${warehouse.capacity}"></td>
                     <td class="pt-3" th:text="${warehouse.pinCode}"></td>
                     <td class="pt-3" th:text="${warehouse.street}"></td>

@@ -22,7 +22,9 @@ CREATE TABLE IF NOT EXISTS Warehouse(
                                         city VARCHAR(50),
                                         state VARCHAR(50),
                                         pinCode CHAR(6) NOT NULL,
-                                        capacity INT NOT NULL
+                                        capacity INT NOT NULL,
+                                        userId INT,
+                                        CONSTRAINT FK_WM_EMP FOREIGN KEY(userId) REFERENCES User(userId)
 );
 
 CREATE TABLE IF NOT EXISTS Product(
@@ -92,6 +94,9 @@ CREATE TABLE IF NOT EXISTS Complaint(
                                         CONSTRAINT FK_USERINCOMPLAINT FOREIGN KEY(userId) REFERENCES User(userId),
                                         CONSTRAINT FK_ORDERINCOMPLAINT FOREIGN KEY(orderId) REFERENCES Orders(orderId)
 );
+INSERT INTO User values(1,"user@gmail.com","user","user","user","0000000000",20,1,"user","2003-10-10","SA");
+INSERT INTO Carrier values(1,"BlankCarrier","0000",9999,1);
+INSERT INTO Warehouse values(1,"blank","blank","blank","000000",9999,1);
 
 
 select * from User;	

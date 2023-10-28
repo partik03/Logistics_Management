@@ -87,15 +87,6 @@ public class loginController {
     public void logout(){
         // System.out.println("THANKYOU for LOGGING IN");
     }
-    
-    @GetMapping("/showWarehouse")
-    public String warehouse(){
-        return "warehouse";
-    }
-    @GetMapping("/showCarrier")
-    public String carrier(){
-        return "carrier";
-    }
 
 
 

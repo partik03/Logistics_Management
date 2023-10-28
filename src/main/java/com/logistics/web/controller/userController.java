@@ -8,7 +8,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.logistics.web.dao.AuthenticationDao;
 import com.logistics.web.dao.CarrierDao;
@@ -22,6 +24,7 @@ import com.logistics.web.models.Complaint;
 import com.logistics.web.models.Invoice;
 import com.logistics.web.models.Orders;
 import com.logistics.web.models.Product;
+import com.logistics.web.models.Shipment;
 import com.logistics.web.services.impl.AuthenticationServiceImpl;
 
 import jakarta.validation.Valid;
@@ -125,7 +128,59 @@ public class userController {
     }
 
 
+    @GetMapping("/wm/showWarehouse")
+    public String warehouse(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+        int userId = authenticationService.handleGetUserIdByUsername(name);
 
+        int warehouseId = warehouseDao.getWarehouseByUserId(userId);
+
+        List<Shipment> shipments = shipmentDao.getAllShipmentsByWarehouseId(warehouseId);
+        model.addAttribute("shipments", shipments);
+        return "warehouse";
+    }
+
+    @GetMapping("/wm/dispatchShipment/{id}")
+    public String dispatchShipment(@PathVariable("id") int id ,Model model){
+        Shipment shipment = shipmentDao.getShipmentById(id);
+        model.addAttribute("shipment", shipment);
+        return "wm_dispatchShipment";
+    }
+    
+    @PutMapping("/wm/dispatchShipment/{id}")
+    public String updateDispatchShipment(@PathVariable("id") int id ,@ModelAttribute Shipment shipment){
+        shipment.setWarehouseId(1);
+        shipmentDao.updateShipmentById(shipment, id);
+        return "redirect:/wm/showWarehouse";
+    }
+
+    @GetMapping("/dm/showCarrier")
+    public String carrier(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+        int userId = authenticationService.handleGetUserIdByUsername(name);
+
+        int carrierId = carrierDao.getCarrierIdByUserId(userId);
+
+        List<Shipment> shipments = shipmentDao.getAllShipmentsByCarrierId(carrierId);
+        model.addAttribute("shipments", shipments);
+        return "carrier";
+    }
+
+    @GetMapping("/dm/dispatchShipment/{id}")
+    public String shipmentInWarehouse(@PathVariable("id") int id ,Model model){
+        Shipment shipment = shipmentDao.getShipmentById(id);
+        model.addAttribute("shipment", shipment);
+        return "dm_updateShipment";
+    }
+    
+    @PutMapping("/dm/dispatchShipment/{id}")
+    public String shipmentInWarehouse(@PathVariable("id") int id ,@ModelAttribute Shipment shipment){
+        shipment.setCarrierId(1);
+        shipmentDao.updateShipmentById(shipment, id);
+        return "redirect:/dm/showCarrier";
+    }
 
     
     
