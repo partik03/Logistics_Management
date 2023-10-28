@@ -43,6 +43,11 @@ public class CarrierDao {
         Carrier carrier = jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<>(Carrier.class),id);
         return carrier;
     }
+    public int getCarrierIdByUserId(int id){
+        String sql = "SELECT * FROM Carrier WHERE userId = ?";
+        Carrier carrier = jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<>(Carrier.class),id);
+        return carrier.getCarrierId();
+    }
 
     public List<Carrier> getAllCarriers(){
         String sql = "SELECT * FROM Carrier";

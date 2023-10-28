@@ -22,7 +22,7 @@ public class WarehouseDao {
     }
 
     public int addWarehouse(Warehouse warehouse){
-        String sql = "INSERT INTO Warehouse(capacity,pinCode,street,city,state) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO Warehouse(capacity,pinCode,street,city,state,userId) VALUES(?,?,?,?,?,?)";
         KeyHolder keyholder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -31,11 +31,18 @@ public class WarehouseDao {
             ps.setString(3, warehouse.getStreet());
             ps.setString(4,warehouse.getCity());
             ps.setString(5,warehouse.getState());
+            ps.setInt(6,warehouse.getUserId());
             
             return ps;
         }, keyholder);
 
         return Objects.requireNonNull(keyholder.getKey()).intValue();
+    }
+
+    public int getWarehouseByUserId(int id){
+        String sql = "SELECT * FROM Warehouse WHERE userId = ?";
+        Warehouse warehouse= jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Warehouse.class), id);
+        return warehouse.getWarehouseId();
     }
 
     public Warehouse getWarehouseById(int id){
@@ -55,7 +62,7 @@ public class WarehouseDao {
     }
 
     public int updateWarehouseById(Warehouse warehouse, int id){
-        String sql = "UPDATE Warehouse SET capacity=?, pinCode=?, street=?, city=?, state=? WHERE warehouseId = ?";
-        return jdbcTemplate.update(sql,warehouse.getCapacity(),warehouse.getPinCode(),warehouse.getStreet(),warehouse.getCity(),warehouse.getState(),id);
+        String sql = "UPDATE Warehouse SET capacity=?, pinCode=?, street=?, city=?, state=?, userId=? WHERE warehouseId = ?";
+        return jdbcTemplate.update(sql,warehouse.getCapacity(),warehouse.getPinCode(),warehouse.getStreet(),warehouse.getCity(),warehouse.getState(),warehouse.getUserId(),id);
     }
 }

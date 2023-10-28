@@ -32,4 +32,7 @@ public  class Warehouse {
     @Getter
     @Size(min=0, max=50)
     private String state;
+
+    @Getter
+    private int userId;
 }

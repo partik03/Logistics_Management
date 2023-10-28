@@ -31,11 +31,20 @@ public class ShipmentDao {
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setDate(1, Date.valueOf(LocalDate.now()));
-            ps.setString(2, "Preparing");  // status is a enum
+            ps.setString(2, shipment.getStatus().toString());  // status is a enum
             ps.setDate(3, Date.valueOf(LocalDate.now().plusDays(random.nextInt(10)+1)));
             ps.setInt(4,shipment.getOrderId());
-            ps.setInt(5,shipment.getWarehouseId());
-            ps.setInt(6,shipment.getCarrierId());
+            if(shipment.getWarehouseId() != 0){
+                ps.setInt(5,shipment.getWarehouseId());
+            }else{
+                ps.setNull(5, 0);
+            }
+            if(shipment.getCarrierId() != 0){
+                ps.setInt(6,shipment.getCarrierId());
+            }else{
+                ps.setNull(6, 0);
+            }
+            
             return ps;
         }, keyholder);
 
