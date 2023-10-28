@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.logistics.web.dao.UserDao;
 import com.logistics.web.models.User;
 import com.logistics.web.services.AuthenticationService;
-import com.logistics.web.services.UserService;
 
 
 @Controller
@@ -30,6 +28,10 @@ public class loginController {
     
     @GetMapping("/")
     public String home(){
+        return "index";
+    }
+    @GetMapping("/index")
+    public String homeIndex(){
         return "index";
     }
     @GetMapping("/login")
@@ -64,6 +66,13 @@ public class loginController {
     }
     @GetMapping("/signUp")
     public String signUp(Model model){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+        System.out.println(name);
+        
+        if(name!="anonymousUser"){
+            return "redirect:/user/orders";
+        }
         User user=new User();
         model.addAttribute("user", user);
         return "signUp";

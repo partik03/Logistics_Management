@@ -35,8 +35,8 @@ public class OrdersDao {
             ps.setString(3, order.getRecieversName());
             ps.setString(4, order.getSendersEmail());
             ps.setString(5, order.getRecieversEmail());
-            ps.setInt(6, order.getSendersPhone());
-            ps.setInt(7, order.getRecieversPhone());
+            ps.setString(6, order.getSendersPhone());
+            ps.setString(7, order.getRecieversPhone());
             ps.setString(8, order.getSendersAddress());
             ps.setString(9, order.getRecieversAddress());
             ps.setInt(10, order.getProductId());

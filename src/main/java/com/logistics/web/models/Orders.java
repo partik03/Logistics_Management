@@ -26,10 +26,10 @@ public class Orders {
     private String recieversEmail;
     
     @Getter
-    private int sendersPhone;
+    private String sendersPhone;
 
     @Getter
-    private int recieversPhone;
+    private String recieversPhone;
     
     @Getter
     private String sendersAddress;
