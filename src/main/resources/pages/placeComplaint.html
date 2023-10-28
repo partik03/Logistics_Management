@@ -16,39 +16,53 @@
       class=""
     >
       <div class="container bg-light mt-5 p-5 mx-auto">
-        <!-- <div class="container mt-0 mx-auto p-5"> -->
-          <h1 class="mx-auto my-0">Place Complaint</h1>
-          <form>
+          <h1 class="mx-auto my-0">Add a Complaint</h1>
+          <form th:action="@{/user/complaint/}" method="post" th:object="${complaint}">
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-2">
+              
+              <div class="col">
+                <div class="form-outline">
+                  <input type="text" id="orderId" th:field="*{orderId}" class="form-control" />
+                  <label class="form-label" for="orderId">Order Id</label>
+                </div>
+              </div>
+            </div>
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-2">
+              <div class="col">
+                <div class="form-outline">
+                  <input type="email" id="email" th:field="*{email}" class="form-control" />
+                  <label class="form-label" for="email">
+                    Contact Email</label
+                  >
+                </div>
+              </div>
+              <!-- <div class="col">
+                <div class="form-outline">
+                  <input
+                    type="text"
+                    id="contact"
+                    class="form-control"
+                  />
+                  <label class="form-label" for="contact"
+                    >Contact Number
+                  </label>
+                </div>
+              </div> -->
+            </div>
+        
             <!-- Text input -->
             <div class="form-outline mb-2">
-              <input type="text" id="email" class="form-control" />
-              <label class="form-label" for="email"
-                >Contact Email</label
-              >
-            </div>
-            <!-- Text input -->
-            <div class="form-outline mb-2">
-              <input type="text" id="orderId" class="form-control" />
-              <label class="form-label" for="orderId"
-                >Order Id</label
-              >
-            </div>
-
-            <!-- Message input -->
-            <div class="form-outline mb-2">
-              <textarea
-                class="form-control"
-                id="description"
-                rows="4"
-              ></textarea>
+              <input type="text" id="description" th:field="*{description}" class="form-control" />
               <label class="form-label" for="description"
-                >Information About Complaint</label
+                > Description</label
               >
             </div>
-
+            
             <!-- Submit button -->
             <button type="submit" class="btn bg-orange text-white btn-block mb-1">
-              Place Complaint
+                Submit
             </button>
           </form>
         </div>

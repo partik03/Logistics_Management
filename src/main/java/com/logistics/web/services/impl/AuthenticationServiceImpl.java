@@ -40,6 +40,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public User handleGetUserByUsername(String username) {
         return authenticationDao.getUserByUsername(username);
     }
+    @Override
+    public int handleGetUserIdByUsername(String username) {
+        return authenticationDao.getUserIdByUsername(username);
+    }
 
     @Override
     public List<User> handleGetAllCustomers() {
