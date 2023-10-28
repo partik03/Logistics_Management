@@ -56,7 +56,17 @@
                     <td class="pt-3" th:text="${product.productName}"></td>
                     <td class="pt-3" th:text="${product.weight}"></td>
                     <td class="pt-3" th:text="${product.description}"></td>
-                    <td class="pt-3">Edit</td>
+                    <td class="pt-3">
+                      <form
+                        th:action="@{'/admin/updateProduct/' + ${product.productId}}"
+                        method="get"
+                      >
+                        
+                        <button type="" class="btn btn-danger">
+                          Update 
+                        </button>
+                      </form>
+                    </td>
                     <td class="pt-3">
                       <form
                         th:action="@{'/product/' + ${product.productId}}"
@@ -68,47 +78,15 @@
                           th:value="delete"
                         />
                         <button type="" class="btn btn-danger">
-                          Delete Product
+                          Delete 
                         </button>
                       </form>
       
-                      </form>
+                      
                     </td>
                   </tr>
 
-                  <!-- <tr class="bg-blue my-5">
-                    <td class="pt-3">1</td>
-                    <td class="pt-3">2</td>
-                    <td class="pt-3">dummy</td>
-                    <td class="pt-3">324</td>
-                    <td class="pt-3">
-                      Lorem, ipsum dolor Lorem ipsum dolor sit amet.
-                    </td>
-                    <td class="pt-3">Edit</td>
-                    <td class="pt-3">Delete</td>
-                  </tr>
-                  <tr class="bg-blue my-5">
-                    <td class="pt-3">1</td>
-                    <td class="pt-3">2</td>
-                    <td class="pt-3">dummy</td>
-                    <td class="pt-3">324</td>
-                    <td class="pt-3">
-                      Lorem, ipsum dolor Lorem ipsum dolor sit amet.
-                    </td>
-                    <td class="pt-3">Edit</td>
-                    <td class="pt-3">Delete</td>
-                  </tr>
-                  <tr class="bg-blue my-5">
-                    <td class="pt-3">1</td>
-                    <td class="pt-3">2</td>
-                    <td class="pt-3">dummy</td>
-                    <td class="pt-3">324</td>
-                    <td class="pt-3">
-                      Lorem, ipsum dolor Lorem ipsum dolor sit amet.
-                    </td>
-                    <td class="pt-3">Edit</td>
-                    <td class="pt-3">Delete</td>
-                  </tr> -->
+                  
                 </tbody>
               </table>
             </div>

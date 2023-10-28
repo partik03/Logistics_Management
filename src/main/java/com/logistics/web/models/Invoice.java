@@ -17,7 +17,6 @@ public class Invoice {
     private int invoiceId;
 
     @Getter
-     
     private int amount;
 
      

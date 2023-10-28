@@ -3,7 +3,6 @@ package com.logistics.web.controller;
 import com.logistics.web.models.Product;
 import com.logistics.web.services.impl.ProductServiceImpl;
 
-import ch.qos.logback.core.model.Model;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +47,6 @@ public class ProductController {
     public String addProduct(@ModelAttribute Product product, Model model){
         int a= productService.handleAddProduct(product);
         System.out.println(product);
-        // return "redirect:/product";
         return "redirect:/admin/dashboard/products";
     }
 
@@ -68,8 +66,9 @@ public class ProductController {
     }
 
     @PutMapping("/product/{id}")
-    @ResponseBody
-    public int updateProductById(@Valid @NotNull @PathVariable("id") int id, @Valid @NotNull @RequestBody Product product){
-        return productService.handleUpdateProductById(id,product);
+    public String updateProductById(@Valid @NotNull @PathVariable("id") int id, @ModelAttribute Product product,Model model){
+        // System.out.println("here hersersareas");
+        productService.handleUpdateProductById(id,product);
+        return "redirect:/admin/dashboard/products";
     }
 }

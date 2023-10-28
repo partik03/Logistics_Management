@@ -16,18 +16,18 @@
     >
       <div class="container bg-light mt-5 p-5 mx-auto">
           <h1 class="mx-auto my-0">Add a Carrier</h1>
-          <form>
+          <form th:action="@{/carrier}" method="post" th:object="${carrier}">
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-2">
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="userId" class="form-control" />
+                  <input type="text" id="userId" class="form-control" th:field="*{userId}" />
                   <label class="form-label" for="userId">User Id Of Driver</label>
                 </div>
               </div>
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="name" class="form-control" />
+                  <input type="text" id="name" class="form-control" th:field="*{name}"/>
                   <label class="form-label" for="name">Carrier Name</label>
                 </div>
               </div>
@@ -36,7 +36,7 @@
             <div class="row mb-2">
               <div class="col">
                 <div class="form-outline">
-                  <input type="number" id="number" class="form-control" />
+                  <input type="number" id="number" class="form-control" th:field="*{number}" />
                   <label class="form-label" for="number">
                     Carrier Number</label
                   >
@@ -47,6 +47,7 @@
                   <input
                     type="number"
                     id="capacity"
+                    th:field="*{capacity}"
                     class="form-control"
                   />
                   <label class="form-label" for="capacity"

@@ -37,19 +37,21 @@ public class ComplaintController {
     }
 
     @PostMapping("/complaint")
-    @ResponseBody
-    public int addComplaint(@Valid @NotNull @RequestBody Complaint complaint){
-        return complaintService.handleAddComplaint(complaint);
+    public String addComplaint(@ModelAttribute Complaint complaint){
+        complaintService.handleAddComplaint(complaint);
+        return "redirect:/admin/dashboard/complaints";
+
     }
 
     @PutMapping("/complaint/{id}")
-    @ResponseBody
-    public int updateComplaintById(@Valid @NotNull @RequestBody Complaint complaint, @Valid @NotNull @PathVariable("id") int id){
-        return complaintService.handleUpdateComplaintById(complaint,id);
+    public String updateComplaintById(@ModelAttribute Complaint complaint, @Valid @NotNull @PathVariable("id") int id){
+        complaintService.handleUpdateComplaintById(complaint,id);
+        return "redirect:/admin/dashboard/complaints";
+
     }
     @DeleteMapping("/complaint/{id}")
-    @ResponseBody
-    public int deleteComplaintById(@Valid @NotNull @PathVariable("id") int id){
-        return complaintService.handleDeleteComplaintById(id);
+    public String deleteComplaintById(@Valid @NotNull @PathVariable("id") int id){
+        complaintService.handleDeleteComplaintById(id);
+        return "redirect:/admin/dashboard/complaints";
     }
 }

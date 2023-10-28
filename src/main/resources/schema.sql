@@ -4,13 +4,15 @@ use project;
 CREATE TABLE IF NOT EXISTS User(
                                        userId INT AUTO_INCREMENT PRIMARY KEY,
                                        username VARCHAR(50) UNIQUE NOT NULL,
-                                       password VARCHAR(50) NOT NULL,
+                                       password VARCHAR(100) NOT NULL,
                                        firstName VARCHAR(50) NOT NULL,
                                        lastName VARCHAR(50),
                                        contact CHAR(10) NOT NULL,
                                        age INT NOT NULL,
+                                       enabled boolean default true,
                                        address VARCHAR(100) NOT NULL,
                                        dateOfBirth DATE,
+                                       
                                        authority ENUM("SA","A","D","WM","C") NOT NULL
 );
 
@@ -90,3 +92,9 @@ CREATE TABLE IF NOT EXISTS Complaint(
                                         CONSTRAINT FK_USERINCOMPLAINT FOREIGN KEY(userId) REFERENCES User(userId),
                                         CONSTRAINT FK_ORDERINCOMPLAINT FOREIGN KEY(orderId) REFERENCES Orders(orderId)
 );
+
+
+select * from User;	
+select * from Product;
+select username, password from User where username="hitanshumusicz@gmail.com";
+update user set authority="A" where userId=1;

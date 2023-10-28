@@ -26,6 +26,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public int handleAddAdmin(User user) {
         return authenticationDao.addAdmin(user);
     }
+    @Override
+    public int handleAddEmployee(User user) {
+        return authenticationDao.addEmployee(user);
+    }
 
     @Override
     public User handleGetUserById(int id) {
@@ -60,5 +64,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public int handleUpdateUserById(User user, int id) {
         return authenticationDao.updateUserById(user,id);
+    }
+    @Override
+    public int handleUpdateCustomerById(User user, int id) {
+        return authenticationDao.updateCustomerById(user,id);
     }
 }
