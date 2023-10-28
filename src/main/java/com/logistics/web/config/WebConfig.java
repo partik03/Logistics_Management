@@ -33,11 +33,13 @@ public class WebConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((requests) -> {
-                            requests.requestMatchers("/resources/**","/static/**","/css/**", "/js/**","/images/**", "/webjars/**", "/assests/**","/index.html", "/", "/logout","/logIn","/signUp").permitAll();
+                            requests.requestMatchers("/resources/**","/static/**","/css/**", "/js/**","/images/**","/icons/**", "/webjars/**", "/assests/**","/index.html", "/", "/logout","/logIn","/signUp").permitAll();
                             requests.requestMatchers("/error").permitAll();
-                            requests.requestMatchers("/customer/**","/invoice/**","/complaint/**","/admin/**","/employee/**").hasAnyAuthority("SA","A");
+                            requests.requestMatchers("/customer/**","/invoice/**","/complaint/**","/admin/**").hasAnyAuthority("SA","A");
                             requests.requestMatchers("/employee/**").hasAuthority("SA");
                             requests.requestMatchers("/warehouse/**").hasAnyAuthority("SA","WM","A");
+                            requests.requestMatchers("/wm/**").hasAnyAuthority("WM");
+                            requests.requestMatchers("/dm/**").hasAnyAuthority("D");
                             requests.anyRequest().authenticated();
                         }
                 )
