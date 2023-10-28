@@ -91,6 +91,11 @@ public class AuthenticationDao {
         User user = jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<>(User.class));
         return user;
     }
+    public int getUserIdByUsername(String username){
+        String sql = "SELECT * FROM User WHERE username = \""+username+"\"";
+        User user = jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<>(User.class));
+        return user.getUserId();
+    }
 
     public List<User> getAllCustomers(){
         String sql = "SELECT * FROM User WHERE authority = \"C\"";
@@ -118,4 +123,5 @@ public class AuthenticationDao {
         String sql = "UPDATE User SET username=?, password=?, firstName=?, lastName=?, contact=?, age=?, address=?, dateOfBirth=?, authority=? WHERE userId=?";
         return jdbcTemplate.update(sql, user.getUsername(),user.getPassword(),user.getFirstName(),user.getLastName(),user.getContact(),user.getAge(),user.getAddress(),user.getDateOfBirth(),"C",id);
     }
+    
 }

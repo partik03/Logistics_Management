@@ -1,6 +1,7 @@
 package com.logistics.web.controller;
 
 import com.logistics.web.models.Invoice;
+import com.logistics.web.services.impl.AuthenticationServiceImpl;
 import com.logistics.web.services.impl.InvoiceServiceImpl;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -15,6 +16,9 @@ import java.util.List;
 public class InvoiceController {
     @Autowired
     public InvoiceServiceImpl invoiceService;
+
+     @Autowired
+    public AuthenticationServiceImpl authenticationService;
 
     @GetMapping("/invoice")
     @ResponseBody
@@ -66,6 +70,7 @@ public class InvoiceController {
     public String deleteInvoiceById(@Valid @NotNull @PathVariable("id") int id) {
         invoiceService.handleDeleteInvoiceById(id);
         return "redirect:/admin/dashboard/invoices";
-
     }
+    
+    
 }

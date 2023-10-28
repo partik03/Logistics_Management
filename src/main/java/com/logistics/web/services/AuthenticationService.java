@@ -10,6 +10,7 @@ public interface AuthenticationService {
     public int handleAddEmployee(User user);
     public User handleGetUserById(int id);
     public User handleGetUserByUsername(String username);
+    public int handleGetUserIdByUsername(String username);
     public List<User> handleGetAllCustomers();
     public List<User> handleGetAllEmployees();
     public List<User> handleGetAllAdminsByAuthority(String authority);

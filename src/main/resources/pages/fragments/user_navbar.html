@@ -11,14 +11,14 @@
 <body>
      <nav class="main-navigation ">
         <div class="navbar-header animated fadeInUp">
-            <a class="navbar-brand" href="#">LogiStick</a>
+            <a class="navbar-brand" th:href="@{/}" >LogiStick</a>
         </div>
         <ul class="nav-list text-white-50">
             <li class="nav-list-item">
-                <a th:href="@{/}" class="nav-link text-white">Home</a>
+                <a th:href="@{/user/orders}" class="nav-link text-white">Your Orders</a>
             </li>
             <li class="nav-list-item">
-                <a th:href="@{/user/orders}" class="nav-link text-white">Your Orders</a>
+                <a th:href="@{/user/products}" class="nav-link text-white">Your Products</a>
             </li>
             <li class="nav-list-item">
                 <a th:href="@{/user/complaints}" class="nav-link text-white">Your Complaints</a>
@@ -27,13 +27,20 @@
                 <a th:href="@{/user/invoices}" class="nav-link text-white">Your Invoices</a>
             </li>
             <li class="nav-list-item">
-                <a th:href="@{/logout}" class="nav-link text-white">Log Out</a>
+                <a th:href="@{/user/placeComplaint}" class="nav-link text-white">Add a Complaint</a>
             </li>
             <li class="nav-list-item">
+                <a th:href="@{/user/addProduct}" class="nav-link text-white">Add Product</a>
+            </li>
+            <li class="nav-list-item">
+                <a th:href="@{/user/placeOrder}" class="nav-link text-white">Place Order </a>
+            </li>
+            <li class="nav-list-item mx-2">
                 <button class="btn bg-orange text-white">
-                  <a th:href="@{/user/placeOrder}" class="text-white">Place Order</a>
+                  <a th:href="@{/logout}" class="text-white"> Logout</a>
                 </button>
             </li>
+            
         </ul>
 
     </nav>

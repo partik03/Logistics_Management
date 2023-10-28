@@ -18,18 +18,18 @@
       <div class="container bg-light mt-2 p-5 mx-auto">
         <!-- <div class="container mt-0 mx-auto p-5"> -->
           <h1 class="mx-auto my-0">Place Order</h1>
-          <form>
+          <form th:action="@{/user/order}" method="post" th:object="${order}">
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-2">
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="SendersName" class="form-control" />
+                  <input type="text" id="SendersName" th:field="*{sendersName}" class="form-control" />
                   <label class="form-label" for="SendersName">Sender's Name</label>
                 </div>
               </div>
               <div class="col">
                 <div class="form-outline">
-                  <input type="text" id="RecieversName" class="form-control" />
+                  <input type="text" id="RecieversName" th:field="*{recieversName}" class="form-control" />
                   <label class="form-label" for="RecieversName">Reciever's Name</label>
                 </div>
               </div>
@@ -38,7 +38,7 @@
             <div class="row mb-2">
               <div class="col">
                 <div class="form-outline">
-                  <input type="email" id="SendersEmail" class="form-control" />
+                  <input type="email" id="SendersEmail" th:field="*{sendersEmail}" class="form-control" />
                   <label class="form-label" for="SendersEmail">
                     Sender's Email</label
                   >
@@ -49,6 +49,7 @@
                   <input
                     type="email"
                     id="RecieversEmail"
+                    th:field="*{recieversEmail}"
                     class="form-control"
                   />
                   <label class="form-label" for="RecieversEmail"
@@ -64,6 +65,7 @@
                   <input
                     type="number"
                     id="SendersPhone"
+                    th:field="*{sendersPhone}"
                     class="form-control"
                   />
                   <label class="form-label" for="SendersPhone">
@@ -75,10 +77,11 @@
                 <div class="form-outline">
                   <input
                     type="number"
-                    id="SendersPhone"
+                    id="RecieversPhone"
+                    th:field="*{recieversPhone}"
                     class="form-control"
                   />
-                  <label class="form-label" for="SendersPhone"
+                  <label class="form-label" for="RecieversPhone"
                     >Reciever's Phone No.
                   </label>
                 </div>
@@ -86,14 +89,14 @@
             </div>
             <!-- Text input -->
             <div class="form-outline mb-2">
-              <input type="text" id="SenderyAddress" class="form-control" />
+              <input type="text" id="SendersAddress" th:field="*{sendersAddress}" class="form-control" />
               <label class="form-label" for="SendersAddress"
                 >Sender's Address</label
               >
             </div>
             <!-- Text input -->
             <div class="form-outline mb-2">
-              <input type="text" id="RecievingAddress" class="form-control" />
+              <input type="text" id="RecievingAddress" th:field="*{recieversAddress}" class="form-control" />
               <label class="form-label" for="RecievingAddress"
                 >Recieving Address</label
               >
@@ -101,51 +104,23 @@
 
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row mb-2">
+              
               <div class="col">
                 <div class="form-outline">
-                  <input
-                    type="number"
-                    id="ProductsWeight"
-                    class="form-control"
-                  />
-                  <label class="form-label" for="ProductsWeight">
-                    Product's Weight</label
-                  >
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-outline">
-                  <input type="text" id="ProductType" class="form-control" />
-                  <label class="form-label" for="ProductType"
-                    >Product Type
+                  <input type="text" id="productId" th:field="*{productId}" class="form-control" />
+                  <label class="form-label" for="productId"
+                    >Product Id
                   </label>
                 </div>
               </div>
-              <div class="col">
-                <div class="form-outline">
-                  <input type="file" class="form-control" id="ProductsPhoto" />
-                  <label class="form-label" for="ProductsPhoto"
-                    >Upload Product's Photo</label
-                  >
-                </div>
-              </div>
+              
             </div>
 
-            <!-- Message input -->
-            <div class="form-outline mb-2">
-              <textarea
-                class="form-control"
-                id="form6Example7"
-                rows="2"
-              ></textarea>
-              <label class="form-label" for="form6Example7"
-                >Additional Information About Product</label
-              >
-            </div>
+            
 
             <!-- Submit button -->
             <button type="submit" class="btn bg-orange text-white btn-block mb-1">
-              Place orders
+              Place order
             </button>
           </form>
         </div>

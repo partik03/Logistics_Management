@@ -87,29 +87,7 @@ public class loginController {
     public void logout(){
         // System.out.println("THANKYOU for LOGGING IN");
     }
-    @GetMapping("/user/placeOrder")
-    public String placeOrder(){
-        return "placeOrder";
-    }
-    @GetMapping("/user/orders")
-    public String getUserOrders(Model model){
-        
-
-
-        return "user_orders";
-    }
-    @GetMapping("/user/complaints")
-    public String getUserComplaints(){
-        return "user_complaints";
-    }
-    @GetMapping("/user/invoices")
-    public String getUserInvoices(){
-        return "user_invoices";
-    }
-    @GetMapping("/user/placeComplaint")
-    public String placeComplaint(){
-        return "placeComplaint";
-    }
+    
     @GetMapping("/showWarehouse")
     public String warehouse(){
         return "warehouse";

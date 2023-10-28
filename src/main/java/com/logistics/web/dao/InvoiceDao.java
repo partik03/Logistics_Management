@@ -42,10 +42,16 @@ public class InvoiceDao {
         return Objects.requireNonNull(keyholder.getKey()).intValue();
     }
 
+
     public Invoice getInvoiceById(int id){
         String sql = "SELECT * FROM Invoice WHERE invoiceId = ?";
         Invoice invoice= jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Invoice.class),id);
         return invoice;
+    }
+    public List<Invoice> getInvoiceByUserId(int id){
+        String sql = "select * from Invoice where invoiceId in (select invoiceId from Orders where userId = ?)";
+        List<Invoice> invoices= jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Invoice.class),id);
+        return invoices;
     }
     public Invoice getInvoiceByOrderId(int id){
         String sql = "SELECT * FROM Invoice WHERE orderId = ?";

@@ -12,44 +12,31 @@
     <div class="back"></div>
     <div class="bg-image">
       <div th:replace="fragments/user_navbar"></div>
-      <h1 th:text="${USERNAME}">HELLO WORLD</h1>
+      
       <div class="container rounded mt-5 bg-white p-md-5">
-        <div class="h2 font-weight-bold">Orders</div>
-        <p class="text-muted">You Can delete Your Orders only till it's invoice isn't generated.</p>
+        <div class="h2 font-weight-bold">Products</div>
         
-        
-          <div class="table-responsive">
+        <div class="table-responsive">
               <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">Order ID</th>
                     <th scope="col">Product ID</th>
-                    <th scope="col">Order Date</th>
-                    <th scope="col">Sender's Name</th>
-                    <th scope="col">Receiver's Name</th>
-                    <th scope="col">Sender's Email</th>
-                    <th scope="col">Receiver's Email</th>
-                    <th scope="col">Sender's Phone</th>
-                    <th scope="col">Receiver's Phone</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Weight</th>
+                    <th scope="col">Description</th>
                     <th scope="col">Delete</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="my-3 bg-blue" th:each="order : ${orders}">
-                    <td class="pt-3" th:text="${order.orderId}"></td>
-                    <td class="pt-3" th:text="${order.productId}"></td>
-                    <td class="pt-3" th:text="${order.orderDate}"></td>
-                    <td class="pt-3" th:text="${order.sendersName}"></td>
-                    <td class="pt-3" th:text="${order.recieversName}"></td>
-                    <td class="pt-3" th:text="${order.sendersEmail}"></td>
-                    <td class="pt-3" th:text="${order.recieversEmail}"></td>
-                    <td class="pt-3" th:text="${order.sendersPhone}"></td>
-                    <td class="pt-3" th:text="${order.recieversPhone}"></td>
-          
+                  <tr class="my-3 bg-blue" th:each="product : ${products}">
+                    <td class="pt-3" th:text="${product.productId}"></td>
+                    <td class="pt-3" th:text="${product.productName}"></td>
+                    <td class="pt-3" th:text="${product.weight}"></td>
+                    <td class="pt-3" th:text="${product.description}"></td>
                     
                     <td class="pt-3">
                       <form
-                        th:action="@{'/user/order/' + ${order.orderId}}"
+                        th:action="@{'/user/product/' + ${product.productId}}"
                         method="post"
                       >
                         <input
@@ -62,15 +49,14 @@
                         </button>
                       </form>
       
-                      </form>
+                      
                     </td>
                   </tr>
 
-                 
+                  
                 </tbody>
               </table>
             </div>
-        </div>
       </div>
     </div>
     <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>

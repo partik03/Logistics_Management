@@ -16,48 +16,48 @@
      
     <div class="container rounded mt-5 bg-white p-md-5">
       <div class="h2 font-weight-bold">Complaints</div>
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Order Id</th>
-              <th scope="col">Order Date</th>
-              <th scope="col">Product Id</th>
-              <th scope="col">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="my-3" th:each="orders : ${orders}">
-              <td class="pt-3" th:text="${orders.orderId}"></td>
-              <td class="pt-3" th:text="${orders.orderDate}"></td>
-              <td class="pt-3" th:text="${orders.productId}"></td>
-              <td class="pt-3" th:text="${orders.status}"></td>
-            </tr>
-            
-            <tr class="bg-blue my-5">
-              <td class="pt-3">26 Sep 2020</td>
-              <td class="pt-3">11:00 AM</td>
-              <td class="pt-3"><span class="fa fa-check pl-3"></span></td>
-              <td class="pt-3"><span class="fa fa-ellipsis-v btn"></span></td>
-            </tr>
-            <tr class="bg-blue mb-3">
+       <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Complaint ID</th>
+                    <th scope="col">Order Id</th>
+                    <th scope="col">Contact Email</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="my-3 bg-blue" th:each="complaint : ${complaints}">
+                    <td class="pt-3" th:text="${complaint.complaintId}"></td>
+                    <td class="pt-3" th:text="${complaint.orderId}"></td>
+                    <td class="pt-3" th:text="${complaint.email}"></td>
+                    <td class="pt-3" th:text="${complaint.description}"></td>
+                    
+                    <td class="pt-3">
+                      <form
+                        th:action="@{'/user/complaint/' + ${complaint.complaintId}}"
+                        method="post"
+                      >
+                        <input
+                          type="hidden"
+                          th:name="_method"
+                          th:value="delete"
+                        />
+                        <button type="" class="btn btn-danger">
+                          Delete 
+                        </button>
+                      </form>
+      
+                      </form>
+                    </td>
+                  </tr>
 
-              <td class="pt-3">26 Sep 2020</td>
-              <td class="pt-3">02:00 PM</td>
-              <td class="pt-3"><span class="fa fa-check pl-3"></span></td>
-              <td class="pt-3"><span class="fa fa-ellipsis-v btn"></span></td>
-            </tr>
-
-            <tr class="bg-blue mb-3">
-
-              <td class="pt-3">26 Sep 2020</td>
-              <td class="pt-3">04:00 PM</td>
-              <td class="pt-3"><span class="fa fa-minus pl-3"></span></td>
-              <td class="pt-3"><span class="fa fa-ellipsis-v btn"></span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+                 
+                  
+                </tbody>
+              </table>
+            </div>
     </div>
     </div>
     <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
