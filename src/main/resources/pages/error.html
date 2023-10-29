@@ -15,10 +15,11 @@
       }
     </style>
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
   </head>
   <body>
-    <div class="container max-width-90">
-      <div class="mt-3-3 d-flex align-items-center justify-content-center">
+    <div class="container mt-4 pt-4 max-width-90">
+      <div class="mt-4 d-flex align-items-center justify-content-center">
         <div
           class="d-flex flex-column align-items-center justify-content-center"
         >
@@ -51,12 +52,12 @@
               <td>Exception</td>
               <td th:text="${exception}" class="text-red max-width-90" />
             </tr>
-            <tr>
+            <!-- <tr>
               <td>Trace</td>
               <td>
                 <pre th:text="${trace}" class="text-red max-width-90" />
               </td>
-            </tr>
+            </tr> -->
           </table>
           </div>
         </div>

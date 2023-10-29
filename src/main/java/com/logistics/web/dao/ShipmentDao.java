@@ -80,6 +80,10 @@ public class ShipmentDao {
         String sql = "SELECT * FROM Shipment WHERE carrierId = " + id;
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Shipment.class));
     }
+    public List<Shipment> getAllShipmentsByUserId(int id){
+        String sql = "select * from Shipment where orderId in (select orderId from Orders where userId = " + id + " );";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Shipment.class));
+    }
 
     public List<Shipment> getAllShipmentsByWarehouseId(int id){
         String sql = "SELECT * FROM Shipment WHERE warehouseId = " + id;

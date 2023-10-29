@@ -10,18 +10,29 @@
 </head>
 <body>
      <nav class="main-navigation ">
+        <div class="d-flex justify-content-between m-3">
+                    <span><a class="nav-link text-orange" th:href="@{/index}" >LogiMaster</a></span>
+
+            <button class="btn bg-orange text-white">
+                  <a th:href="@{/logout}" class="text-white"> Logout</a>
+                </button>
+
+        </div>
         <div class="navbar-header animated fadeInUp">
         </div>
         
 
             
-        <ul class="nav-list text-white-50">
+        <ul class="nav-list  text-white-50">
 
-            <li class="nav-list-item">
+            <!-- <li class="nav-list-item">
                <a class="nav-link text-orange" th:href="@{/index}" >LogiMaster</a>
-            </li>
+            </li> -->
             <li class="nav-list-item">
                 <a th:href="@{/user/orders}" class="nav-link text-white">Your Orders</a>
+            </li>
+            <li class="nav-list-item">
+                <a th:href="@{/user/shipments}" class="nav-link text-white">Your Shipments</a>
             </li>
             <li class="nav-list-item">
                 <a th:href="@{/user/products}" class="nav-link text-white">Your Products</a>
@@ -41,14 +52,14 @@
             <li class="nav-list-item">
                 <a th:href="@{/user/placeOrder}" class="nav-link text-white">Place Order </a>
             </li>
-            <li class="nav-list-item mx-2">
+            <!-- <li class="nav-list-item mx-2">
                 <button class="btn bg-orange text-white">
                   <a th:href="@{/logout}" class="text-white"> Logout</a>
                 </button>
-            </li>
+            </li> -->
             
         </ul>
-
+        
     </nav>
 </body>
 </html>
