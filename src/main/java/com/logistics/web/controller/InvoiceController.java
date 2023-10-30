@@ -1,22 +1,16 @@
 package com.logistics.web.controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.logistics.web.models.Invoice;
-import com.logistics.web.models.Razorpay;
 import com.logistics.web.services.impl.AuthenticationServiceImpl;
 import com.logistics.web.services.impl.InvoiceServiceImpl;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Array;
 import java.sql.Date;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class InvoiceController {
@@ -60,6 +54,7 @@ public class InvoiceController {
 
     @PostMapping("/invoice")
     public String addInvoice(@ModelAttribute Invoice invoice) {
+        System.out.println(invoice);
         invoiceService.handleAddInvoice(invoice);
         return "redirect:/admin/dashboard/invoices";
 
