@@ -3,8 +3,6 @@ package com.logistics.web.dao;
 import com.logistics.web.models.Invoice;
 import com.razorpay.Order;
 import com.razorpay.RazorpayClient;
-import com.razorpay.RazorpayException;
-
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -19,7 +17,6 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
-import java.util.Random;
 
 @Repository
 public class InvoiceDao {
@@ -59,7 +56,7 @@ public class InvoiceDao {
         return Objects.requireNonNull(keyholder.getKey()).intValue();
     } catch (Exception e) {
             System.out.println("Error statement");
-            System.err.println(0);
+            System.err.println(e);
             return 0;
         }
         

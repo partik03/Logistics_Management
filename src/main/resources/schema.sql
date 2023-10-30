@@ -2,18 +2,18 @@ drop database if exists project;
 create database project;
 use project;
 CREATE TABLE IF NOT EXISTS User(
-                                       userId INT AUTO_INCREMENT PRIMARY KEY,
-                                       username VARCHAR(50) UNIQUE NOT NULL,
-                                       password VARCHAR(100) NOT NULL,
-                                       firstName VARCHAR(50) NOT NULL,
-                                       lastName VARCHAR(50),
-                                       contact CHAR(10) NOT NULL,
-                                       age INT NOT NULL,
-                                       enabled boolean default true,
-                                       address VARCHAR(100) NOT NULL,
-                                       dateOfBirth DATE,
-                                       
-                                       authority ENUM("SA","A","D","WM","C") NOT NULL
+                                   userId INT AUTO_INCREMENT PRIMARY KEY,
+                                   username VARCHAR(50) UNIQUE NOT NULL,
+                                   password VARCHAR(100) NOT NULL,
+                                   firstName VARCHAR(50) NOT NULL,
+                                   lastName VARCHAR(50),
+                                   contact CHAR(10) NOT NULL,
+                                   age INT NOT NULL,
+                                   enabled boolean default true,
+                                   address VARCHAR(1000) NOT NULL,
+                                   dateOfBirth DATE,
+
+                                   authority ENUM("SA","A","D","WM","C") NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Warehouse(
@@ -29,9 +29,9 @@ CREATE TABLE IF NOT EXISTS Warehouse(
 
 CREATE TABLE IF NOT EXISTS Product(
                                       productId INT AUTO_INCREMENT PRIMARY KEY,
-                                      productName VARCHAR(20) NOT NULL,
+                                      productName VARCHAR(100) NOT NULL,
                                       weight INT,
-                                      description VARCHAR(100),
+                                      description VARCHAR(1000),
                                       userId INT NOT NULL,
                                       CONSTRAINT FK_PRODUCTINUSER FOREIGN KEY(userId) REFERENCES User(userId)
 );
@@ -43,8 +43,8 @@ CREATE TABLE IF NOT EXISTS Orders(
                                      recieversName VARCHAR(100),
                                      sendersEmail VARCHAR(100),
                                      recieversEmail VARCHAR(100),
-                                     sendersPhone INT,
-                                     recieversPhone INT,
+                                     sendersPhone VARCHAR(20),
+                                     recieversPhone VARCHAR(20),
                                      sendersAddress VARCHAR(100),
                                      recieversAddress VARCHAR(100),
                                      userId INT NOT NULL,
@@ -60,6 +60,7 @@ CREATE TABLE IF NOT EXISTS Invoice(
                                       dateOfPublish DATE NOT NULL,
                                       paymentStatus ENUM("Pending","Success","Failed") NOT NULL,
                                       orderId INT NOT NULL,
+                                      razorpayOrderId VARCHAR(100) NOT NULL,
                                       CONSTRAINT FK_ORDER FOREIGN KEY(orderId) REFERENCES Orders(orderId)
 );
 
@@ -104,7 +105,7 @@ CREATE INDEX Product_User ON Product(userId);
 CREATE INDEX Warehouse_User ON Warehouse(userId);
 CREATE INDEX User_Username ON User(username);
 
--- Make an account with superadmin@gmail.com and then run 
+-- Make an account with superadmin@gmail.com and then run
 update User set authority="SA" where username="superadmin@gmail.com";
 INSERT INTO Carrier values(1,"BlankCarrier","0000",9999,1);
 INSERT INTO Warehouse values(1,"blank","blank","blank","000000",9999,1);
