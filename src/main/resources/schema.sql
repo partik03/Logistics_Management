@@ -94,6 +94,16 @@ CREATE TABLE IF NOT EXISTS Complaint(
                                         CONSTRAINT FK_USERINCOMPLAINT FOREIGN KEY(userId) REFERENCES User(userId),
                                         CONSTRAINT FK_ORDERINCOMPLAINT FOREIGN KEY(orderId) REFERENCES Orders(orderId)
 );
+
+CREATE INDEX Complaint_User ON Complaint(userId);
+CREATE INDEX Shipment_Orders ON Shipment(orderId);
+CREATE INDEX Carrier_User ON Carrier(userId);
+CREATE INDEX Invoice_Orders ON Invoice(orderId);
+CREATE INDEX Orders_User ON Orders(userId);
+CREATE INDEX Product_User ON Product(userId);
+CREATE INDEX Warehouse_User ON Warehouse(userId);
+CREATE INDEX User_Username ON User(username);
+
 -- Make an account with superadmin@gmail.com and then run 
 update User set authority="SA" where username="superadmin@gmail.com";
 INSERT INTO Carrier values(1,"BlankCarrier","0000",9999,1);
