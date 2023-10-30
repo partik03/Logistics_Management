@@ -2,18 +2,18 @@ drop database if exists project;
 create database project;
 use project;
 CREATE TABLE IF NOT EXISTS User(
-                                   userId INT AUTO_INCREMENT PRIMARY KEY,
-                                   username VARCHAR(50) UNIQUE NOT NULL,
-                                   password VARCHAR(100) NOT NULL,
-                                   firstName VARCHAR(50) NOT NULL,
-                                   lastName VARCHAR(50),
-                                   contact CHAR(10) NOT NULL,
-                                   age INT NOT NULL,
-                                   enabled boolean default true,
-                                   address VARCHAR(100) NOT NULL,
-                                   dateOfBirth DATE,
-
-                                   authority ENUM("SA","A","D","WM","C") NOT NULL
+                                       userId INT AUTO_INCREMENT PRIMARY KEY,
+                                       username VARCHAR(50) UNIQUE NOT NULL,
+                                       password VARCHAR(100) NOT NULL,
+                                       firstName VARCHAR(50) NOT NULL,
+                                       lastName VARCHAR(50),
+                                       contact CHAR(10) NOT NULL,
+                                       age INT NOT NULL,
+                                       enabled boolean default true,
+                                       address VARCHAR(100) NOT NULL,
+                                       dateOfBirth DATE,
+                                       
+                                       authority ENUM("SA","A","D","WM","C") NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Warehouse(
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS Invoice(
                                       amount INT NOT NULL,
                                       dateOfPublish DATE NOT NULL,
                                       paymentStatus ENUM("Pending","Success","Failed") NOT NULL,
-                                      orderId INT NOT NULL UNIQUE,
+                                      orderId INT NOT NULL,
                                       CONSTRAINT FK_ORDER FOREIGN KEY(orderId) REFERENCES Orders(orderId)
 );
 
@@ -98,14 +98,6 @@ INSERT INTO User values(1,"user@gmail.com","user","user","user","0000000000",20,
 INSERT INTO Carrier values(1,"BlankCarrier","0000",9999,1);
 INSERT INTO Warehouse values(1,"blank","blank","blank","000000",9999,1);
 
-CREATE INDEX Complaint_User ON Complaint(userId);
-CREATE INDEX Shipment_Orders ON Shipment(orderId);
-CREATE INDEX Carrier_User ON Carrier(userId);
-CREATE INDEX Invoice_Orders ON Invoice(orderId);
-CREATE INDEX Orders_User ON Orders(userId);
-CREATE INDEX Product_User ON Product(userId);
-CREATE INDEX Warehouse_User ON Warehouse(userId);
-CREATE INDEX User_Username ON User(username);
 
 -- select * from User;	
 -- select * from Product;
