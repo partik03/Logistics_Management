@@ -1,52 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
     <link th:href="@{/css/user_dashboard.css}" rel="stylesheet" />
     <link th:href="@{/css/style.css}" rel="stylesheet" />
     <title>User_Complaints</title>
-</head>
-<body >
+  </head>
+  <body>
     <div class="back"></div>
     <div class="bg-image">
-    <div th:replace="fragments/user_navbar"></div>
+      <div th:replace="fragments/user_navbar"></div>
 
-     
-    <div class="container rounded mt-5 bg-white p-md-5">
-      <div class="h2 font-weight-bold">Invoices</div>
-      <div class="table-responsive">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Invoice ID</th>
-                    <th scope="col">Order ID</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Date Of Publish</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Status</th>
-                 
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="my-3 bg-blue" th:each="invoice : ${invoices}">
-                    <td class="pt-3" th:text="${invoice.invoiceId}"></td>
-                    <td class="pt-3" th:text="${invoice.orderId}"></td>
-                    <td class="pt-3" th:text="${invoice.amount}"></td>
-                    <td class="pt-3" th:text="${invoice.dateOfPublish}"></td>
-                    <td class="pt-3" th:text="${invoice.address}"></td>
-                    <td class="pt-3" th:text="${invoice.paymentStatus}"></td>
-                    
-                    
-                  </tr>
-                                    
-                </tbody>
-              </table>
-            </div>
-    </div>
+      <div class="container rounded mt-5 bg-white p-md-5">
+        <div class="h2 font-weight-bold">Invoices</div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Invoice ID</th>
+                <th scope="col">Order ID</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Date Of Publish</th>
+                <th scope="col">Address</th>
+                <th scope="col">Status</th>
+                <th scope="col">Pay</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="my-3 bg-blue" th:each="invoice : ${invoices}">
+                <td class="pt-3" th:text="${invoice.invoiceId}"></td>
+                <td class="pt-3" th:text="${invoice.orderId}"></td>
+                <td class="pt-3" th:text="${invoice.amount}"></td>
+                <td class="pt-3" th:text="${invoice.dateOfPublish}"></td>
+                <td class="pt-3" th:text="${invoice.address}"></td>
+                <td class="pt-3" th:text="${invoice.paymentStatus}"></td>
+                <td class="pt-3">
+                  <button class="btn bg-orange text-white" th:attr="data-item1=${invoice.razorpayOrderId}, data-item2=${invoice.amount}" onclick="pay(this.getAttribute('data-item1'),this.getAttribute('data-item2'))">
+                    <a  class="text-white"
+                      >Pay</a
+                    >
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
     <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/my.js}"></script>
-</body>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        
+        function pay(razorpayOrderId,amount){
+          console.log(typeof razorpayOrderId,razorpayOrderId,amount)
+            var options = {
+              "key": "rzp_test_cbe0cwpLBbloTC", // Enter the Key ID generated from the Dashboard
+              "amount": amount+"00", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+              "currency": "INR",
+              "name": "Logistics Corp",
+              "description": "Test Transaction",
+              // "image": "https://example.com/your_logo",
+              "order_id": razorpayOrderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+              "callback_url": "http://localhost:8080/user/invoice/success",
+              "prefill": {
+                  "name": "Gaurav Kumar",
+                  "email": "gaurav.kumar@example.com",
+                  "contact": "9000090000"
+              },
+              "notes": {
+                  "address": "Razorpay Corporate Office"
+              },
+              "theme": {
+                  "color": "#3399cc"
+              }
+          };
+          var rzp1 = new Razorpay(options);
+            rzp1.open();
+            // e.preventDefault();
+        }
+    </script>
+
+  </body>
 </html>

@@ -1,6 +1,11 @@
 package com.logistics.web.dao;
 
 import com.logistics.web.models.Invoice;
+import com.razorpay.Order;
+import com.razorpay.RazorpayClient;
+import com.razorpay.RazorpayException;
+
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -24,22 +29,46 @@ public class InvoiceDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public int addInvoice(Invoice invoice){
-        Random random = new Random();
-        String sql = "INSERT INTO Invoice(amount,paymentStatus,dateOfPublish,address,orderId) VALUES(?,?,?,?,?)";
+    public int addInvoice(Invoice invoice) {
+        System.out.println("This is add Invoice statement");
+        try {
+            RazorpayClient razorpay = new RazorpayClient("rzp_test_cbe0cwpLBbloTC", "Fjjc3PMGKqC8ELGkvrmxL2Jf");
+            JSONObject orderRequest = new JSONObject();
+            orderRequest.put("amount",invoice.getAmount()*100);
+            orderRequest.put("currency","INR");
+            orderRequest.put("receipt", Integer.toString(invoice.getOrderId()));
+            Order order = razorpay.Orders.create(orderRequest);
+            JSONObject orderObject = order.toJson();
+            System.out.println("try statement");
+            System.out.println(orderObject.get("id"));
+
+        String sql = "INSERT INTO Invoice(amount,paymentStatus,razorpayOrderId,dateOfPublish,address,orderId) VALUES(?,?,?,?,?,?)";
         KeyHolder keyholder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, random.nextInt(901)+100);
-            ps.setString(2, "Success");
-            ps.setDate(3, Date.valueOf(LocalDate.now()));
-            ps.setString(4,invoice.getAddress());
-            ps.setInt(5,invoice.getOrderId());
+            ps.setInt(1, invoice.getAmount());
+            ps.setString(2, "Pending");
+            ps.setString(3, orderObject.get("id").toString());
+            ps.setDate(4, Date.valueOf(LocalDate.now()));
+            ps.setString(5,invoice.getAddress());
+            ps.setInt(6,invoice.getOrderId());
             
             return ps;
         }, keyholder);
 
         return Objects.requireNonNull(keyholder.getKey()).intValue();
+    } catch (Exception e) {
+            System.out.println("Error statement");
+            System.err.println(0);
+            return 0;
+        }
+        
+    }
+
+    public int paymentSuccess(String id){
+        System.out.println(id);
+        String sql = "UPDATE Invoice SET paymentStatus=\"Success\" WHERE razorpayOrderId=\""+id+"\"";
+        return jdbcTemplate.update(sql);
     }
 
 

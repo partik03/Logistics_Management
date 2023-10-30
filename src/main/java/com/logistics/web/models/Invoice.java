@@ -34,4 +34,7 @@ public class Invoice {
      
     @Getter
     private int orderId;
+
+    @Getter
+    private String razorpayOrderId;
 }
