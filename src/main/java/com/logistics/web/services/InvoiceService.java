@@ -19,5 +19,5 @@ public interface InvoiceService {
     public int handleDeleteInvoiceById(int id);
 
     public int handleUpdateInvoiceById(Invoice invoice, int id);
-
+    public int handlePaymentSuccess(String orderId);
 }

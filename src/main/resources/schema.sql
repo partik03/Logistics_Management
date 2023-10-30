@@ -94,12 +94,7 @@ CREATE TABLE IF NOT EXISTS Complaint(
                                         CONSTRAINT FK_USERINCOMPLAINT FOREIGN KEY(userId) REFERENCES User(userId),
                                         CONSTRAINT FK_ORDERINCOMPLAINT FOREIGN KEY(orderId) REFERENCES Orders(orderId)
 );
-INSERT INTO User values(1,"user@gmail.com","user","user","user","0000000000",20,1,"user","2003-10-10","SA");
+-- Make an account with superadmin@gmail.com and then run 
+update User set authority="SA" where username="superadmin@gmail.com";
 INSERT INTO Carrier values(1,"BlankCarrier","0000",9999,1);
 INSERT INTO Warehouse values(1,"blank","blank","blank","000000",9999,1);
-
-
--- select * from User;	
--- select * from Product;
--- select username, password from User where username="hitanshumusicz@gmail.com";
--- update user set authority="A" where userId=1;

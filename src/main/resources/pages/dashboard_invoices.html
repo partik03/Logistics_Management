@@ -38,6 +38,7 @@
                   <tr>
                     <th scope="col">Invoice ID</th>
                     <th scope="col">Order ID</th>
+                    <th scope="col">RazorPay Order ID</th>
                     <th scope="col">Amount</th>
                     <th scope="col">Date Of Publish</th>
                     <th scope="col">Address</th>
@@ -50,6 +51,7 @@
                   <tr class="my-3 bg-blue" th:each="invoice : ${invoices}">
                     <td class="pt-3" th:text="${invoice.invoiceId}"></td>
                     <td class="pt-3" th:text="${invoice.orderId}"></td>
+                    <td class="pt-3" th:text="${invoice.razorpayOrderId}"></td>
                     <td class="pt-3" th:text="${invoice.amount}"></td>
                     <td class="pt-3" th:text="${invoice.dateOfPublish}"></td>
                     <td class="pt-3" th:text="${invoice.address}"></td>

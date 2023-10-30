@@ -59,4 +59,9 @@ public class InvoiceServiceImpl implements InvoiceService {
     public int handleUpdateInvoiceById(Invoice invoice, int id){
         return invoiceDao.updateInvoiceById(invoice,id);
     }
+
+    @Override
+    public int handlePaymentSuccess(String orderId){
+        return invoiceDao.paymentSuccess(orderId);
+    }
 }

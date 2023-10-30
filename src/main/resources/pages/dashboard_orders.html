@@ -48,6 +48,8 @@
                     <th scope="col">Receiver's Email</th>
                     <th scope="col">Sender's Phone</th>
                     <th scope="col">Receiver's Phone</th>
+                    <th scope="col">Sender's Address</th>
+                    <th scope="col">Receiver's Address</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                   </tr>
@@ -64,6 +66,8 @@
                     <td class="pt-3" th:text="${order.recieversEmail}"></td>
                     <td class="pt-3" th:text="${order.sendersPhone}"></td>
                     <td class="pt-3" th:text="${order.recieversPhone}"></td>
+                    <td class="pt-3" th:text="${order.sendersAddress}"></td>
+                    <td class="pt-3" th:text="${order.recieversAddress}"></td>
           
                     <td class="pt-3">
                       <form

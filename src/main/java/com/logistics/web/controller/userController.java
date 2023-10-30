@@ -120,6 +120,26 @@ public class userController {
         model.addAttribute("invoices", invoices);
         return "user_invoices";
     }
+   
+    @GetMapping("/user/shipments")
+    public String getUserShipments(Model model){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+        int userId = authenticationService.handleGetUserIdByUsername(name);
+
+        List<Shipment> shipments = shipmentDao.getAllShipmentsByUserId(userId);
+        model.addAttribute("shipments", shipments);
+
+        shipments.forEach(shipment -> {
+            if (shipment.getCarrierId() == 1) {
+                shipment.setCarrierId(0);
+            }
+            if (shipment.getWarehouseId() == 1) {
+                shipment.setWarehouseId(0);
+            }
+        });
+        return "user_shipments";
+    }
     @GetMapping("/user/placeComplaint")
     public String placeComplaint(Model model){
         Complaint complaint = new Complaint();
